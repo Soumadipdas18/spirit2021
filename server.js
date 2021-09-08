@@ -8,7 +8,9 @@ const event1route = require("./routes/event1route");
 const iplauction=require("./routes/iplauction");
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
-const stuff = require("./model/user");
+const stuff_user = require("./model/user");
+const stuff_event1 = require("./model/event1");
+const stuff_ipl_auction = require("./model/ipl_auction");
 const cors=require("cors");
 var session;
 
@@ -65,7 +67,7 @@ app.get("/login", (req, res) => {
 
 app.get("/profile", async (req, res) => {
   email = session.userid;
-  const user = await stuff.model.findOne({ email }).lean();
+  const user = await stuff_user.model.findOne({ email }).lean();
   res.render("profile",{user: user});
 });
 
@@ -80,7 +82,7 @@ app.get("/events", (req, res) => {
 
 app.get("/events/event1", async (req, res) => {
   email = session.userid;
-  const user = await stuff.model.findOne({ email }).lean();
+  const user = await stuff_user.model.findOne({ email }).lean();
   res.render("event1",{user: user});
 });
 

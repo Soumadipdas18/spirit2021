@@ -20,30 +20,4 @@ const UserSchema = new mongoose.Schema(
 );
 const model = mongoose.model("UserSchema", UserSchema);
 module.exports.model = model;
-
-
-//Event1 schema
-const Event1Schema = new mongoose.Schema(
-  {
-    item: { type: String, required: true, unique:false},
-	user: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema'}],
-  });
-const Event1 = mongoose.model("Event1", Event1Schema);
-module.exports.event1 = Event1;
-
-//IPLAuction Schema
-const IPLAuction = new mongoose.Schema(
-  {
-    teamname: { type: String, required: true, unique: true },
-    member1: [UserSchema],
-    member2: [UserSchema],
-    member3: [UserSchema],
-  },
-  {
-    timestamps: true,
-  }
-);
-const IPLAuctionSchema = mongoose.model("IPLAuctionSchema", IPLAuction);
-module.exports.iplauction = IPLAuctionSchema;
-
-//testt
+module.exports.UserSchema = UserSchema;
