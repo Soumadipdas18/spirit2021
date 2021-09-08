@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="google-signin-client_id" content="581624333892-ft1e5cqrd4ku0c9avg8hjtlikc518tuh.apps.googleusercontent.com">
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<title>Register | Spirit 2021</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+	</head>
+	<body>
+		<h1>Registration</h1>
+		<form id="reg-form">
+			<input type="text" autocomplete="off" id="username" placeholder="Username" required />
+			<input type="text" autocomplete="off" id="collegename" placeholder="comllegename" required />
+			<input type="email" autocomplete="off" id="email" placeholder="Email" required />
+			<input type="number" autocomplete="off" id="phno" placeholder="Phone number" required/>
+			<input type="password" autocomplete="off" id="password" placeholder="Password" required/>
+			<input type="checkbox" onclick="toggleview()">Show Password
+			<input type="submit" value="Submit Form" />
+		</form>
+		<br/>
+		<div class="g-signin2" data-onsuccess="registergoogle"></div>
+		<br/>
+		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+		</fb:login-button>
+
+		<div id="status">
+		</div>
+
+		<script>
+			const form = document.getElementById('reg-form')
+			form.addEventListener('submit', registerUser)
+			window.fbAsyncInit = function () {
+			FB.init({
+				appId: '354191059764159',
+				cookie: true,
+				xfbml: true,
+				version: 'v1.1.0'
+			});
+
+			FB.getLoginStatus(function (response) {
+				statusChangeCallback(response);
+			});
+			}
+			async function registerUser(event) {
+				event.preventDefault()
+				const username = document.getElementById('username').value
+				const password = document.getElementById('password').value
+                const email = document.getElementById('email').value
+				const collegename = document.getElementById('collegename').value
+				const phno = document.getElementById('phno').value
+				const result = await fetch('/authapi/register', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						username,
+						password,
+						email,
+						collegename,
+						phno
+					})
+				}).then((res) => res.json())
+
+				if (result.status === 'ok') {
+					// everythign went fine
+					window.location.replace(`/`);
+					alert('Success')
+				} else {
+					alert(result.error)
+				}
+			}
+			function toggleview() {
+				var x = document.getElementById("password");
+				if (x.type === "password") {
+					x.type = "text";
+				} else {
+					x.type = "password";
+				}
+			}
+			async function registergoogle(googleUser) {
+            	var profile = googleUser.getBasicProfile();
+            	//console.log('ID: ' + profile.getId());
+            	const username=profile.getName();
+            	//console.log('Image URL: ' + profile.getImageUrl());
+            	const email = profile.getEmail();
+            	const provider="google";
+            	console.log('Email: ' + profile.getEmail());
+           		const result = await fetch('/authapi/registerwithgofb', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    username,
+                    provider
+                })
+            	}).then((res) => res.json())
+             
+            	if (result.status === 'ok') {
+					var auth2 = gapi.auth2.getAuthInstance();
+					auth2.signOut()
+					//window.location.replace(`/profile/get/${result.data._id}`);
+					window.location.replace(`/`);
+                	alert('Success')
+            	} else {
+					var auth2 = gapi.auth2.getAuthInstance();
+					auth2.signOut()
+                	alert(result.error)
+            	}
+        	}
+        	//register facebook
+			function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    			console.log('statusChangeCallback');
+    			console.log(response);                   // The current login status of the person.
+    			if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      				testAPI();  
+    			} else {                                 // Not logged into your webpage or we are unable to tell.
+      			document.getElementById('status').innerHTML = 'Please log into this webpage.';
+   				}
+  			}
+
+
+  			function checkLoginState() {               // Called when a person is finished with the Login Button.
+    			FB.getLoginStatus(function(response) {   // See the onlogin handler
+      			statusChangeCallback(response);
+    			});
+  			}
+
+
+  			window.fbAsyncInit = function() {
+    			FB.init({
+      			appId: '354191059764159',
+				cookie: true,
+				xfbml: true,
+				version: 'v2.8'         
+    			});
+                
+
+    			FB.getLoginStatus(function(response) {  
+      				statusChangeCallback(response);        
+    			});
+  			};
+ 
+  			function testAPI() {            
+    			console.log('Welcome!  Fetching your information.... ');
+    			FB.api('/me?fields=name,email', async function(response) {
+      				console.log('Successful login for: ' + response.name);
+					const provider="facebook"
+					const email=response.email
+					const username=response.name
+					console.log(email)
+					console.log(username)
+					const result = await fetch('/authapi/registerwithgofb', {
+                		method: 'POST',
+                		headers: {
+                    		'Content-Type': 'application/json'
+                		},
+                		body: JSON.stringify({
+                    		email,
+                    		username,
+                    		provider
+                		})
+            		}).then((res) => res.json())
+             
+            	if (result.status === 'ok') {
+						
+						//window.location.replace(`/profile/get/${result.data._id}`);
+					window.location.replace(`/`);
+                		alert('Success')
+				
+					
+            	} else {
+                	alert(result.error);
+            	}
+					
+    			});
+  			}
+
+		</script>
+	</body>
+</html>

@@ -6,12 +6,48 @@
     <body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				 <div class="navbar-nav">
+				 <div class="navbar-nav" id="navbar1">
 					  <a class="nav-item nav-link active" href="/">Home</a>
-					  <a class="nav-item nav-link active" href="/login_signup">Login/Signup</a>
+<!--					  <a class="nav-item nav-link active" href="/login">Login</a>
+					  <a class="nav-item nav-link active" href="/register">Register</a> -->
 				</div>
 			</div>
 		</nav>
         <p>Spirit 2021 Running!!</p>
+		<div id="div1"></div>
+		<script>
+			var state = <%= logged_in %>;
+			const navbar = document.getElementById("navbar1");
+			const divbar = document.getElementById("div1");
+			if(state == true){	
+				const profile = document.createElement("a");
+				profile.innerHTML = "Profile";
+				profile.className = "nav-item nav-link active";
+				profile.href = "/profile";
+				navbar.appendChild(profile);
+				const logout = document.createElement("a");
+				logout.innerHTML = "Log Out";
+				logout.className = "nav-item nav-link active";
+				logout.href = "/logout";
+				navbar.appendChild(logout);
+				const events = document.createElement("a");
+				events.innerHTML = "List of Events";
+				events.href = "/events";
+				divbar.appendChild(events);
+				console.log("logged in");
+			}else{
+				const login = document.createElement("a");
+				login.innerHTML = "Login";
+				login.className = "nav-item nav-link active";
+				login.href = "/login";
+				navbar.appendChild(login);
+				const register = document.createElement("a");
+				register.innerHTML = "Register";
+				register.className = "nav-item nav-link active";
+				register.href = "/register";
+				navbar.appendChild(register);
+				console.log("not logged in");
+			}  
+		</script>
     </body>
 </html>
