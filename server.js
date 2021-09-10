@@ -14,6 +14,8 @@ const stuff_ipl_auction = require("./model/ipl_auction");
 const cors=require("cors");
 var session;
 
+app.use( express.static( "images" ) );
+
 mongoose.connect(
   "mongodb+srv://spirit2021:yH7HfOYsISfl1JKz@cluster0.g6tea.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   {
