@@ -13,6 +13,7 @@ const UserSchema = new mongoose.Schema(
 	discord:  { type: String, required:false,unique:false },
     isVerified: { type: Boolean, default: false },
     provider: { type: String, default: "email" },
+    events_registered: [{ type: String, default: null }],
   },
   {
     timestamps: true,

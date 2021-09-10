@@ -4,12 +4,12 @@ const bodyParser=require('body-parser');
 const mongoose = require("mongoose");
 const authapi = require("./routes/authapi");
 const profileroute = require("./routes/profileroute");
-const event1route = require("./routes/event1route");
+const event_regRoute = require("./routes/event_regRoute");
 const iplauction=require("./routes/iplauction");
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 const stuff_user = require("./model/user");
-const stuff_event1 = require("./model/event1");
+const stuff_event = require("./model/events");
 const stuff_ipl_auction = require("./model/ipl_auction");
 const cors=require("cors");
 var session;
@@ -82,16 +82,16 @@ app.get("/events", (req, res) => {
   res.render("events");
 });
 
-app.get("/events/event1", async (req, res) => {
+app.get("/events/event_registration", async (req, res) => {
   email = session.userid;
   const user = await stuff_user.model.findOne({ email }).lean();
-  res.render("event1",{user: user});
+  res.render("event_reg",{user: user});
 });
 
 app.use("/authapi", authapi);
 app.use("/iplauction", iplauction);
 app.use("/profile", profileroute);
-app.use("/events/event1", event1route);
+app.use("/events/event_registration", event_regRoute);
 app.listen(process.env.PORT || 3000,function(req,res){
 	console.log("Hello Spirit");
 });

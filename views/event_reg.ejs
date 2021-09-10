@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+
+		<h3>Register</h3><br>
+		<form id="event-form" method="POST" action="event_registration/post/<%-user._id%>" >
+			<label><h5>Username: </h5> </label> <input type="text" autocomplete="off" id="username" placeholder="Username" value="<%=user.username%>"required /><br/>
+			<label><h5>Email id: </h5></label>  <input type="email" autocomplete="off" id="email" placeholder="Email"  value="<%=user.email%>"required /><br />
+            <label for="event_name"><h5>Choose an Event: </h5></label>
+                <select name="event_name" id="event_name" value=""required>
+                    <option value="Event1">Event1</option>
+                    <option value="Event2">Event2</option>
+                </select><br>           
+			<label><h5>Field1: </h5></label>    <input type="text" id="field1" name="name1" value=""required /><br>
+            <label><h5>Field2: </h5></label>    <input type="text" id="field2" name="name2" value=""required /><br>
+            <label><h5>Field3: </h5></label>    <input type="text" id="field3" name="name3" value=""required /><br>
+			<br>
+			<input type="submit" value="Register" />
+		</form>
+		
+		<br/>
+		
+		<a href="/" >Go to home page</a>
+		
+	<script>
+        const form = document.getElementById('event-form')
+        form.addEventListener('submit', registerForm)
+        async function registerForm(event) {
+            event.preventDefault()
+            let name = '<%-user._id%>'
+            let email = '<%=user.email%>'
+            const event_name = document.getElementById('event_name').value
+            const field1 = document.getElementById('field1').value
+            const field2 = document.getElementById('field2').value
+            const field3 = document.getElementById('field3').value
+            const result = await fetch(`/events/event_registration/post/${name}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,event_name,field1,field2,field3
+                })
+            }).then((res) => res.json())
+
+            if (result.status === 'ok') {
+				window.location.replace(`/`);
+                alert('Success')
+            } else {
+				window.location.replace(`/`);
+                alert(result.error)
+            }
+        }
+    </script>
+
+    </body>
+</html>
