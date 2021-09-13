@@ -6,7 +6,7 @@
     <body>
 
 		<h3>Register</h3><br>
-		<form id="event-form" method="POST" action="event_registration/post/<%-user._id%>" >
+		<form id="event-form" method="POST" action="event_registration/post/" >
 			<label><h5>Username: </h5> </label> <input type="text" autocomplete="off" id="username" placeholder="Username" value="<%=user.username%>"required /><br/>
 			<label><h5>Email id: </h5></label>  <input type="email" autocomplete="off" id="email" placeholder="Email"  value="<%=user.email%>"required /><br />
             <label for="event_name"><h5>Choose an Event: </h5></label>
@@ -26,17 +26,17 @@
 		<a href="/" >Go to home page</a>
 		
 	<script>
-        const form = document.getElementById('event-form')
+        var form = document.getElementById('event-form')
         form.addEventListener('submit', registerForm)
         async function registerForm(event) {
             event.preventDefault()
             let name = '<%-user._id%>'
             let email = '<%=user.email%>'
-            const event_name = document.getElementById('event_name').value
-            const field1 = document.getElementById('field1').value
-            const field2 = document.getElementById('field2').value
-            const field3 = document.getElementById('field3').value
-            const result = await fetch(`/events/event_registration/post/${name}`, {
+            var event_name = document.getElementById('event_name').value
+            var field1 = document.getElementById('field1').value
+            var field2 = document.getElementById('field2').value
+            var field3 = document.getElementById('field3').value
+            var result = await fetch(`/events/event_registration/post/${name}/${event_name}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
