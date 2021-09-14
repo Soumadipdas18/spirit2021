@@ -1,0 +1,98 @@
+.updates {
+  background-color: $color-primary-dark;
+  position: relative;
+  height: 55rem;
+  padding: 5rem 0;
+  @include respond(phone) {
+    height: 48rem;
+    overflow: hidden;
+  }
+
+  &-box {
+    width: 40%;
+    height: 65%;
+    background-color: $color-purple-primary;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+
+    @include respond(tab-port) {
+      width: 43%;
+      height: 60%;
+    }
+
+    @include respond(phone) {
+      width: 70%;
+      height: 60%;
+    }
+
+    &--1 {
+      animation: box-1-movement;
+      animation-duration: 8.82s;
+      animation-iteration-count: infinite;
+    }
+
+    &--2 {
+      animation: box-2-movement;
+      animation-duration: 8.82s;
+      animation-iteration-count: infinite;
+    }
+
+    &--3 {
+      animation: box-3-movement;
+      animation-duration: 8.82s;
+      animation-iteration-count: infinite;
+    }
+
+    &-title {
+      font-size: 3.5rem;
+      color: white;
+      font-weight: 600;
+      margin: 5rem 0 0 7rem;
+
+      @include respond(tab-port) {
+        margin: 3rem 0 0 5rem;
+      }
+
+      @include respond(phone) {
+        font-size: 3rem;
+        margin: 3rem 2rem 0 2.5rem;
+      }
+    }
+
+    &-desc {
+      font-size: 2rem;
+      color: white;
+      margin: 1rem 6rem 3rem 7rem;
+
+      @include respond(tab-port) {
+        margin: 1rem 6rem 3rem 5rem;
+      }
+      @include respond(phone) {
+        font-size: 1.9rem;
+        margin: 1rem 2rem 0 2.5rem;
+      }
+    }
+
+    // &--1:hover {
+    //   animation-play-state: paused;
+    // }
+    // &--1 ~ &--2:hover {
+    //   animation-play-state: paused;
+    // }
+    // &--1 ~ &--3:hover {
+    //   animation-play-state: paused;
+    // }
+
+    // &--1 ~ &:hover {
+    //   animation-play-state: paused;
+    // }
+    // &--2 ~ &:hover {
+    //   animation-play-state: paused;
+    // }
+    // &--3 ~ &:hover {
+    //   animation-play-state: paused;
+    // }
+  }
+}

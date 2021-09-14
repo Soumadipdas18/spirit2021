@@ -1,0 +1,45 @@
+.events {
+  padding: 5rem 0.5rem;
+  background-image: linear-gradient(
+    73.92deg,
+    rgba(#404040, 1) 1.37%,
+    rgba(#0a0a0a, 1) 90.8%
+  );
+
+  @include respond(phone) {
+    padding: 4rem 0.5;
+  }
+
+  &-title {
+    color: $color-purple-primary;
+    font-size: 3rem;
+    margin-left: 1rem;
+    font-weight: 600;
+    @include respond(phone) {
+      font-weight: 500;
+    }
+  }
+
+  .events-container {
+    width: 99%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  &-navigationB {
+    text-align: center;
+    height: 10px;
+
+    &-button {
+      background-color: white;
+      border: none;
+      height: 7px;
+      width: 7px;
+      border-radius: 200px;
+      margin: 0 1px;
+      @include respond(tab-port) {
+        margin: 0 1.5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+.aboutUs {
+  background-image: url("../../images/Rectangle\ 16.png");
+  background-size: cover;
+  height: 45vw;
+  position: relative;
+
+  &-text {
+    display: inline-block;
+    width: 23%;
+
+    position: absolute;
+    top: 20%;
+    right: 3%;
+    color: white;
+    font-size: 2rem;
+
+    @include respond(tab-port) {
+      display: none;
+    }
+
+    &-img {
+      right: 27%;
+      top: 20%;
+    }
+
+    &-ic {
+      color: $color-purple-primary;
+      font-size: 6rem;
+    }
+  }
+  &-button {
+    display: inline-block;
+    position: absolute;
+    right: 3.5%;
+    bottom: 9%;
+    width: 15rem;
+
+    @include respond(phone) {
+      width: 13rem;
+      right: 1%;
+      bottom: 5%;
+    }
+
+    &-btn {
+      &,
+      &:link,
+      &:visited {
+        background-color: $color-purple-primary;
+        text-decoration: none;
+        padding: 1rem 2.5rem;
+        display: inline-block;
+        border-radius: 0.4rem;
+        transition: all 0.2s;
+        font-size: 2rem;
+        color: $color-primary-dark;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
+
+        @include respond(phone) {
+          padding: 0.8rem 2rem;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        transform: translateY(-3px);
+        color: white;
+        background-color: $color-primary-light;
+      }
+      &:active,
+      &:focus {
+        background-color: $color-purple-primary;
+        outline: none;
+        transform: translateY(-1px);
+      }
+    }
+  }
+}

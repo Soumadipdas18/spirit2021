@@ -65,5 +65,9 @@ app.post("/post/:id", urlencodedParser ,async(req, res) => {
 
 });	
 
+app.get("/success",(req,res)=>{
+	res.render("event_reg_success");
+});
+
 
 module.exports = app;

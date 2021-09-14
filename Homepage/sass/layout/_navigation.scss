@@ -1,0 +1,240 @@
+.navigation {
+  height: 7rem;
+  background-color: #272727;
+  position: relative;
+  display: block;
+
+  @include respond(tab-port) {
+    display: none;
+  }
+
+  &-link {
+    &,
+    &:link,
+    &:visited {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-decoration: none;
+      color: white;
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin: auto 0;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &-img {
+      left: 1.5%;
+    }
+    &-events {
+      left: 11%;
+    }
+    &-sponsors {
+      left: 21.5%;
+    }
+    &-gallery {
+      left: 34%;
+    }
+
+    &-aboutus {
+      left: 45.4%;
+    }
+  }
+}
+
+.logo-img {
+  margin-top: 1rem;
+  display: inline-block;
+  height: 3rem;
+}
+
+.login {
+  &-button {
+    display: inline-block;
+    position: absolute;
+    right: 1.5%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &-btn {
+      &,
+      &:link,
+      &:visited {
+        background-color: $color-purple-primary;
+        text-decoration: none;
+        padding: 0.6rem 2.2rem;
+        display: inline-block;
+        border-radius: 0.3rem;
+        transition: all 0.2s;
+        font-size: 2rem;
+        color: $color-primary-dark;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
+      }
+
+      &:hover,
+      &:focus {
+        transform: translateY(-3px);
+        color: white;
+      }
+      &:active,
+      &:focus {
+        color: $color-primary-dark;
+        background-color: $color-purple-primary;
+        outline: none;
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+//MOBILE NAVIGATION
+.navigationM {
+  &_container {
+    width: 100%;
+    position: fixed;
+    z-index: 5000;
+  }
+  height: 5.4rem;
+  background-color: #272727;
+  position: relative;
+  display: none;
+
+  @include respond(tab-port) {
+    display: block;
+  }
+
+  &__home {
+    display: inline-block;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  &__login {
+    display: inline-block;
+
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+  }
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    background-color: #272727;
+    height: 5rem;
+    width: 2.5rem;
+
+    z-index: 2000;
+
+    text-align: center;
+  }
+
+  &__icon {
+    position: relative;
+    margin-top: 2.2rem;
+    margin-left: 4%;
+    color: $color-purple-primary;
+    transition: all 0.3s;
+    &,
+    &::after {
+      width: 2.5rem;
+      height: 1px;
+      background-color: $color-purple-primary;
+      display: inline-block;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.3s;
+    }
+
+    &::after {
+      top: 1rem;
+    }
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    margin-top: 2.5rem;
+    transform: rotate(135deg);
+  }
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-90deg);
+  }
+
+  &__nav {
+    height: 10vh;
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    z-index: 1500;
+    visibility: hidden;
+    opacity: 0;
+
+    transition: all 0.6s ease-in-out;
+    background-color: #272727;
+    position: relative;
+  }
+  &__list {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 100%;
+  }
+  &__checkbox:checked ~ &__nav {
+    top: 0;
+    height: 100vh;
+    visibility: visible;
+    opacity: 0.95;
+  }
+
+  &-link {
+    &,
+    &:link,
+    &:visited {
+      color: white;
+      text-decoration: none;
+      font-size: 2.5rem;
+      display: inline-block;
+      width: 80%;
+      text-align: left;
+      border-bottom: solid 1px white;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.login-img {
+  height: 3.25rem;
+  display: inline-block;
+
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.home-img {
+  display: inline-block;
+  height: 2.5rem;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
