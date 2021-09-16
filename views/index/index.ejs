@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../basic') -%>
+<head>
+	<link rel="stylesheet" href="css/landing_style.css" />
+</head>
+
+<body>
+	<%- include('../navbar') -%>
+	
+	<section class="landing">
+		<div class="landing-circle"><img class="landing-circle-img" src="images/Group 1_.png" alt="Circle"></div>
+		<div class="landing-image">
+			<img class="landing-image-img" src="" alt="Circle">
+		</div>
+		<div class="landing-text">
+			<div class="landing-text-head">Lorem Ipsum</div>
+			<div class="landing-text-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium earum
+				quaerat itaque eligendi cumque dignissimos excepturi voluptatibus doloribus cupiditate
+				. <a href="#" class="landing-text-desc-read">Read More</a></div>
+		</div>
+
+	</section>
+
+
+	<section class="updates">
+		<%- include('updates') -%>
+	</section>
+	<section class="events">
+
+		<div class="events-title">
+			<h1>Events</h1>
+		</div>
+
+		<div class="events-container">
+
+			<div class="events-slider">
+				<%- include('events_landingpage') -%>
+			</div>
+
+		</div>
+
+		<div class="events-navigationB">
+			<button class="events-navigationB-button events-navigationB--1"></button>
+			<button class="events-navigationB-button events-navigationB--2"></button>
+			<button class="events-navigationB-button events-navigationB--3"></button>
+			<button class="events-navigationB-button events-navigationB--4"></button>
+
+		</div>
+	</section>
+
+
+	<section class="aboutUs">
+		<div class="aboutUs-img"></div>
+		<div class="aboutUs-text">
+			<div class="aboutUs-text-img"><img src="images/quote.png" class="img-fluid"></div>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+		</div>
+		<div class="aboutUs-button"><a href="#"><button class="aboutUs-button-btn">About Us</button></a></div>
+	</section>
+
+
+	
+	<%- include('../footer') -%>
+
+	<script src="script.js" charset="utf-8"></script>
+
+</body>
+
+</html>
+

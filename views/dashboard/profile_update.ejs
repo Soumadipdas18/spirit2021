@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Profile of <%=user.username%></h1>
+    <form id="update-form">
+        <input type="text" autocomplete="off" id="username" placeholder="Username" value="<%=user.username%>"required /><br/>
+        <input type="text" autocomplete="off" id="collegename" placeholder="comllegename"  value="<%=user.collegename%>"required /><br />
+        <input type="email" autocomplete="off" id="email" placeholder="Email"  value="<%=user.email%>"required /><br />
+        <input type="number" autocomplete="off" id="phno" placeholder="Phone number"  value="<%=user.phno%>"required /><br />
+        <input type="submit" value="Update profile" />
+    </form>
+	<br/>
+    <h3>Reset your password</h3>
+    <form id="reset-pass">
+        <input type="password" autocomplete="off" id="password" placeholder="Current Passoword" required />
+        <input type="submit" value="Reset Password" />
+    </form>
+    <br/>
+	<a href="/" >Go to home page</a>
+    <script>
+        const resetPassForm = document.getElementById('reset-pass')
+        resetPassForm.addEventListener('submit', resetPass)
+        let id = '<%-user._id%>'
+        async function resetPass(event) {
+            event.preventDefault()
+            const password = document.getElementById('password').value
+            const result = await fetch(`/authapi/pass_reset_req`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id,
+                    password
+                })
+            }).then((res) => res.json())
+
+            if (result.status === 'ok') {
+                window.location.replace(`/authapi/getnewpass/${id}`);
+            } else {
+                //alert(result.error)
+                alert('Please enter the correct password')
+            }
+        }
+
+
+
+        const form = document.getElementById('update-form')
+        form.addEventListener('submit', updateprofile)
+        async function updateprofile(event) {
+            event.preventDefault()
+            let name = '<%-user._id%>'
+            const username = document.getElementById('username').value
+            const email = document.getElementById('email').value
+            const collegename = document.getElementById('collegename').value
+            const phno = document.getElementById('phno').value
+            const result = await fetch(`/profile/put/${name}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    collegename,
+                    phno
+                })
+            }).then((res) => res.json())
+
+            if (result.status === 'ok') {
+                alert('Success')
+                window.location.reload()
+            } else {
+                alert(result.error)
+            }
+        }
+    </script>
+</body>
+
+</html>

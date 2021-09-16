@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Spirit 2021 | Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+    </head>
+    <body>
+        <h1 class="dash_title">Dashboard</h1>
+        <div class="dash_container">
+
+            <div class="user_info">
+                <div class="data_field">
+                    <p class="data_title">Username</p>
+                    <p class="data_text" id="name"><%=user.username%></p>
+                </div>
+                <div class="data_field">
+                    <p class="data_title">College</p>
+                    <p class="data_text" id = "college"><%=user.collegename%></p>
+                </div>
+                <div class="data_field">
+                    <p class="data_title">Email </p>
+                    <p class="data_text" id = "email"><%=user.email%></p>
+                </div>
+                <div class="data_field">
+                    <p class="data_title">Password</p>
+                    <p class="data_text" id = "pass_change" style="color: #C567FF; cursor: pointer;">Change</p>
+                </div>
+                <div class="data_field">
+                    <a class="data_text" href="profile/update/<%=user._id%>" style="color: #C567FF; cursor: pointer;">Update profile</a>
+                </div>
+                <div class="data_field">
+                    <a class="data_text" href="logout" style="color: #C567FF; cursor: pointer;">Log Out</a>
+                </div>
+            </div>
+            <hr noshade size="1px">
+
+            <h3 class="heading">Registered Events</h3>
+
+            <div class="reg_events">
+                <img class="event_img" src="images/spirit_event.png">
+                <img class="event_img" src="images/spirit_event.png">
+                <img class="event_img" src="images/spirit_event.png">
+                <img class="event_img" src="images/spirit_event.png">
+            </div>
+            <hr noshade size="1px">
+            <h3 class="heading">Submission Info</h3>
+            <div class="sbmsn_info">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat diam sollicitudin lacus bibendum porta. 
+                <br>
+                <br>
+                Suspendisse maximus orci id metus aliquet, eu vehicula nunc vehicula. Integer venenatis libero a pharetra pellentesque. Etiam scelerisque pellentesque nisl quis feugiat. 
+                <br><br>
+                Maecenas suscipit ornare facilisis. Integer id tortor maximus, auctor tellus nec, rhoncus ante. Curabitur venenatis lacinia mollis. Duis mollis diam leo, sed efficitur augue euismod id. Nunc volutpat odio et ante euismod, a suscipit turpis varius. Nullam tempus condimentum fringilla. 
+                <br><br>
+                Fusce a pharetra leo. Maecenas vel est nisl.
+            </div>
+
+            <div class="modal" id = "myForm">
+                <div class="modal-content">
+                    <form id = "rest_pass_form">
+                        <label for="old_pass">Old Password:</label>
+                        <input type="password" id="old_pass"><br><br>
+                        <label for="new_pass_1">New Password:</label>
+                        <input type="password" id="new_pass_1"><br><br>
+                        <label for="new_pass_2">Re-enter New Password:</label>
+                        <input type="password" id="new_pass_2"><br><br>
+                        <input type="submit" value="SUBMIT" id="submit">
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+        <script>
+
+            let id = '<%-user._id%>'
+
+            var pass_change_button = document.getElementById('pass_change');
+            pass_change_button.addEventListener('click',openResetPassDialog);
+
+            async function openResetPassDialog(event){
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            const resetPassForm = document.getElementById('rest_pass_form');
+            resetPassForm.addEventListener('submit', resetPass);
+            async function resetPass(event) {
+                event.preventDefault()
+                const old_password = document.getElementById('old_pass').value
+                const new_password = document.getElementById('new_pass_1').value
+                const new_password_1 = document.getElementById('new_pass_2').value
+
+                if(new_password === new_password_1){
+                    const result = await fetch(`/authapi/pass_reset_req`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id,
+                            old_password
+                        })
+                    }).then((res) => res.json());
+
+                    const password2 = new_password;
+
+                    if (result.status === 'ok') {
+                        const result2 = await fetch('/authapi/reset_pass', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id,
+                                password2
+                            })
+                        }).then((res) => res.json())
+
+                        if (result2.status === 'ok') {
+                            window.location.replace(`/`)
+                            alert('Password Reset Successfully.')
+                        } else {
+                            alert(result2.error)
+                        }
+                    } else {
+                        alert('Please enter the correct password');
+                    }
+                }else{
+                    alert('The entered passwords do not match');
+                }
+
+                
+            }
+
+
+        </script>
+    </body>
+</html>
