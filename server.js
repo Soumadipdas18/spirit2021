@@ -103,7 +103,14 @@ app.get("/events/register", async (req, res) => {
     res.redirect("/login");
   }
 });
-
+//SPONSORS
+app.get("/sponsors", (req, res) => {
+  session = req.session;
+  if (session.userid) {
+    res.render("sponsors/sponsors", { logged_in: true });
+  } else res.render("sponsors/sponsors", { logged_in: false });
+	
+});
 //ADMIN PORTAL FOR CREATING EVENTS
 app.get('/admin', (req, res) => {
  

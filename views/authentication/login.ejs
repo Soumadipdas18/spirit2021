@@ -232,8 +232,8 @@
                 </div>
                 <div class="itemof2">
                 <p>
-                    <button onclick="show_pass()" id="show_pass" href="#">&nbsp&nbsp</button>Show Password &nbsp &nbsp &nbsp  &nbsp  &nbsp&nbsp 
-                    <a href = "#" class="link" id="forgot">Forgot Password?</a> </p>
+                    <button onclick="show_pass()" id="show_pass" href="#" style = "color: #ffffff;">✓</button>Show Password &nbsp &nbsp &nbsp  &nbsp  &nbsp&nbsp 
+                    <a class="link" id="forgot">Forgot Password?</a> </p>
                 </div>
                 <div class="itemof2">
                     <button id="LOGINBUTTON">
@@ -261,11 +261,13 @@
             function show_pass(){
                 if(show_pass_status === false){
                     document.getElementById('Passwordenter').type= "text";
-                    show_pass_button.innerHTML="✓";
+                    //show_pass_button.innerHTML="✓";
+					show_pass_button.style.color = "#000000"; 
                     show_pass_status = true;
                 }else{
                     document.getElementById('Passwordenter').type= "password";
-                    show_pass_button.innerHTML="&nbsp&nbsp";
+                    //show_pass_button.innerHTML="&nbsp&nbsp";
+					show_pass_button.style.color = "#ffffff"; 
                     show_pass_status = false;
                 }
                 
