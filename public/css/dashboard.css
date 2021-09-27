@@ -111,11 +111,11 @@ body{
     }
   }
 
-/* @media only screen and (max-width: 400px){
+ @media only screen and (max-width: 400px){
     .event_img{
         width: 100%;
     }
-} */
+} 
 
 .modal {
     display: none;

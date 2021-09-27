@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="shortcut icon" type="image/png" href="images/logo.jpg" />
     <script src="https://apis.google.com/js/platform.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,16 +12,21 @@
     <title>Register | Spirit 2021</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <style>
         body{
             margin: 0px;
             background-color: black;
-            
+            font-family: 'Inter', sans-serif;
         }
         .container{
             display:grid;
             grid-template-columns: 1fr 1fr;
             height: 100vh;          
+            box-sizing: border-box;
         }
         #login{
             width:50vw;
@@ -36,10 +39,13 @@
         }
         #Grid_2{
             display: grid;
-            grid-template-rows: 2fr 4fr;
+            grid-template-rows: 1fr 3fr;
             justify-content: center;
             padding:20px;
+            padding-top: 30px;
+            padding-bottom: 10px;
             text-align: center;
+            box-sizing: border-box;
         }
 
         #head{
@@ -58,9 +64,9 @@
                     -webkit-animation-fill-mode: both;
                     animation-fill-mode: both;
         }
+
         #Google{
             color:white;
-            font-weight: 100;
         }
         #Facebook{
             color:white;
@@ -70,11 +76,10 @@
         }
         .auth:hover {
         background-color: rgb(57, 55, 55);
-        border:2px solid violet;
+        border: 2px solid violet;
         }
-
-        #head:hover{
-            font-size: 30px;
+        .Login{
+            margin-top:0px;
         }
         .email{
             color:white;
@@ -85,35 +90,11 @@
             text-decoration: none;
             color:white;
         }
-
         .itemof2{
             color:white;            
             border-radius: 4px;
             min-width: 0; min-height: 0;
-        }
-        @-webkit-keyframes wobble { 
-                    0% { -webkit-transform: translateX(0%); } 
-                    15% { -webkit-transform: translateX(-25%) rotate(-5deg); } 
-                    30% { -webkit-transform: translateX(20%) rotate(3deg); } 
-                    45% { -webkit-transform: translateX(-15%) rotate(-3deg); } 
-                    60% { -webkit-transform: translateX(10%) rotate(2deg); } 
-                    75% { -webkit-transform: translateX(-5%) rotate(-1deg); }
-                    100% { -webkit-transform: translateX(0%); } 
-        }
-        
-        @keyframes wobble { 
-            0% { transform: translateX(0%); } 
-            15% { transform: translateX(-25%) rotate(-5deg); } 
-            30% { transform: translateX(20%) rotate(3deg); } 
-            45% { transform: translateX(-15%) rotate(-3deg); } 
-            60% { transform: translateX(10%) rotate(2deg); } 
-            75% { transform: translateX(-5%) rotate(-1deg); } 
-            100% { transform: translateX(0%); } 
-        }
-        
-        .wobble { 
-            -webkit-animation-name: wobble; 
-            animation-name: wobble; 
+            margin: 8px;
         }
         .Email{
             display: grid;
@@ -129,6 +110,7 @@
             border:2px solid grey;
             height:44px;
             color:white;
+            padding-left: 8px;
         }
         .enter:hover{
             border:2px solid blue;
@@ -183,10 +165,8 @@
         <div id="Grid_2" class="item">
 
             <div class="Login">
-                <div class="auth" id="google-signin" onclick="location.href='#';" style="cursor: pointer;"><i id="goomgle" class="fab fa-google"></i>&nbsp <a>Register with Google</a></div>
-                <br>
-                <p class="auth" id="fb-register"><i id="goomgle" style="cursor: pointer;" class="fab fa-facebook"></i>&nbsp <a
-                        href="#">Register with Facebook</a></p>
+                <div class="customGPlusSignIn auth" id="google-signin" onclick="location.href='#';" style="cursor: pointer;"><i id="goomgle" class="fab fa-google"></i>&nbsp <a>Register with Google</a></div>
+<!--  				<p class="auth" id="fb-register"><i id="goomgle" style="cursor: pointer;" class="fab fa-facebook"></i>&nbsp <a href="#">Register with Facebook</a></p> -->
                 <p class="email">
                     Or register with email</p>
             </div>
@@ -206,6 +186,12 @@
                 <div class="itemof2">
                     <input id="Passwordenter" class = "enter"  type="password" placeholder="Password"/> 
                 </div>
+				<div class="itemof2">
+					<p>
+						<button onclick="show_pass()" id="show_pass" href="#">&nbsp&nbsp</button>Show Password &nbsp &nbsp &nbsp  &nbsp  &nbsp&nbsp 
+						<a href = "#" class="link" id="forgot">Forgot Password?</a> 
+					</p>
+                </div>
                 <div class="itemof2">
                     <button id="LOGINBUTTON">
                         Register
@@ -219,11 +205,30 @@
       
         </div> 
         <script>
-             document.getElementById('fb-register').addEventListener('click', function () {
+			var show_pass_status = false;
+
+            var show_pass_button =document.getElementById("show_pass");
+
+            function show_pass(){
+                if(show_pass_status === false){
+                    document.getElementById('Passwordenter').type= "text";
+                    show_pass_button.innerHTML="✓";
+                    show_pass_status = true;
+                }else{
+                    document.getElementById('Passwordenter').type= "password";
+                    show_pass_button.innerHTML="&nbsp&nbsp";
+                    show_pass_status = false;
+                }
+                
+            }
+			
+			
+			document.getElementById('fb-register').addEventListener('click', function () {
                     FB.login(statusChangeCallback, { scope: 'email,public_profile', return_scopes: true });
                 }, false);
-            // var remember=document.getElementById("Remember");
-            // function rem(){remember.innerHTML="✓";}
+			
+            var remember=document.getElementById("Remember");
+            function rem(){remember.innerHTML="✓";}
 
 
             const form = document.getElementById('LOGINBUTTON')
@@ -255,22 +260,15 @@
                     // everythign went fine
                     //console.log('Got the token: ')
                     //localStorage.setItem('token', result.data)//storing data in localstorage
-                     alert('Success. Check your mail and activate your account')
-                    window.location.replace(`/login`);
-                   
+                    window.location.replace(`/`);
+                    alert('Success. Check your mail and activate your account')
                 } else {
                     alert(result.error)
                 }
             }
-            /* function toggleview() {
-                var x = document.getElementById("password");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            } */
-            async function registergoogle(googleUser) {
+
+            //calling register apis to register using google
+			async function registergoogle(googleUser) {
             	var profile = googleUser.getBasicProfile();
             	//console.log('ID: ' + profile.getId());
             	const username=profile.getName();
@@ -294,7 +292,8 @@
 					var auth2 = gapi.auth2.getAuthInstance();
 					auth2.signOut()
 					//window.location.replace(`/profile/get/${result.data._id}`);
-						//window.location.replace(`/profile/get/${result.data._id}`);
+					window.location.replace(`/`);
+                	alert('Success. Check your mail and activate your account')
             	} else {
 					var auth2 = gapi.auth2.getAuthInstance();
 					auth2.signOut()
@@ -333,7 +332,8 @@
                 });
             };
 
-            function testAPI() {            
+            //REGISTER WITH FACEBOOK
+			function testAPI() {            
     			console.log('Welcome!  Fetching your information.... ');
     			FB.api('/me?fields=name,email', async function(response) {
       				console.log('Successful login for: ' + response.name);
@@ -356,9 +356,9 @@
              
             	if (result.status === 'ok') {
 						
-					
-					 alert('Success. Check your mail and activate your account')
-                    window.location.replace(`/login`);
+						//window.location.replace(`/profile/get/${result.data._id}`);
+					window.location.replace(`/`);
+                		alert('Success. Check your mail and activate your account')
 				
 					
             	} else {
@@ -367,7 +367,9 @@
 					
     			});
   			}
-    
+              
+
+            //google-signup  
             var googleUser = {};
             var startApp = function() {
                 gapi.load('auth2', function(){
