@@ -150,7 +150,17 @@
   width: 100%;
   margin-bottom: 3.1vh;
 }
-
+.demo{
+   width: 80%;
+	height: 4vh;
+	font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6vh;
+  line-height: 2vh;
+color: rgba(255, 255, 255, 0.8);
+}
+			
 .formFieldLabel {
   float: left;
   width: 14.7%;
@@ -267,66 +277,166 @@
 				<div class="registerTitle">Register</div>
 				<form id="event-form" method="POST" action="event_registration/post/">
 					<div class="formFieldRow">
-          				<label class="formFieldLabel">Username </label>
-          				<input type="text" autocomplete="off" id="username" placeholder="Username" value="<%=user.username%>"required class="formFieldInput" />
-        			</div>
-					<div class="formFieldRow">
-          				<label class="formFieldLabel">Email id </label>
-          				<input type="email" autocomplete="off" id="email" placeholder="Email"  value="<%=user.email%>"required class="formFieldInput" />
-        			</div>
-					<div class="formFieldRow">
           				<label class="formFieldLabel">Choose an Event </label>
 						<select name="event_name" id="event_name" value=""required class="formFieldInput">
-							<option value="event1">Event1</option>
-							<option value="event2">Event2</option>
+							<option value="event0">----------</option>
+							<option value="Shutterbug">Shutterbug</option>
+							<option value="IplAuction">Ipl Auction</option>
+							<option value="Weekly Trivia">Weekly Trivia</option>
 						</select><br>   
         			</div>
-					<div class="formFieldRow">
-          				<label class="formFieldLabel">Field 1 </label>
-          				<input type="text" id="field1" name="name1" value=""required  class="formFieldInput" />
-        			</div>
-					<div class="formFieldRow">
-          				<label class="formFieldLabel">Field 2 </label>
-          				<input type="text" id="field2" name="name2" value=""required  class="formFieldInput" />
-        			</div>
-					<div class="formFieldRow">
-          				<label class="formFieldLabel">Field 3 </label>
-          				<input type="text" id="field3" name="name3" value=""required  class="formFieldInput" />
-        			</div>
-					<input type="submit" class="formSubmit" value="Register" />
+					<div id="Shutterbug" style="display: none;">
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Full Name</label>
+							<input type="text" autocomplete="off" id="full_name" value="<%=user.username%>" required class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">School/College </label>
+							<input type="text" autocomplete="off" id="college" value="<%=user.collegename%>" required class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Email Address </label>
+							<input type="email" id="email_address" name="name1" value="<%=user.email%>"required  class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Contact Number </label>
+							<input type="text" id="contact_number" name="name2" value="<%=user.phno%>"required  class="formFieldInput" />
+						</div>
+						<input type="submit" class="formSubmit" value="Register" />
+					</div>
+					<div id="Weekly Trivia" style="display: none;">
+						<diV class="registerTitle">
+              				Stay tuned on our Instagram page to participate
+						</diV>
+					</div>
+					<div id="IplAuction" style="display: none;">
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Team Name</label>
+							<input type="text" autocomplete="off" id="team_name" value="" required class="formFieldInput" />
+						</div>
+						<div class="registerTitle">MEMBER 1</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Full Name</label>
+							<input type="text" autocomplete="off" id="full_name1" value="" required class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">School/College </label>
+							<input type="text" autocomplete="off" id="college1" value="" required class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Email Address </label>
+							<input type="email" id="email_address1" name="name1" value=""required  class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Contact Number </label>
+							<input type="text" id="contact_number1" name="name2" value=""required  class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Discord Username </label>
+							<input type="text" id="discord1" name="name2" value=""required  class="formFieldInput" />
+						</div>
+						<div class="registerTitle">MEMBER 2</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Full Name</label>
+							<input type="text" autocomplete="off" id="full_name2" value="" required class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">School/College </label>
+							<input type="text" autocomplete="off" id="college2" value="" required class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Email Address </label>
+							<input type="email" id="email_address2" name="name1" value=""required  class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Contact Number </label>
+							<input type="text" id="contact_number2" name="name2" value=""required  class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Discord Username </label>
+							<input type="text" id="discord2" name="name2" value=""required  class="formFieldInput" />
+						</div>
+						<div class="registerTitle">MEMBER 3</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Full Name</label>
+							<input type="text" autocomplete="off" id="full_name3" value="" required class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">School/College </label>
+							<input type="text" autocomplete="off" id="college3" value="" required class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Email Address </label>
+							<input type="email" id="email_address3" name="name1" value=""required  class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Contact Number </label>
+							<input type="text" id="contact_number3" name="name2" value=""required  class="formFieldInput" />
+						</div>
+						<div class="formFieldRow">
+							<label class="formFieldLabel">Discord Username </label>
+							<input type="text" id="discord3" name="name2" value=""required  class="formFieldInput" />
+						</div>
+						<input type="submit" class="formSubmit" value="Register" />
+					</div>
 				</form>
 			</div>
 		</div>
 		
 	<script>
-        var form = document.getElementById('event-form')
-        form.addEventListener('submit', registerForm)
-        async function registerForm(event) {
-            event.preventDefault()
-            let name = '<%-user._id%>'
-            let email = '<%=user.email%>'
-            var event_name = document.getElementById('event_name').value
-            var field1 = document.getElementById('field1').value
-            var field2 = document.getElementById('field2').value
-            var field3 = document.getElementById('field3').value
-            var result = await fetch(`/events/event_registration/post/${name}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email,event_name,field1,field2,field3
-                })
-            }).then((res) => res.json())
+		var event_name = document.getElementById('event_name').value
+		document.getElementById('event_name').onchange = function () {
+			console.log(document.getElementById('event_name').value);
+			if (document.getElementById('event_name').value === "Shutterbug"){
+				document.getElementById("Shutterbug").style.display = "block";
+				document.getElementById("Weekly Trivia").style.display = "none";
+				document.getElementById("IplAuction").style.display = "none";
+				var form = document.getElementById('event-form')
+				form.addEventListener('submit', registerForm)
+				async function registerForm(event) {
+					event.preventDefault()
+					let id = '<%=user._id%>'
+					var event_name = document.getElementById('event_name').value					
+					var full_name = document.getElementById('full_name').value
+					var email_address = document.getElementById('email_address').value
+					var college = document.getElementById('college').value
+					var contact_number = document.getElementById('contact_number').value
+					var result = await fetch(`/events/event_registration/post/${id}`, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							full_name,event_name,email_address,college,contact_number
+						})
+					}).then((res) => res.json())
 
-            if (result.status === 'ok') {
-				window.location.replace(`/events/event_registration/success`);
-                alert('Success')
-            } else {
-				window.location.replace(`/`);
-                alert(result.error)
-            }
-        }
+					if (result.status === 'ok') {
+						window.location.replace(`/events/event_registration/success`);
+						alert('Success')
+					} else {
+						window.location.replace(`/`);
+						alert(result.error)
+					}
+				}
+			}
+			else if(document.getElementById('event_name').value === "Weekly Trivia"){
+					document.getElementById("Weekly Trivia").style.display = "block";
+				    document.getElementById("Shutterbug").style.display = "none";
+				 	document.getElementById("IplAuction").style.display = "none";
+					} 
+			else if(document.getElementById('event_name').value === "event0"){
+					document.getElementById("IplAuction").style.display = "none";
+					document.getElementById("Weekly Trivia").style.display = "none";
+					document.getElementById("Shutterbug").style.display = "none";
+					} 
+			else if(document.getElementById('event_name').value === "IplAuction"){
+					document.getElementById("IplAuction").style.display = "block";
+					document.getElementById("Weekly Trivia").style.display = "none";
+					document.getElementById("Shutterbug").style.display = "none";
+			}
+		}
+
     </script>
 
     </body>

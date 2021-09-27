@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-//update
+//get profile to update
 app.get("/update/:id", async (req, res) => {
   const doc = await stuff.model
     .findById(req.params.id)

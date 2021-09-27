@@ -63,10 +63,20 @@ app.get('/',(req,res)=>{
 
 //Authentication
 app.get('/register',(req,res)=>{
-	res.render('authentication/register');
+	if (!req.session.userid) {
+		res.render('authentication/register');
+	}
+	else{
+		res.redirect('/')
+	}
 });
 app.get("/login", (req, res) => {
-  res.render("authentication/login");
+    if (!req.session.userid) {
+  		res.render("authentication/login");
+	}
+	else{
+		res.redirect('/')
+	}
 });
 app.get("/logout", (req, res) => {
     req.session.destroy();
@@ -83,8 +93,8 @@ app.get("/events", (req, res) => {
   } else res.render("events/events", { logged_in: false });
 });
 
-app.get("/events/event_registration", async (req, res) => {
-  if (session.userid) {
+app.get("/events/register", async (req, res) => {
+  if (req.session.userid) {
     email = session.userid;
     const user = await stuff_user.model.findOne({ email }).lean();
     res.render("events/event_reg",{user: user});
@@ -94,12 +104,21 @@ app.get("/events/event_registration", async (req, res) => {
   }
 });
 
+//ADMIN PORTAL FOR CREATING EVENTS
+app.get('/admin', (req, res) => {
+ 
+});
 
-
+//APIS
 app.use("/authapi", authapi);
 app.use("/iplauction", iplauction);
 app.use("/profile", profileroute);
 app.use("/events/event_registration", event_regRoute);
+
+app.get('*', function(req, res){
+  res.send('<h1>Not Found</h1>',404);
+});
+
 app.listen(process.env.PORT || 3000,function(req,res){
 	console.log("Hello Spirit");
 });

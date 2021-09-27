@@ -175,9 +175,9 @@
     <a href="/" class="navigation-link navigation-link-img"> <img src="images/spirit logo 1 (Traced).png" class="logo-img"
             alt="Home"></a>
     <a href="events" class="navigation-link navigation-link-events">Events</a>
-    <a href="#" class="navigation-link navigation-link-sponsors">Sponsors</a>
-    <a href="#" class="navigation-link navigation-link-gallery">Gallery</a>
-    <a href="#" class="navigation-link navigation-link-aboutus">About us</a>
+    <!-- <a href="#" class="navigation-link navigation-link-sponsors">Sponsors</a> -->
+    <!-- <a href="#" class="navigation-link navigation-link-gallery">About Us</a> -->
+    <!-- <a href="#" class="navigation-link navigation-link-aboutus">Gallery</a> -->
     <%if (logged_in){%>
         <div class="login-button" id="login_profile"><a href="/profile"><button
                     class="login-button-btn">Profile</button></a>
@@ -197,21 +197,28 @@
     
             <a href="#" class="navigationM__home"> <img src="images/spirit logo 1 (Traced).png" class="home-img"
                     alt="Home"></a>
-    
-            <a href="#" class="navigationM__login"><img src="images/icon-100.png" class="login-img" alt="Login"></a>
-    
+            <%if (logged_in){%>
+            <a href="profile" class="navigationM__login"><img src="images/icon-100.png" class="login-img" alt="profile"></a>
+    		<%}else{%>
+			<a href="login" class="navigationM__login"><img src="images/icon-100.png" class="login-img" alt="Login"></a>
+			<%}%>
             <nav class="navigationM__nav">
                 <ul class="navigationM__list">
                     <li class="navigationM__item"></li>
-                    <li class="navigationM__item"><a href="login" class="navigationM-link navigationM-link-login">Login</a></li>
+					
+					<%if (logged_in){%>
+        			<li class="navigationM__item"><a href="profile" class="navigationM-link navigationM-link-login">Profile</a></li>
+        			<%}else{%>
+					<li class="navigationM__item"><a href="login" class="navigationM-link navigationM-link-login">Login</a></li>
+            		<%}%>
                     <li class="navigationM__item"><a href="events" class="navigationM-link navigationM-link-events">Events</a>
                     </li>
-                    <li class="navigationM__item"><a href="#"
-                            class="navigationM-link navigationM-link-sponsors">Sponsors</a></li>
-                    <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-gallery">Gallery</a>
-                    </li>
-                    <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-aboutus">AboutUs</a>
-                    </li>
+                    <!-- <li class="navigationM__item"><a href="#"
+                            class="navigationM-link navigationM-link-sponsors">Sponsors</a></li> -->
+                    <!-- <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-gallery">About Us</a>
+                    </li> -->
+                    <!-- <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-aboutus">AboutUs</a>
+                    </li> -->
                 </ul>
             </nav>
         </div>

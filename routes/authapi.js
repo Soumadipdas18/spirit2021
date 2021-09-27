@@ -20,8 +20,8 @@ var transporter = nodemailer.createTransport({
     ciphers: "SSLv3",
   },
   auth: {
-    user: "schedulerevent9@gmail.com",
-    pass: "qigpglvkwjrldryy",
+    user: "noreply.spiritiitg@gmail.com",
+    pass: "SPIRIT@iitg2021",
   },
 });
 
@@ -90,7 +90,7 @@ app.post("/register", async (req, res) => {
         discord,
       });
       var mailOptions = {
-        from: "Spirit 2021 <schedulerevent9@gmail.com>",
+        from: "Spirit 2021 <noreply.spiritiitg@gmail.com>",
         to: email,
         subject: "Welcome to Spirit 2021. Verify your account",
         html: `<b>Verify your account</b><br><a href="https://${req.hostname}/authapi/verifyaccount/${response._id}">Click here to verify your account</a>`,
@@ -199,10 +199,10 @@ app.post("/registerwithgofb", async (req, res) => {
       provider,
     });
     var mailOptions = {
-      from: "Spirit 2021 <schedulerevent9@gmail.com>", // sender address (who sends)
+      from: "Spirit 2021 <noreply.spiritiitg@gmail.com>", // sender address (who sends)
       to: email, // list of receivers (who receives)
       subject: "Welcome to Spirit 2021.", // Subject line
-      html: `<b>Update your details for spirit 2021 to complete your registration:</b><br><a href="https://${req.hostname}/profile/get/${response._id}">Click here to update your account</a>`, // html body
+      html: `<b>Update your details for spirit 2021 to complete your registration:</b><br><a href="https://${req.hostname}/profile/update/${response._id}">Click here to update your account</a>`, // html body
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
@@ -257,7 +257,7 @@ app.post("/pass_forgot_req", async (req, res) => {
       //return res.json({ status: "ok", data: query.provider });
       try {
         var mailOptions1 = {
-          from: "Spirit 2021 <schedulerevent9@gmail.com>",
+          from: "Spirit 2021 <noreply.spiritiitg@gmail.com>",
           to: email,
           subject: "Reset your Spirit 2021 password",
           html: `<b>Reset passowrd for email: ${email}</b><br><a href="https://${req.hostname}/authapi/getnewpass/${query._id}">Click here to change your password</a>`, // html body
@@ -279,17 +279,15 @@ app.post("/pass_forgot_req", async (req, res) => {
         throw error;
       }
     } else {
-      err = new Error("This account is associated with google/facebook");
-      res.status(400).send({ message: err.message });
+      return res.json({ data: "This account is associated with google/facebook" });
     }
   } else {
-    err = new Error("No account associated with this email");
-    res.status(400).send({ message: err.message });
+    return res.json({ data:"No account associated with this email" });
   }
 });
 
 app.post("/pass_reset_req", async (req, res) => {
-  const { id, old_password } = req.body;
+  const { id, old_password: old_password } = req.body;
 
   const doc = await stuff.model.findById(id);
   if (doc != null) {
@@ -315,6 +313,7 @@ app.get("/getnewpass/:id", async (req, res) => {
 
 app.post("/reset_pass", async (req, res) => {
   const { id, password2: plainTextPassword } = req.body;
+		// console.log(plainTextPassword);
 
   if (!plainTextPassword || typeof plainTextPassword !== "string") {
     return res.json({ status: "error", error: `Invalid password` });

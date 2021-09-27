@@ -3,7 +3,7 @@
 
 <%- include('../basic') -%>
 <head>
-	<link rel="stylesheet" href="css/event_styles.css" />
+	<link rel="stylesheet" href="css/events_style.css" />
 </head>
 <body>
 	<!-- NAVBAR CODE -->
@@ -11,23 +11,18 @@
 
 	<!--EVENTS-->
 
-	<!-- <div class="blacktop"></div> -->
-
 	<div class="eventsbg container pb-5">
 		<h1 class="events-heading pt-5">EVENTS</h1>
 
-		<h3 class="events-subheading pt-5 pb-2">Ongoing</h3>
-		<div class="d-flex flex-wrap">
+		<div>
 			<%- include('ongoing_events') -%>		
 		</div>
 
-		<h3 class="events-subheading pt-3 pb-2 ">Upcoming</h3>
-		<div class="d-flex flex-wrap">
+		<div>
 			<%- include('upcoming_events') -%>		
 		</div>
 
-		<h3 class="events-subheading pt-3 pb-2 ">Concluded</h3>
-		<div class="d-flex flex-wrap">
+		<div>
 			<%- include('completed_events') -%>
 		</div>
 	</div>
