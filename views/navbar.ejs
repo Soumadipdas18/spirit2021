@@ -1,10 +1,5 @@
 <head>
     <style>
-        .navigation {
-  height: 7rem;
-  background-color: #272727;
-  position: relative;
-  display: block; }
   @media (max-width: 56.25em) {
     .navigation {
       display: none; } }
@@ -16,7 +11,8 @@
     text-decoration: none;
     color: white;
     font-size: 1.9rem;
-    font-weight: 400; }
+    font-weight: 400;
+	}
   .navigation-link:hover {
     text-decoration: underline; }
   .navigation-link-img {
@@ -34,6 +30,8 @@
   margin-top: 1rem;
   display: inline-block;
   height: 3rem; }
+
+
 
 .login-button {
   display: inline-block;
@@ -169,26 +167,68 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%); }
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+		.topnav {
+overflow: hidden;
+background-color: #272727;
+width:100%;
+height:70px;
+margin:auto; 
+box-shadow:0px 6px 16px -6px rgba(1,1,1,0.5);
+transition:0.5s;
+background-size:cover;
+background-position:center;
+}
+
+.nav-links {
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 20px 20px;
+text-decoration: none;
+font-size: 17px;
+position:relative;
+transition:0.5s;
+}
+.nav-img{
+	float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 20px;
+text-decoration: none;
+font-size: 17px;
+position:relative;
+transition:0.5s;	
+		}
+.nav-links:hover{
+	color:white;
+  background-color:#c567ff;
+}
+
     </style>
 </head>
-<nav class="navigation">
-    <a href="/" class="navigation-link navigation-link-img"> <img src="images/spirit logo 1 (Traced).png" class="logo-img"
-            alt="Home"></a>
-    <a href="events" class="navigation-link navigation-link-events">Events</a>
-    <!-- <a href="#" class="navigation-link navigation-link-sponsors">Sponsors</a> -->
-    <!-- <a href="#" class="navigation-link navigation-link-gallery">About Us</a> -->
-    <!-- <a href="#" class="navigation-link navigation-link-aboutus">Gallery</a> -->
-    <%if (logged_in){%>
-        <div class="login-button" id="login_profile"><a href="/profile"><button
-                    class="login-button-btn">Profile</button></a>
-        </div>
-        <%}else{%>
-            <div class="login-button" id="login_profile"><a href="/login"><button
-                        class="login-button-btn">Login</button></a></div>
-
-            <%}%>
-</nav>
-
+<div class="topnav navigation" id="myTopnav">
+<a class="nav-img"href="/"><img src="images/spirit logo 1 (Traced).png" class="logo-img"alt="Spirit"></a>
+<a class="nav-links" href="events">Events</a>
+<a class="nav-links" href="sponsors">Sponsors</a>
+<!-- <a class="nav-links" href="aboutus">About Us</a>
+<a class="nav-links" href="gallery">Gallery</a> -->
+<div style="float:right; padding:14px 20px;"> 
+<%if (logged_in){%>
+        <a href="profile"><button class="login-button-btn">Profile</button></a>
+<%}else{%>
+	<a href="login"><button class="login-button-btn">Login</button></a>
+<%}%>
+</div>
+</div>
     <div class="navigationM_container">
         <div class="navigationM">
     
@@ -213,8 +253,8 @@
             		<%}%>
                     <li class="navigationM__item"><a href="events" class="navigationM-link navigationM-link-events">Events</a>
                     </li>
-                    <!-- <li class="navigationM__item"><a href="#"
-                            class="navigationM-link navigationM-link-sponsors">Sponsors</a></li> -->
+                    <li class="navigationM__item"><a href="sponsors"
+                            class="navigationM-link navigationM-link-sponsors">Sponsors</a></li>
                     <!-- <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-gallery">About Us</a>
                     </li> -->
                     <!-- <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-aboutus">AboutUs</a>

@@ -1,0 +1,39 @@
+body{
+    background-color: #0A0A0A;
+}
+
+.abtus-title{
+    color:#c567ff;
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+ }
+
+  .bg-bottom{
+    background: linear-gradient(73.92deg, #404040 1.37%, #0A0A0A 90.8%);
+  }
+
+  .team-title{
+    color:#c567ff;
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  .member-name{
+    color:#FFFFFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .member-div{
+    margin-bottom:20px;
+  }
+
+  .teamimages{
+    height:275px;
+    width:275px;
+  }
+
+  .space{
+      padding-top: 60px;
+  }

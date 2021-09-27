@@ -1,5 +1,7 @@
 body {
     background-color: #0a0a0a;
+	font-family: "Poppins", sans-serif;
+    font-weight: 400;
 }
 
 .footer1 {
@@ -51,13 +53,16 @@ body {
 .events-subheading {
     color: #c567ff;
     position:relative;
-    text-indent: 10px;
+    text-indent: 20px;
+	margin-bottom: 40px;
+	margin-top:30px;
+	font-size: x-large;
   }
   
   .events-heading {
     color: #c567ff;
-    top: 70px;
-    text-indent: 10px;
+    text-indent: 20px;
+	font-size: xx-large;
   }
 
 .eventsbg {
@@ -111,10 +116,11 @@ body {
 }
 
 .flip-para {
-    padding: 40px 30px 60px 30px;
+    padding: 100px 30px 60px 30px;
     text-align: left;
     font-size: x-large;
     color: white;
+	text-align: center;
 }
 
 .flip-RM {
@@ -133,7 +139,7 @@ body {
     width: 100%;
     height: auto;
     background-color: #c567ff;
-    font-size: 1.3rem;
+    font-size: large;
     padding-bottom: 150px;
     border-radius: 1%;
 }
@@ -153,6 +159,7 @@ body {
     display: block;
     position: relative;
     margin: 20px 2px 20px 2px;
+	font-size:x-large;
 }
 
 .left-text {
@@ -181,12 +188,14 @@ body {
 
 .register-button {
     position: absolute;
-    left: 45%;
+    left: 42.5%;
     right: auto;
     bottom: 5%;
     background-color: black;
     padding: 7px 15px;
     color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;
 }
 
 .register-button:hover {
@@ -211,6 +220,10 @@ body {
     top: 3%;
 }
 
+.prize{
+	font-size:x-large;
+}
+
 @media (max-width: 550px) {
     #card-img {
       width: 335px;
@@ -226,7 +239,7 @@ body {
     }
   
     .flip-para {
-      padding: 40px 30px 60px 30px;
+      padding: 100px 30px 60px 30px;
       text-align: left;
       font-size: large;
       color: white;
@@ -234,11 +247,14 @@ body {
   
     .register-button {
       position: absolute;
-      margin:auto;
+      left:36%;
+      right:auto;
       bottom: 5%;
       background-color: black;
       padding: 7px 15px;
       color: #c567ff;
+	  border-radius: 3px;
+	  font-size: 14px;
     }
   }
   

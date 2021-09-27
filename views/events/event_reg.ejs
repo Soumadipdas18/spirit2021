@@ -401,7 +401,7 @@ color: rgba(255, 255, 255, 0.8);
 					var email_address = document.getElementById('email_address').value
 					var college = document.getElementById('college').value
 					var contact_number = document.getElementById('contact_number').value
-					var result = await fetch(`/events/event_registration/post/${id}`, {
+					var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
@@ -434,6 +434,51 @@ color: rgba(255, 255, 255, 0.8);
 					document.getElementById("IplAuction").style.display = "block";
 					document.getElementById("Weekly Trivia").style.display = "none";
 					document.getElementById("Shutterbug").style.display = "none";
+					var form = document.getElementById('event-form')
+					form.addEventListener('submit', registerForm)
+					async function registerForm(event) {
+						event.preventDefault()
+						let id = '<%=user._id%>'
+						var event_name = document.getElementById('event_name').value					
+						var full_name1 = document.getElementById('full_name1').value
+						var full_name2 = document.getElementById('full_name2').value
+						var full_name3 = document.getElementById('full_name3').value
+						var email_address1 = document.getElementById('email_address1').value
+						var email_address2 = document.getElementById('email_address2').value
+						var email_address3 = document.getElementById('email_address3').value
+						var college1 = document.getElementById('college1').value
+						var college2 = document.getElementById('college2').value
+						var college3 = document.getElementById('college3').value
+						var contact_number1 = document.getElementById('contact_number1').value
+						var contact_number2 = document.getElementById('contact_number2').value
+						var contact_number3 = document.getElementById('contact_number3').value
+						var discord1 = document.getElementById('discord1').value
+						var discord2 = document.getElementById('discord2').value
+						var discord3 = document.getElementById('discord3').value
+						var team_name = document.getElementById('team_name').value
+						var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify({
+								full_name1,event_name,email_address1,college1,contact_number1,
+								full_name2,email_address2,college2,contact_number2,
+								full_name3,email_address3,college3,contact_number3,
+								discord1,discord2,discord3,
+								team_name
+							})
+						}).then((res) => res.json())
+
+						if (result.status === 'ok') {
+							window.location.replace(`/events/event_registration/success`);
+							alert('Success')
+						} else {
+							window.location.replace(`/`);
+							alert(result.error)
+						}
+					}
+				
 			}
 		}
 
