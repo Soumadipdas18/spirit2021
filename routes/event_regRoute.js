@@ -34,7 +34,8 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 					});
 			});
 		
-		const data2 = await stuff_user.model.findOne({ email2 }).then(
+		const data2 = await stuff_user.model.findOne({ email2 })
+		.then(
 			(data2)=>{
 				// console.log(data);
 				for(let i=0; i<data2.events_registered.length; i++){
