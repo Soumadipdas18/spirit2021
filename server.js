@@ -111,6 +111,14 @@ app.get("/sponsors", (req, res) => {
   } else res.render("sponsors/sponsors", { logged_in: false });
 	
 });
+//ABOUTUS
+app.get("/aboutus", (req, res) => {
+  session = req.session;
+  if (session.userid) {
+    res.render("aboutus/aboutus", { logged_in: true });
+  } else res.render("aboutus/aboutus", { logged_in: false });
+	
+});
 //ADMIN PORTAL FOR CREATING EVENTS
 app.get('/admin', (req, res) => {
  
