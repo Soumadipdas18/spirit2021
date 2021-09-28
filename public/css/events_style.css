@@ -101,7 +101,7 @@ body {
 }
 
 .athlos-arena-box{
-	 width: 100%;
+	width: 100%;
     height: auto;
     background-color: #c567ff;
     font-size: large;
@@ -139,14 +139,13 @@ body {
 }
 
 .give-margin {
-    margin: 80px 30px 30px 30px;
+    margin: 40px 30px 30px 30px;
 }
 
 .register-button {
     position: absolute;
-    left: 42.5%;
-    right: auto;
-    bottom: 5%;
+    left:42%;
+    right:auto;
     background-color: black;
     padding: 7px 15px;
     color: #c567ff;
@@ -154,6 +153,20 @@ body {
 	font-size: 16px;
 }
 
+.coming-soon{
+	position: absolute;
+    left:40.3%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;
+}
+
+.coming-soon:hover{
+    background-color: rgb(44, 44, 44);	
+}
 .register-button:hover {
     background-color: rgb(44, 44, 44);
 }
@@ -178,6 +191,29 @@ body {
 
 .prize{
 	font-size:x-large;
+	padding-bottom:20px
+}
+
+.contact{
+	font-size:large;
+	font-weight:450;
+}
+
+.one-card{
+	padding-left:20px;
+}
+
+.athlos-events{
+	margin-left:30px;
+	text-decoration:none;
+	color: #0a0a0a;
+	font-weight:500;
+}
+
+.athlos-events:hover{
+ 	text-decoration:underline;
+	color: black;
+	cursor: pointer;
 }
 
 @media (max-width: 550px) {
@@ -205,12 +241,27 @@ body {
       position: absolute;
       left:36%;
       right:auto;
-      bottom: 5%;
       background-color: black;
       padding: 7px 15px;
       color: #c567ff;
 	  border-radius: 3px;
 	  font-size: 14px;
     }
+	
+	.coming-soon{
+	position: absolute;
+    left:34%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;
+    }
+	
+	.one-card{
+		padding:10px;
+    }
+
   }
   

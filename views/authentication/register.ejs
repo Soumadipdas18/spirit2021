@@ -14,11 +14,12 @@
         <div class="register-content">
             <div class="register-head">Register</div>
             <div class="register">
-                <div class="register-with-cont customGPlusSignIn auth" ><a class="register-with" id="google-signin" href=""><button class="register-with-btn register-with-btn-1"><i id="goomgle" class="fab fa-google"></i>&nbsp;&nbsp;Register with Google</button></a></div>
+                <div class="register-with-cont" ><a class="register-with customGPlusSignIn auth" id="google-signup"><button class="register-with-btn register-with-btn-1"><i id="goomgle" class="fab fa-google"></i>&nbsp;&nbsp;Register with Google</button></a></div>
                 <!-- <div class="register-with-cont"><a class="register-with" href=""><button class="register-with-btn register-with-btn-2"><i id="goomgle" class="fab fa-facebook"></i>&nbsp;&nbsp;Register with Facebook</button></a></div> -->
             </div>
-            <form>
+            
             <div class="register-partition">or Register with Email</div>
+			<form>
             <div style="color:green;" class="register-partition" id="success">
                 
             </div>
@@ -54,10 +55,13 @@
             <div style="color:red;" class="register-partition" id="errors">
             
             </div>
+				
             <div class="registerpg-button">
                 <a class="registerpg-button-link" id="LOGINBUTTON"><button class="registerpg-button-btn" type="submit">Register</button></a>
             </div>
             </form>
+			
+			
             <div class="login-acc">
                 <p class="login-acc-text">Already have an account? &nbsp;<a href="login" class="login-acc-link">Login</a></p>
             </div>
@@ -68,7 +72,6 @@
     </section>
 	<%- include('../footer') -%>
 </body>
-      
         <script>
         let show_pass_status = false;
          document.getElementById("show_pass").addEventListener('click', show_pass)
@@ -126,9 +129,7 @@
                 }).then((res) => res.json())
 
                 if (result.status === 'ok') {
-                    // everythign went fine
-                    //console.log('Got the token: ')
-                    //localStorage.setItem('token', result.data)//storing data in localstorage
+                   
                     
                     document.getElementById("success").innerHTML='Success. Check your mail and activate your account'
 					
@@ -168,88 +169,26 @@
             	} else {
 					var auth2 = gapi.auth2.getAuthInstance();
 					auth2.signOut()
+					console.log(result.error)
                 	document.getElementById("errors").innerHTML=result.error
             	}
         	}
         	
-            //login loginwithgofb
-			// function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-			// console.log('statusChangeCallback');
-			// console.log(response);                   // The current login status of the person.
-			// if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-			// testAPI();  
-			// } else {                                 // Not logged into your webpage or we are unable to tell.
-			// document.getElementById('status').innerHTML = 'Please log into this webpage.';
-			// }
-			// }
-
-			// function checkLoginState() {               // Called when a person is finished with the Login Button.
-			// FB.getLoginStatus(function(response) {   // See the onlogin handler
-			// statusChangeCallback(response);
-			// });
-			// }
-
-			// window.fbAsyncInit = function() {
-			// FB.init({
-			// appId: '354191059764159',
-			// cookie: true,
-			// xfbml: true,
-			// version: 'v2.8'         
-			// });
-                
-
-			// FB.getLoginStatus(function(response) {  
-			// statusChangeCallback(response);        
-			// });
-			// };
-
-			// //REGISTER WITH FACEBOOK
-			// function testAPI() {            
-			// console.log('Welcome!  Fetching your information.... ');
-			// FB.api('/me?fields=name,email', async function(response) {
-			// console.log('Successful login for: ' + response.name);
-			// 		const provider="facebook"
-			// 		const email=response.email
-			// 		const username=response.name
-			// 		console.log(email)
-			// 		console.log(username)
-			// 		const result = await fetch('/authapi/registerwithgofb', {
-			// method: 'POST',
-			// headers: {
-			// 'Content-Type': 'application/json'
-			// },
-			// body: JSON.stringify({
-			// email,
-			// username,
-			// provider
-			// })
-			// }).then((res) => res.json())
-             
-			// if (result.status === 'ok') {
-						
-			// 			//window.location.replace(`/profile/get/${result.data._id}`);
-					
-			// document.getElementById("success").innerHTML='Success. Check your mail and activate your account'
-				
-					
-			// } else {
-			// document.getElementById("errors").innerHTML=result.error
-			// }
-					
-			// });
-			// }
+           
               
 
             //google-signup  
             var googleUser = {};
             var startApp = function() {
                 gapi.load('auth2', function(){
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
                 auth2 = gapi.auth2.init({
                     client_id: '581624333892-t4mk87qk0pllgb1fmegjd8p6lba516e5.apps.googleusercontent.com',
                     cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
                     //scope: 'additional_scope'
                 });
-                attachSignin(document.getElementById('google-signin'));
+                attachSignin(document.getElementById('google-signup'));
                 });
             }
 
@@ -257,11 +196,12 @@
                 console.log(element.id);
                 auth2.attachClickHandler(element, {},
                     function(googleUser) {
+                    /* document.getElementById('').innerText = "Signed in: " +
+                        googleUser.getBasicProfile().getName(); */
                         registergoogle(googleUser);
                     }, function(error) {
                     alert(JSON.stringify(error, undefined, 2));
                 });
             }
-
             startApp()
         </script>
