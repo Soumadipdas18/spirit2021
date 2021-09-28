@@ -223,6 +223,7 @@
             <p class="email">
                 Or signin with email</p>
             </div>
+			
             <div class="Email">
                 <div class="itemof2">
                     <input id="Emailenter" type="email" placeholder="Email"/> 
@@ -232,14 +233,18 @@
                 </div>
                 <div class="itemof2">
                 <p>
-                    <button onclick="show_pass()" id="show_pass" href="#" style = "color: #ffffff;">✓</button>Show Password &nbsp &nbsp &nbsp  &nbsp  &nbsp&nbsp 
+                    <button onclick="show_pass()" id="show_pass" href="#" style = "color: #ffffff;">✓</button>Show Password &nbsp &nbsp &nbsp  &nbsp  &nbsp&nbsp    
                     <a class="link" id="forgot">Forgot Password?</a> </p>
                 </div>
+				<div style="color:red;" id="errors">
+					
+				</div>
                 <div class="itemof2">
                     <button id="LOGINBUTTON">
                         Login
                     </button>
                 </div>
+			   
                 <div class="itemof2">
                     <p>Not registered yet?&nbsp &nbsp <a class="link" href="/register">Create account</a> &nbsp &nbsp   &nbsp  &nbsp&nbsp</p>
                     
@@ -325,9 +330,9 @@
                     //console.log('Got the token: ')
                     //localStorage.setItem('token', result.data)//storing data in localstorage
                     window.location.replace(`/`);
-                    alert('Success')
+                    // alert('Success')
                 } else {
-                    alert(result.error)
+                    document.getElementById("errors").innerHTML=result.error
                 }
             }
             /* function toggleview() {
@@ -369,7 +374,7 @@
                 } else {
                     var auth2 = gapi.auth2.getAuthInstance();
                     auth2.signOut()
-                    alert(result.error)
+                    document.getElementById("errors").innerHTML=result.error
                 }
             }
             
@@ -431,7 +436,7 @@
                             alert('Success')
                         
                         } else {
-                            alert(result.error);
+                            document.getElementById("errors").innerHTML=result.error
                         }
                         
                     });
@@ -474,7 +479,7 @@
 			event.preventDefault()
 			const email = document.getElementById('Emailenter').value
 			if(!email){
-				alert("Enter your email address in the form")
+				document.getElementById("errors").innerHTML="Enter your email address in the form"
 			}
 			else{
 			console.log(email)
@@ -489,12 +494,12 @@
             }).then((res) => res.json())
 			
 			if (result.status === 'ok') {
-                alert('Please check your email for the link to reset your password')
-				console.log(result.data)
+                document.getElementById("errors").innerHTML='Please check your email for the link to reset your password'
+				// console.log(result.data)
 				window.location.replace(`/`)
                 
             } else {
-                alert(result.data)
+                 document.getElementById("errors").innerHTML=result.data
             }
 			}
 		}

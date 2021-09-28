@@ -195,6 +195,9 @@
 		
 					</p>
                 </div>
+				<div style="color:red;" id="errors">
+					
+				</div>
                 <div class="itemof2">
                     <button id="LOGINBUTTON">
                         Register
@@ -229,9 +232,9 @@
             }
 			
 			
-			document.getElementById('fb-register').addEventListener('click', function () {
-                    FB.login(statusChangeCallback, { scope: 'email,public_profile', return_scopes: true });
-                }, false);
+			// document.getElementById('fb-register').addEventListener('click', function () {
+			// FB.login(statusChangeCallback, { scope: 'email,public_profile', return_scopes: true });
+			// }, false);
 			
             var remember=document.getElementById("Remember");
             function rem(){remember.innerHTML="✓";}
@@ -248,6 +251,13 @@
                 const collegename = document.getElementById('Collegeenter').value
                 const username = document.getElementById('Nameenter').value
                 const provider = "email";
+				if(email&&password&&phno&&collegename&&username){
+					
+				}
+				else{
+					document.getElementById("errors").innerHTML="Fields are empty"
+					return
+				}
                 const result = await fetch('/authapi/register', {
                     method: 'POST',
                     headers: {
@@ -266,10 +276,11 @@
                     // everythign went fine
                     //console.log('Got the token: ')
                     //localStorage.setItem('token', result.data)//storing data in localstorage
-                    window.location.replace(`/`);
-                    alert('Success. Check your mail and activate your account')
+                    
+                    document.getElementById("errors").innerHTML='Success. Check your mail and activate your account'
+					
                 } else {
-                    alert(result.error)
+                    document.getElementById("errors").innerHTML=result.error
                 }
             }
 
@@ -298,12 +309,13 @@
 					var auth2 = gapi.auth2.getAuthInstance();
 					auth2.signOut()
 					//window.location.replace(`/profile/get/${result.data._id}`);
-					window.location.replace(`/`);
-                	alert('Success. Check your mail and activate your account')
+					
+                	document.getElementById("errors").innerHTML='Success. Check your mail and activate your account'
+					
             	} else {
 					var auth2 = gapi.auth2.getAuthInstance();
 					auth2.signOut()
-                	alert(result.error)
+                	document.getElementById("errors").innerHTML=result.error
             	}
         	}
         	
@@ -363,12 +375,12 @@
             	if (result.status === 'ok') {
 						
 						//window.location.replace(`/profile/get/${result.data._id}`);
-					window.location.replace(`/`);
-                		alert('Success. Check your mail and activate your account')
+					
+                		document.getElementById("errors").innerHTML='Success. Check your mail and activate your account'
 				
 					
             	} else {
-                	alert(result.error);
+                document.getElementById("errors").innerHTML=result.error
             	}
 					
     			});

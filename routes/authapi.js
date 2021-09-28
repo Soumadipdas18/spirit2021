@@ -109,7 +109,7 @@ app.post("/register", async (req, res) => {
       // duplicate key passed
       return res.json({
         status: "error",
-        error: "vmro this email is already in use",
+        error: "Sorry this email is already in use",
       });
     } else if (error) {
       return res.json({ status: "error", error: "Something went wrong" });
@@ -125,18 +125,18 @@ app.post("/login", async (req, res) => {
   const user = await stuff.model.findOne({ email }).lean();
 
   if (!user) {
-    return res.json({ status: "error", error: "Invalid email/password1 vmro" });
+    return res.json({ status: "error", error: "Invalid email/password" });
   }
 
   if (user.provider !== "email") {
     return res.json({
       status: "error",
-      error: `You are authenticated using the same mail with ${user.provider} vmro`,
+      error: `You are authenticated using the same mail with ${user.provider}`,
     });
   }
 
   if (user.isVerified === false) {
-    return res.json({ status: "error", error: "Email not verified vmro" });
+    return res.json({ status: "error", error: "Email not verified. Please verify to sign in" });
   }
 
   if (await bcrypt.compare(password, user.password)) {
@@ -155,7 +155,7 @@ app.post("/login", async (req, res) => {
     return res.json({ status: "ok", data: token });
   }
 
-  res.json({ status: "error", error: "Invalid email/password2 vmro" });
+  res.json({ status: "error", error: "Invalid email/password" });
 });
 
 //sign in with google/fb
@@ -218,7 +218,7 @@ app.post("/registerwithgofb", async (req, res) => {
       // duplicate key
       return res.json({
         status: "error",
-        error: "vmro this email is already in use",
+        error: "Sorry this email is already in use",
       });
     }
     throw error;
