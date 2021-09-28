@@ -1,4 +1,3 @@
-////Image change////
 const interval2 = 10000;
 const imgsrc = document.querySelector('.landing-image-img');
 
