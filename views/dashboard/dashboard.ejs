@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<%- include('../basicwlb') -%>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
     </head>
     <body>
+		<%- include('../navbar') -%>
         <h1 class="dash_title">Dashboard</h1>
         <div class="dash_container">
 
@@ -57,7 +59,11 @@
             <h3 class="heading">Registered Events</h3>
            <!-- <%- include('registered_events') -%> -->
 			<div class="reg_events">
-				<%if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
+				<%if(typeof user.events_registered !== 'undefined'){ %>
+				<div class="data_text">
+					IPL Auction 
+				</div> <br>
+				<%}else if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
 				<div class="data_text">
 					<%=user.events_registered[i] %>		
 				</div> <br>

@@ -1,6 +1,7 @@
 body{
     background: #0A0A0A;
     color: #FFFFFF;
+	line-height: unset;
 }
 
 .dash_container{

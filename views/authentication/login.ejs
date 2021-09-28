@@ -105,14 +105,6 @@
                     document.getElementById("errors").innerHTML=result.error
                 }
             }
-            /* function toggleview() {
-                var x = document.getElementById("password");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            } */
             async function logingoogle(googleUser) {
                 var profile = await googleUser.getBasicProfile();
                 //console.log('ID: ' + profile.getId());
@@ -148,69 +140,7 @@
                 }
             }
             
-            //login loginwithgofb
-            // function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-            //     console.log('statusChangeCallback');
-            //     console.log(response);                   // The current login status of the person.
-            //     if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-            //         testAPI();  
-            //     } else {                                 // Not logged into your webpage or we are unable to tell.
-            //     document.getElementById('status').innerHTML = 'Please log into this webpage.';
-            //     }
-            // }
-
-            // function checkLoginState() {               // Called when a person is finished with the Login Button.
-            //     FB.getLoginStatus(function(response) {   // See the onlogin handler
-            //     statusChangeCallback(response);
-            //     });
-            // }
-
-            // window.fbAsyncInit = function() {
-            //     FB.init({
-            //     appId: '354191059764159',
-            //     cookie: true,
-            //     xfbml: true,
-            //     version: 'v2.8'         
-            //     });
-                
-
-            //     FB.getLoginStatus(function(response) {  
-            //         statusChangeCallback(response);        
-            //     });
-            // };
-
-            // function testAPI() {            
-            //         console.log('Welcome!  Fetching your information.... ');
-            //         FB.api('/me?fields=name,email', async function(response) {
-            //             console.log('Successful login for: ' + response.name);
-            //             const provider="facebook"
-            //             const email=response.email
-            //             const username=response.name
-            //             console.log(email)
-            //             console.log(username)
-            //             const result = await fetch('/authapi/loginwithgofb', {
-            //                 method: 'POST',
-            //                 headers: {
-            //                     'Content-Type': 'application/json'
-            //                 },
-            //                 body: JSON.stringify({
-            //                     email,
-            //                     username,
-            //                     provider
-            //                 })
-            //             }).then((res) => res.json())
-                
-            //             if (result.status === 'ok') {
-            //                 localStorage.setItem('token', result.data)//storing data in localstorage
-            //                 window.location.replace(`/`);
-            //                 alert('Success')
-                        
-            //             } else {
-            //                 document.getElementById("errors").innerHTML=result.error
-            //             }
-                        
-            //         });
-            //     }
+          
                 
 
             //google sign-in

@@ -109,31 +109,31 @@
     border-radius: 3px;
     overflow: hidden; }
     .card__side--front-1 {
-      background-image: url(../images/ipl_poster.png);
+      background-image: url(../images/AthlosArena.jpg);
       background-size: cover; }
     .card__side--front-2 {
-      background-image: url(../images/WeeklyTrivia.jpg);
+      background-image: url(../images/ipl_poster.png);
       background-size: cover; }
     .card__side--front-3 {
-      background-image: url(../images/shutterbug_poster.jpg);
+      background-image: url(../images/WeeklyTrivia.jpg);
       background-size: cover; }
     .card__side--front-4 {
-      background-image: url(../images/ipl_poster.png);
-      background-size: cover; }
-    .card__side--front-5 {
-      background-image: url(../images/WeeklyTrivia.jpg);
-      background-size: cover; }
-    .card__side--front-6 {
       background-image: url(../images/shutterbug_poster.jpg);
+      background-size: cover; }
+	.card__side--front-5 {
+      background-image: url(../images/AthlosArena.jpg);
+      background-size: cover; }
+	.card__side--front-6 {
+      background-image: url(../images/ipl_poster.png);
       background-size: cover; }
     .card__side--front-7 {
-      background-image: url(../images/ipl_poster.png);
-      background-size: cover; }
-    .card__side--front-8 {
       background-image: url(../images/WeeklyTrivia.jpg);
       background-size: cover; }
-    .card__side--front-9 {
+    .card__side--front-8 {
       background-image: url(../images/shutterbug_poster.jpg);
+      background-size: cover; }
+	.card__side--front-9 {
+      background-image: url(../images/AthlosArena.jpg);
       background-size: cover; }
     .card__side--front-10 {
       background-image: url(../images/ipl_poster.png);
