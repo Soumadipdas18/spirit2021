@@ -93,7 +93,7 @@ app.post("/register", async (req, res) => {
         from: "Spirit 2021 <noreply.spiritiitg@gmail.com>",
         to: email,
         subject: "Welcome to Spirit 2021. Verify your account",
-        html: `<b>Verify your account</b><br><a href="https://${req.hostname}/authapi/verifyaccount/${response._id}">Click here to verify your account</a>`,
+        html: `<b>Verify your account</b><br><a href="http://${req.hostname}/authapi/verifyaccount/${response._id}">Click here to verify your account</a>`,
       };
       //sending verification mail
       transporter.sendMail(mailOptions, function (error, info) {
@@ -202,7 +202,7 @@ app.post("/registerwithgofb", async (req, res) => {
       from: "Spirit 2021 <noreply.spiritiitg@gmail.com>", // sender address (who sends)
       to: email, // list of receivers (who receives)
       subject: "Welcome to Spirit 2021.", // Subject line
-      html: `<b>Update your details for spirit 2021 to complete your registration:</b><br><a href="https://${req.hostname}/profile/update/${response._id}">Click here to update your account</a>`, // html body
+      html: `<b>Update your details for spirit 2021 to complete your registration:</b><br><a href="http://${req.hostname}/profile/update/${response._id}">Click here to update your account</a>`, // html body
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
@@ -260,7 +260,7 @@ app.post("/pass_forgot_req", async (req, res) => {
           from: "Spirit 2021 <noreply.spiritiitg@gmail.com>",
           to: email,
           subject: "Reset your Spirit 2021 password",
-          html: `<b>Reset passowrd for email: ${email}</b><br><a href="https://${req.hostname}/authapi/getnewpass/${query._id}">Click here to change your password</a>`, // html body
+          html: `<b>Reset passowrd for email: ${email}</b><br><a href="http://${req.hostname}/authapi/getnewpass/${query._id}">Click here to change your password</a>`, // html body
         };
         transporter.sendMail(mailOptions1, function (error, info) {
           if (error) {
