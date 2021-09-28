@@ -64,7 +64,7 @@ app.get('/',(req,res)=>{
 //Authentication
 app.get('/register',(req,res)=>{
 	if (!req.session.userid) {
-		res.render('authentication/register');
+		res.render('authentication/register', { logged_in: false });
 	}
 	else{
 		res.redirect('/')
@@ -72,7 +72,7 @@ app.get('/register',(req,res)=>{
 });
 app.get("/login", (req, res) => {
     if (!req.session.userid) {
-  		res.render("authentication/login");
+  		res.render("authentication/login",{ logged_in: false });
 	}
 	else{
 		res.redirect('/')

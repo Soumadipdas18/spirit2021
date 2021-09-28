@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<!-- SPIRIT LOGO -->
+    <link rel="shortcut icon" type="image/png" href="images/logo.jpg" />
+
+    <!-- SPIRIT TITLE -->
+    <title>Spirit 2021 | Event Registration</title>
        <link rel="shortcut icon" type="image/png" href="images/logo.jpg" />
 	   <link rel="stylesheet" href="../../public/css/events_style.css" />
 		<style>
@@ -264,7 +269,7 @@ color: rgba(255, 255, 255, 0.8);
 					<%if (name=="iplauction"){%>
 					<%- include('event_reg_forms/iplauctionform') -%>
         			<%}else if (name=="shutterbug"){%>
-					<%- include('event_reg_forms/shutterbug') -%>
+					<%- include('event_reg_forms/shutterbugform') -%>
             		<%}%>
 				</form>
 			</div>
@@ -272,8 +277,6 @@ color: rgba(255, 255, 255, 0.8);
 		
 	<script>
 		var event_name = '<%=name%>'
-		document.getElementById('event_name').onchange = function () {
-			console.log(document.getElementById('event_name').value);
 			
 			//Saving form of shutterbug
 			if (event_name === "shutterbug"){
@@ -354,7 +357,7 @@ color: rgba(255, 255, 255, 0.8);
 					}
 				
 			}
-		}
+	
     </script>
 
     </body>

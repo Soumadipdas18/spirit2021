@@ -57,11 +57,15 @@
             <h3 class="heading">Registered Events</h3>
            <!-- <%- include('registered_events') -%> -->
 			<div class="reg_events">
-				<%for (var i=0; i<user.events_registered.length; i++){%>
-				<p>
+				<%if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
+				<div class="data_text">
 					<%=user.events_registered[i] %>		
-				</p>
-					<%}%>
+				</div> <br>
+				<%}}else{%>
+				<div class="data_text">
+					You have not registered for any event
+				</div> <br>
+				<%}%>
 				
 			</div>
             
@@ -78,12 +82,5 @@
                 Fusce a pharetra leo. Maecenas vel est nisl.
             </div>      -->
 		</div>
-		<script>
-			//var events_registered = '<%=user.events_registered%>'
-			//console.log(events_registered)
-			//const eventsArr = str.split(",")
-			
-			
-		</script>
     </body>
 </html>

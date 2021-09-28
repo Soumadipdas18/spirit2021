@@ -16,7 +16,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 		var email2 = req.body.email_address2;
 		var email3 = req.body.email_address3;
 		var team_name = req.body.team_name;
-		var counter1 = 0;var counter2 = 0;var counter3 = 0;
+		var counter1 = 0;var counter2 = 0;var counter3 = 0;var counter4 = 0;
 		const data1 = await stuff_user.model.findOne({ email1 }).then(
 			(data1)=>{
 				// console.log(data);
@@ -34,7 +34,8 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 					});
 			});
 		
-		const data2 = await stuff_user.model.findOne({ email2 }).then(
+		const data2 = await stuff_user.model.findOne({ email2 })
+		.then(
 			(data2)=>{
 				// console.log(data);
 				for(let i=0; i<data2.events_registered.length; i++){
@@ -68,7 +69,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 					});
 			});
 		
-		const data4 = await ipl_stuff.iplauction.findOne({ teamname: team_name }).then(
+		const data4 = await ipl_stuff.model.findOne({ teamname: req.body.team_name }).then(
 			(team) => {
 			return res.json({
 			status: "error",
@@ -81,7 +82,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 		);
 
 		if(counter1 === 0 && counter2 === 0 && counter3 === 0){	
-			var newTeam = await ipl_stuff.iplauction
+			var newTeam = await ipl_stuff
 				.create({
 				  team_name,
 				  data1,
@@ -109,7 +110,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 						"One of the participants is already registered in another team",
 					});
 				  }
-				return res.send({
+				  return res.send({
 					status: "error",
 					error:
 					  "Something went wrong. Contact Spirit 2021 team if you are not able to register",
