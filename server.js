@@ -93,11 +93,11 @@ app.get("/events", (req, res) => {
   } else res.render("events/events", { logged_in: false });
 });
 
-app.get("/events/register", async (req, res) => {
+app.get("/events/register/:name", async (req, res) => {
   if (req.session.userid) {
     email = session.userid;
     const user = await stuff_user.model.findOne({ email }).lean();
-    res.render("events/event_reg",{user: user});
+    res.render("events/event_reg",{user: user,name:req.params.name});
   }
   else{
     res.redirect("/login");

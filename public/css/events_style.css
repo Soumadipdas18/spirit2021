@@ -98,7 +98,14 @@ body {
     background-color: #c567ff;
     font-size: large;
     padding-bottom: 150px;
-    border-radius: 1%;
+}
+
+.athlos-arena-box{
+	 width: 100%;
+    height: auto;
+    background-color: #c567ff;
+    font-size: large;
+    padding-bottom: 50px;
 }
 
 .expand-img {
@@ -121,7 +128,7 @@ body {
 
 .left-text {
     display: inline-block;
-    position: absolute;
+    position: relative;
     left: 3%;
 }
 

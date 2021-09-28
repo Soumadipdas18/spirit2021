@@ -22,6 +22,7 @@ body {
     width: 50%;
     margin: auto;
     overflow: auto;
+	font-size:2rem;
 }
 
 .topic-button-grid {
@@ -38,9 +39,11 @@ body {
     color: white;
     border: none;
     transition: none;
-    font-weight: 200;
-	font-size: 2rem;
     border-radius: 0;
+}
+
+.spirit-title{
+	font-size: 3rem;
 }
 
 .topic-button:hover,
