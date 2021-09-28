@@ -10,7 +10,7 @@ const imgChange = () => {
 
 const images = ["img1","img2","img3","img4","img5","img6","img7","img8" ,"img9","img10"  ];
 
-let i;
+// let i;
 const imgS1 = () => {
   i=0;
   imgsrc.setAttribute('class',`landing-image-${images[0]}`)

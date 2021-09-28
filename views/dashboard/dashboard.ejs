@@ -55,9 +55,21 @@
             <hr noshade size="1px">
  
             <h3 class="heading">Registered Events</h3>
-            <%- include('registered_events') -%>
+           <!-- <%- include('registered_events') -%> -->
+			<div class="reg_events">
+				<%if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
+				<div class="data_text">
+					<%=user.events_registered[i] %>		
+				</div> <br>
+				<%}}else{%>
+				<div class="data_text">
+					You have not registered for any event
+				</div> <br>
+				<%}%>
+				
+			</div>
             
-            <hr noshade size="1px">
+       <!--     <hr noshade size="1px">
             <h3 class="heading">Submission Info</h3>
             <div class="sbmsn_info">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat diam sollicitudin lacus bibendum porta. 
@@ -68,7 +80,7 @@
                 Maecenas suscipit ornare facilisis. Integer id tortor maximus, auctor tellus nec, rhoncus ante. Curabitur venenatis lacinia mollis. Duis mollis diam leo, sed efficitur augue euismod id. Nunc volutpat odio et ante euismod, a suscipit turpis varius. Nullam tempus condimentum fringilla. 
                 <br><br>
                 Fusce a pharetra leo. Maecenas vel est nisl.
-            </div>      
+            </div>      -->
 		</div>
     </body>
 </html>

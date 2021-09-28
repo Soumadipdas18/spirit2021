@@ -69,7 +69,7 @@ body{
 }
 
 .reg_events{
-    display: flex;
+    display: block;
     flex-direction: row;
     flex-wrap: wrap;
     padding-bottom: 1vw;
