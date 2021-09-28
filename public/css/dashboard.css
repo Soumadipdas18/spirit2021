@@ -1,10 +1,13 @@
 body{
     background: #0A0A0A;
     color: #FFFFFF;
-	line-height: unset;
+	margin: auto;
 }
 
 .dash_container{
+	line-height: unset;
+	box-sizing: content-box;
+	
     background: #404040;
     margin-left: 12vw;
     margin-right: 12vw;
@@ -51,6 +54,7 @@ body{
 }
 
 .data_field{
+	height: 4vw;
     display: flex;
     margin:auto;
     padding-left: 2.75vw;
@@ -65,7 +69,7 @@ body{
     color: #C567FF;
     font-size: calc(10px + 1vw);
     padding-top: 1vw;
-    padding-bottom: 0.5vw;
+    padding-bottom: 1.5vw;
     margin-left: 0.8vw;
 }
 
@@ -96,6 +100,7 @@ body{
 
 @media only screen and (max-width: 600px) {
     .data_field {
+		height: 9vw;
       width: 100%;
     }
     .data_title{
@@ -110,6 +115,9 @@ body{
     .modal-content {
         width: 80%;
     }
+	.event{
+		height: 9vw;
+	}
   }
 
  @media only screen and (max-width: 400px){
@@ -178,4 +186,13 @@ label{
     font-weight: 600;
     font-size: calc(9px + 0.6vw);
     margin-top: 1.5vw;
+}
+
+.event{
+	height: 4vw;
+    margin:auto;
+    padding-left: 2.75vw;
+    padding-right: 2.75vw;
+	font-size: calc(8px + 0.6vw);
+	font-weight: 400;
 }

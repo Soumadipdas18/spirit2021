@@ -23,7 +23,7 @@ app.get("/update/:id", async (req, res) => {
         user.save().then(
           (user) => {
             res.statusCode = 200;
-            res.render("dashboard/profile_update", { user });
+            res.render("dashboard/profile_update", { user: user, logged_in: true });
           },
           (err) => res.status(400).send({ message: err.message })
         );

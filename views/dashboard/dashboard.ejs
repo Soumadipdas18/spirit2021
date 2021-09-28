@@ -59,8 +59,8 @@
             <h3 class="heading">Registered Events</h3>
            <!-- <%- include('registered_events') -%> -->
 			<div class="reg_events">
-				<%if(typeof user.events_registered !== 'undefined'){ %>
-				<div class="data_text">
+				<%if(typeof user.events_registered === 'undefined'){ %>
+				<div class="data_text event">
 					IPL Auction 
 				</div> <br>
 				<%}else if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
@@ -88,5 +88,6 @@
                 Fusce a pharetra leo. Maecenas vel est nisl.
             </div>      -->
 		</div>
+		<%- include('../footer') -%>
     </body>
 </html>
