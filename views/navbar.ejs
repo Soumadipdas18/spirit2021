@@ -39,7 +39,7 @@
   right: 1.5%;
   top: 50%;
   transform: translateY(-50%); }
-  .login-button-btn, .login-button-btn:link, .login-button-btn:visited {
+  .login-button-btn-1, .login-button-btn-1:link, .login-button-btn-1:visited {
     background-color: #c567ff;
     text-decoration: none;
     padding: 0.6rem 2.2rem;
@@ -50,10 +50,10 @@
     color: #0a0a0a;
     border: none;
     cursor: pointer; }
-  .login-button-btn:hover, .login-button-btn:focus {
+  .login-button-btn-1:hover, .login-button-btn-1:focus {
     transform: translateY(-3px);
     color: white; }
-  .login-button-btn:active, .login-button-btn:focus {
+  .login-button-btn-1:active, .login-button-btn-1:focus {
     color: #0a0a0a;
     background-color: #c567ff;
     outline: none;
@@ -223,9 +223,9 @@ transition:0.5s;
 <!-- <a class="nav-links" href="gallery">Gallery</a> -->
 <div style="float:right; padding:14px 20px;"> 
 <%if (logged_in){%>
-        <a href="profile"><button class="login-button-btn">Profile</button></a>
+        <a href="profile"><button class="login-button-btn-1">Profile</button></a>
 <%}else{%>
-	<a href="login"><button class="login-button-btn">Login</button></a>
+	<a href="login"><button class="login-button-btn-1">Login</button></a>
 <%}%>
 </div>
 </div>
