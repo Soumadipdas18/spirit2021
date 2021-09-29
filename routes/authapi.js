@@ -93,7 +93,19 @@ app.post("/register", async (req, res) => {
         from: "Spirit 2021 <noreply.spiritiitg@gmail.com>",
         to: email,
         subject: "Welcome to Spirit 2021. Verify your account",
-        html: `<b>Verify your account</b><br><a href="http://${req.hostname}/authapi/verifyaccount/${response._id}">Click here to verify your account</a>`,
+        html: `Hi ${username},
+<br><br>
+Thanks for registering for Spirit!
+<br>
+Please verify your account on the below link:
+<br>
+<a href="http://${req.hostname}/authapi/verifyaccount/${response._id}">
+<br><br>
+If you have problems, please paste the above URL into your web browser.
+<br><br>
+Regards
+<br>
+Spirit Web Operations`,
       };
       //sending verification mail
       transporter.sendMail(mailOptions, function (error, info) {
@@ -202,7 +214,19 @@ app.post("/registerwithgofb", async (req, res) => {
       from: "Spirit 2021 <noreply.spiritiitg@gmail.com>", // sender address (who sends)
       to: email, // list of receivers (who receives)
       subject: "Welcome to Spirit 2021.", // Subject line
-      html: `<b>Update your details for spirit 2021 to complete your registration:</b><br><a href="http://${req.hostname}/profile/update/${response._id}">Click here to update your account</a>`, // html body
+      html: `Hi ${username},
+<br><br>
+Thanks for registering for Spirit!
+<br>
+We need a little more information, before we complete your registration. Please update your details on the below link:
+<br>
+<a href="http://${req.hostname}/profile/update/${response._id}">Click here to update your account</a>
+<br><br>
+If you have problems, please paste the above URL into your web browser.
+<br><br>
+Regards
+<br>
+Spirit Web Operations`, // html body
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
