@@ -167,7 +167,8 @@ body {
 
 .coming-soon{
 	position: absolute;
-    left:40.3%;
+    left:40%;
+	bottom: 10%;
     right:auto;
     background-color: black;
     padding: 7px 15px;
@@ -184,6 +185,10 @@ body {
 }
 
 .register-button-rulebook:hover {
+    background-color: rgb(44, 44, 44);
+}
+
+.register-button-athlosarena:hover {
     background-color: rgb(44, 44, 44);
 }
 
