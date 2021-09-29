@@ -260,7 +260,7 @@ app.post("/pass_forgot_req", async (req, res) => {
           from: "Spirit 2021 <noreply.spiritiitg@gmail.com>",
           to: email,
           subject: "Reset your Spirit 2021 password",
-          html: `<b>Reset passowrd for email: ${email}</b><br><a href="http://${req.hostname}/authapi/getnewpass/${query._id}">Click here to change your password</a>`, // html body
+          html: `<b>Reset password for email: ${email}</b><br><a href="http://${req.hostname}/authapi/getnewpass/${query._id}">Click here to change your password</a>`, // html body
         };
         transporter.sendMail(mailOptions1, function (error, info) {
           if (error) {
