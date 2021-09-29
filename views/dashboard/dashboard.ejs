@@ -49,8 +49,7 @@
                 <div class="data_field">
                     <p class="data_title"></p>
                     <p class="data_text">
-						<a style="color: #C567FF; cursor: pointer;" href="logout">Log Out
-						</a>
+						<a style="color: #C567FF; cursor: pointer;" href="logout">Log Out </a>
 					</p>
                 </div>
             </div>
@@ -60,6 +59,10 @@
            <!-- <%- include('registered_events') -%> -->
 			<div class="reg_events">
 				<%if(typeof user.events_registered === 'undefined'){ %>
+				<div class="data_text event">
+					You have not registered for any event
+				</div>
+				<% }else if(user.storerandompassword){ %>
 				<div class="data_text event">
 					IPL Auction 
 				</div>
