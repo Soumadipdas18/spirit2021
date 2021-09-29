@@ -37,14 +37,14 @@
 }
 .img1 {
   width: 100%;
-  height: 28vh;
+  height: 34vh;
   background-image: url('/images/IplCard.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 .img2 {
   width: 100%;
-  height: 28vh;
+  height: 34vh;
   background-image: url('/images/ShutterCard.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -237,7 +237,7 @@ color: rgba(255, 255, 255, 0.8);
     <body>
         <div class="root">
 			<div class="leftDiv">
-				<%if (name=="iplauction"){%>
+				<%if (name==="iplauction"){%>
 				<div id="IplAuction1">
 					<div class="img1"></div>
 					<div class="titleRow">
@@ -249,7 +249,7 @@ color: rgba(255, 255, 255, 0.8);
 					</div>
 					<div class="prize"><b>Prize Pool of 20k</b></div>
 				</div>
-				<%}else if (name=="shutterbug"){%>
+				<%}else if (name==="shutterbug"){%>
 				<div id="Shutterbug1">
 					<div class="img2"></div>
 					<div class="titleRow">
@@ -265,10 +265,10 @@ color: rgba(255, 255, 255, 0.8);
 			</div>
 			<div class="rightDiv">
 				<div class="registerTitle">Register</div>
-				<form id="event-form" method="POST" action="event_registration/post/">
-					<%if (name=="iplauction"){%>
+				<form id="event-form" method="POST" >
+					<%if (name==="iplauction"){%>
 					<%- include('event_reg_forms/iplauctionform') -%>
-        			<%}else if (name=="shutterbug"){%>
+        			<%}else if (name==="shutterbug"){%>
 					<%- include('event_reg_forms/shutterbugform') -%>
             		<%}%>
 				</form>
@@ -277,28 +277,80 @@ color: rgba(255, 255, 255, 0.8);
 		
 	<script>
 		var event_name = '<%=name%>'
-			
-			//Saving form of shutterbug
-			if (event_name === "shutterbug"){
+		if (event_name === "shutterbug"){
+			console.log('entered here');
+			var form = document.getElementById('event-form')
+			form.addEventListener('submit', registerForm)
+			async function registerForm(event) {
+				event.preventDefault()
+				let id = '<%=user._id%>'					
+				var full_name = document.getElementById('full_name').value
+				var email_address = document.getElementById('email_address').value
+				var college = document.getElementById('college').value
+				var contact_number = document.getElementById('contact_number').value
+				var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						full_name,event_name,email_address,college,contact_number
+					})
+				}).then((res) => res.json())
+
+				if (result.status === 'ok') {
+					window.location.replace(`/events/event_registration/success`);
+					alert('Success')
+				} else {
+					window.location.replace(`/`);
+					alert(result.error)
+				}
+		}}
+		else if(event_name === "iplauction"){
 				var form = document.getElementById('event-form')
-				form.addEventListener('submit', registerForm)
-				async function registerForm(event) {
-					event.preventDefault()
-					let id = '<%=user._id%>'					
-					var full_name = document.getElementById('full_name').value
-					var email_address = document.getElementById('email_address').value
-					var college = document.getElementById('college').value
-					var contact_number = document.getElementById('contact_number').value
-					var result = await fetch(`../events/event_registration/post/${event_name}/${id}`, {
+				form.addEventListener('submit', registerForm2)
+
+				async function registerForm2(event){
+					event.preventDefault();
+					const memb1 =await registerUser(1);
+					const memb2 =await registerUser(2);
+					const memb3 =await registerUser(3);
+					const result=await registerForEvent(memb1,memb2,memb3);
+				};
+
+				async function registerUser(i) {
+					const email = document.getElementById(`email_address${i}`).value;
+					const discord = document.getElementById(`discord${i}`).value;
+					const result = await fetch(`/events/event_registration/post_ipl`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						email,
+						discord,
+					})
+					}).then((res) => res.json())
+					if (result.status === 'ok') {
+					return result.data
+					
+					} else {
+					window.location.replace(`/`);
+					alert(result.error)
+					}
+				};
+
+				async function registerForEvent(member1,member2,member3) {
+					const teamname = document.getElementById("team_name").value;
+					const result = await fetch(`/iplauction/register`, {
 						method: 'POST',
 						headers: {
-							'Content-Type': 'application/json'
+						'Content-Type': 'application/json'
 						},
 						body: JSON.stringify({
-							full_name,event_name,email_address,college,contact_number
+						member1, member2, member3,teamname
 						})
 					}).then((res) => res.json())
-
 					if (result.status === 'ok') {
 						window.location.replace(`/events/event_registration/success`);
 						alert('Success')
@@ -306,65 +358,9 @@ color: rgba(255, 255, 255, 0.8);
 						window.location.replace(`/`);
 						alert(result.error)
 					}
-			}
+				};			
 			
-			
-			//Saving form of iplauction
-			else if(event_name === "iplAuction"){
-					var form = document.getElementById('event-form')
-					form.addEventListener('submit', registerForm2)
-
-					async function registerForm2(event){
-						event.preventDefault();
-						const memb1 =await registerUser(1);
-						const memb2 =await registerUser(2);
-						const memb3 =await registerUser(3);
-						const result=await registerForEvent(memb1,memb2,memb3);
-					}
-
-					async function registerUser(i) {
-						const email = document.getElementById(`email_address${i}`).value;
-						const discord = document.getElementById(`discord${i}`).value;
-						const result = await fetch(`/events/event_registration/post_ipl`, {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({
-							email,
-							discord,
-						})
-						}).then((res) => res.json())
-						if (result.status === 'ok') {
-						return result.data
-						
-						} else {
-						window.location.replace(`/`);
-						alert(result.error)
-						}
-					};
-
-					async function registerForEvent(member1,member2,member3) {
-						const teamname = document.getElementById("team_name").value;
-						const result = await fetch(`/iplauction/register`, {
-							method: 'POST',
-							headers: {
-							'Content-Type': 'application/json'
-							},
-							body: JSON.stringify({
-							member1, member2, member3,teamname
-							})
-						}).then((res) => res.json())
-						if (result.status === 'ok') {
-							window.location.replace(`/events/event_registration/success`);
-							alert('Success')
-						} else {
-							window.location.replace(`/`);
-							alert(result.error)
-						}
-					};			
-				
-			}
+		}
 	
     </script>
 

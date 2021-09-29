@@ -122,5 +122,4 @@ app.get("/success",(req,res)=>{
 	res.render("events/event_reg_success");
 });
 
-
 module.exports = app;
