@@ -144,7 +144,7 @@ body {
 
 .register-button {
     position: absolute;
-    left:42%;
+    left:38%;
     right:auto;
     background-color: black;
     padding: 7px 15px;
@@ -239,7 +239,7 @@ body {
   
     .register-button {
       position: absolute;
-      left:36%;
+      left:32.5%;
       right:auto;
       background-color: black;
       padding: 7px 15px;
@@ -248,6 +248,16 @@ body {
 	  font-size: 14px;
     }
 	
+	.rulebook-button{
+      position: absolute;
+      left:32.5%;
+      right:auto;
+      background-color: black;
+      padding: 7px 15px;
+      color: #c567ff;
+	  border-radius: 3px;
+	  font-size: 14px;
+	}
 	.coming-soon{
 	position: absolute;
     left:34%;
