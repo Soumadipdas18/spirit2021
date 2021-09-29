@@ -60,7 +60,7 @@ body {
   text-align: right;
   color: white;
   font-size: 1.8rem; }
-g
+
 .login-image {
   overflow: hidden;
   position: relative;
@@ -274,4 +274,5 @@ g
   .create-acc-link, .create-acc-link:link, .create-acc-link:visited {
     color: #c567ff;
     text-decoration: none; }
+
 
