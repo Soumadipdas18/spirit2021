@@ -173,10 +173,17 @@
 						</form>	               
 					</div> 
 				</div>
-				
-				<div >
+			</div>
+			<div id="Grid_2">
+				 <div style="color:green; display:inline;" class="register-partition">
+					 <p id="success">
+						 
+					 </p>
+                <div >
 					<div class="itemof2"><a href="/" >Go to home page</a></div>
 				</div>
+            	</div>
+				
 			</div> 
 		</div>
     </section>
@@ -204,8 +211,9 @@
 		}).then((res) => res.json())
 
 		if (result.status === 'ok') {
-			alert('Success')
-			window.location.reload()
+			
+			document.getElementById("success").innerHTML='Success. Your details are updated. Visit the home page to sign in'
+			
 		} else {
 			alert(result.error)
 		}

@@ -250,9 +250,9 @@ body {
 	font-size: 16px;
 }
 
-@media (max-width: 550px) {
-    #card-img {
-      width: 335px;
+@media (max-width:1450px) {
+	    #card-img {
+      width: 335px; /*335*/
       height: 335px;
     }
   
@@ -269,6 +269,109 @@ body {
       text-align: left;
       font-size: large;
       color: white;
+    }
+  	
+}
+
+@media (max-width:1450px) {
+	    #card-img {
+      width: 335px; /*335*/
+      height: 335px;
+    }
+  
+    .flip-card {
+      background-color: transparent;
+      width: 335px;
+      height: 335px;
+      perspective: 1000px;
+      margin: auto;
+    }
+  
+    .flip-para {
+      padding: 100px 30px 60px 30px;
+      text-align: left;
+      font-size: large;
+      color: white;
+    }
+	
+	    .register-button {
+      position: absolute;
+      left:32.5%;
+      right:auto;
+      background-color: black;
+      padding: 7px 15px;
+      color: #c567ff;
+	  border-radius: 3px;
+	  font-size: 14px;
+    }
+	
+	.register-button-rulebook {
+    position: absolute;
+	bottom:50px;
+    left:34%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;
+    }
+	.coming-soon{
+	position: absolute;
+    left:34%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;
+    }
+	
+	.register-button-athlosarena {
+    position: relative;
+	bottom: 0px;
+	top: 30px;
+    left:34%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;
+}
+	
+	.one-card{
+		padding:10px;
+    }
+  	
+}
+
+@media(max-width: 775px){
+    #card-img {
+      width: 230px; /*335*/
+      height: 230px;
+    }
+  
+    .flip-card {
+      background-color: transparent;
+      width: 230px;
+      height: 230px;
+      perspective: 1000px;
+      margin: auto;
+    }
+  
+    .flip-para {
+      padding: 30px 30px 20px 30px;
+      text-align: center;
+      font-size: x-small;
+      color: white;
+    }
+	
+	.flip-RM {
+    text-decoration: none;
+    color: #0a0a0a;
+    font-weight: 500;
+    font-size: small;
     }
   
     .register-button {
@@ -331,6 +434,116 @@ body {
 	.one-card{
 		padding:10px;
     }
+	
+}
+
+@media (max-width: 475px) {
+    #card-img {
+      width: 160px; /*335*/
+      height: 160px;
+    }
+  
+    .flip-card {
+      background-color: transparent;
+      width: 160px;
+      height: 160px;
+      perspective: 1000px;
+      margin: auto;
+    }
+  
+    .flip-para {
+      padding: 30px 30px 20px 30px;
+      text-align: center;
+      font-size: x-small;
+      color: white;
+    }
+	
+	.flip-RM {
+    text-decoration: none;
+    color: #0a0a0a;
+    font-weight: 500;
+    font-size: small;
+    }
+  
+    .register-button {
+      position: absolute;
+      left:29%;
+      right:auto;
+      background-color: black;
+      padding: 7px 15px;
+      color: #c567ff;
+	  border-radius: 3px;
+	  font-size: small;
+    }
+	
+	.register-button-rulebook {
+    position: absolute;
+	bottom:50px;
+    left:32.6%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: small;
+    }
+	.coming-soon{
+	position: absolute;
+    left:32%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: small;
+    }
+	
+	.register-button-athlosarena {
+    position: relative;
+	bottom: 0px;
+	top: 30px;
+    left:32.6%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size:small;
+}
+	
+	.one-card{
+		padding:10px;
+    }
+	
+	.text-line {
+    display: block;
+    position: relative;
+    margin: 20px 2px 20px 2px;
+	font-size:large;
+}
+	.expand-container {
+    width: 100%;
+    height: auto;
+    background-color: #c567ff;
+    font-size:  medium;
+    padding-bottom: 150px;
+}
+	.prize{
+	font-size:large;
+	padding-bottom:20px
+}
+	.athlos-arena-box{
+	width: 100%;
+    height: auto;
+    background-color: #c567ff;
+    font-size: small;
+    padding-bottom: 50px;
+}
+	.contact{
+	font-size:medium;
+	font-weight:450;
+}
+
 
   }
   
