@@ -60,7 +60,7 @@ body {
 
 .register-image {
   overflow: hidden;
-  background-image: url("../images/spirit_login.jpeg");
+  background-image: url("../images/spirit_login.jpg");
   background-size: cover;
   background-position: right; }
   @media (max-width: 46.875em) {
