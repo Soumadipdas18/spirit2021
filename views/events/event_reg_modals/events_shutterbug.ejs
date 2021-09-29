@@ -20,9 +20,25 @@
 							<p class="text-center prize">
 								<b>Prize Pool of 5k</b>
 							</p>
-							<!-- <a href="events/register/shutterbug"> -->
+							
 							<button type="button" class="btn btn-primary btn-lg coming-soon center-block">COMING SOON!</button>
-							<!-- </a> -->
+							
+							<!-- <%if (logged_in){%>
+							    <%if(user.events_registered.includes("shutterbug")){%>
+								<button type="button" class="btn btn-primary btn-lg register-button center-block">
+								ALREADY REGISTERED
+								</button>
+								<%}else{%>
+								<a href="events/register/iplauction" style="text-decoration:none"><button type="button" class="btn btn-primary btn-lg register-button center-block">
+								REGISTER
+								</button></a>
+								<%}%>
+							
+							<%}else{%>
+							<a href="login" style="text-decoration:none"><button type="button"  class="btn btn-primary btn-lg register-button center-block">
+								LOGIN TO REGISTER
+								</button></a>
+							<%}%> -->
                     	</div>
                 	</div>
              	</div>

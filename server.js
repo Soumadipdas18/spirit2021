@@ -86,10 +86,12 @@ app.get("/logout", (req, res) => {
 
 
 //events
-app.get("/events", (req, res) => {
+app.get("/events", async (req, res) => {
   session = req.session;
   if (session.userid) {
-    res.render("events/events", { logged_in: true });
+	const email=req.session.userid
+	const user = await stuff_user.model.findOne({  email }).lean();
+    res.render("events/events", { user:user,logged_in: true });
   } else res.render("events/events", { logged_in: false });
 });
 
