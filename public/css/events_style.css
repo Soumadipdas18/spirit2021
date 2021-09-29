@@ -232,6 +232,19 @@ body {
 	cursor: pointer;
 }
 
+.register-button-athlosarena {
+    position: relative;
+	bottom: 0px;
+	top: 20px;
+    left:40%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;
+}
+
 @media (max-width: 550px) {
     #card-img {
       width: 335px;
