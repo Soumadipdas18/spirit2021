@@ -9,19 +9,35 @@
 	<%- include('../navbar') -%>
 	
 	<section class="landing">
-		<div class="landing-circle"><img class="landing-circle-img" src="images/Group 1_.png" alt="Circle"></div>
+		
+		<div class="landing-text">
+			
+			<div class="landing-text-head">
+				Spirit 2021
+			</div>
+			
+			<div class="landing-text-desc">
+				Spirit is the annual sports festival of IIT Guwahati which organizes several
+				competitive events. Spirit is a platform for all budding sportspersons...
+				<a href="aboutus" class="landing-text-desc-read">Read More</a>
+			</div>
+			<!-- <br>
+			<a class="landing-text-desc-read" data-bs-toggle="modal" data-bs-target="#expand-modal-treasurehunt">
+                 	Click here to try out our treasure hunt!</a> -->
+		</div>
+		  
+		<div class="landing-circle">
+			<img class="landing-circle-img" src="images/Group 1_.png" alt="Circle">
+		</div>
+		
 		<div class="landing-image">
 			<img class="landing-image-img" src="" alt="Circle">
 		</div>
-		<div class="landing-text">
-			<div class="landing-text-head">Spirit 2021</div>
-			<div class="landing-text-desc">Spirit is the annual sports festival of IIT Guwahati which organizes several
-				competitive events. Spirit is a platform for all budding sportspersons...
-				<a href="aboutus" class="landing-text-desc-read">Read More</a></div>
-			<a class="" data-bs-toggle="modal" data-bs-target="#expand-modal-treasure_hunt">
-                 		 	Click here to try out our treasure hunt!
-                    	</a>
-		</div>
+		
+		<div class="landing-image-mobile">
+            <img class="landing-image-img-mobile" src="images/img1-m.png" alt="Circle">
+        </div>
+		
 
 	</section>
 
@@ -29,6 +45,7 @@
 	<section class="updates">
 		<%- include('updates') -%>
 	</section>
+	
 	<section class="events">
 
 		<div class="events-title">
@@ -51,8 +68,22 @@
 
 		</div>
 	</section>
+	
+    <!-- Events Mobile View -->
+     <section class="events-m">
 
-
+         <div class="events-m-title">
+			 <h1>Events</h1>
+		</div>
+		
+        <div class="events-m-container">
+			
+              <div class="events-m-slider"> 
+                <%- include('events_landingpage_m') -%>
+              </div>
+			
+        </div>
+    </section>
 	<section class="aboutUs">
 		<div class="aboutUs-img"></div>
 		<div class="aboutUs-text">

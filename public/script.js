@@ -179,4 +179,156 @@ navB4.addEventListener('focusin', () => {
   startSlide();
 })
 
+// // Mobile card flip
+
+  let touch_div1 = document.querySelector(`#event-1-m`);
+  let touch_divb1 = document.querySelector(`#event-1-mb`);
+  let touch_div2 = document.querySelector(`#event-2-m`);
+  let touch_divb2 = document.querySelector(`#event-2-mb`);
+  let touch_div3 = document.querySelector(`#event-3-m`);
+  let touch_divb3 = document.querySelector(`#event-3-mb`);
+  let touch_div4 = document.querySelector(`#event-4-m`);
+  let touch_divb4 = document.querySelector(`#event-4-mb`);
+  let touch_div5 = document.querySelector(`#event-5-m`);
+  let touch_divb5 = document.querySelector(`#event-5-mb`);
+  let touch_div6 = document.querySelector(`#event-6-m`);
+  let touch_divb6 = document.querySelector(`#event-6-mb`);
+  let touch_div7 = document.querySelector(`#event-7-m`);
+  let touch_divb7 = document.querySelector(`#event-7-mb`);
+  let touch_div8 = document.querySelector(`#event-8-m`);
+  let touch_divb8 = document.querySelector(`#event-8-mb`);
+  let touch_div9 = document.querySelector(`#event-9-m`);
+  let touch_divb9 = document.querySelector(`#event-9-mb`);
+  let touch_div10 = document.querySelector(`#event-10-m`);
+  let touch_divb10 = document.querySelector(`#event-10-mb`);
+
+  let is_touch_device = false;
+  let touchstart_event_listener;
+  let touchend_event_listener;
+  
+  if ("ontouchstart" in document.documentElement) {
+    is_touch_device = true;
+  }
+  if (is_touch_device) {
+
+  touch_div1.classList.add('flip-card-back');
+  touch_div1.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div1.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb1.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div1.addEventListener('touchend', touchstart_event_listener = () => {
+   setTimeout(function() {
+  touch_div1.classList.replace('flip-card-front', 'flip-card-back');
+  touch_divb1.classList.replace('flip-card-back', 'flip-card-front');
+  },1000);  
+  });
+
+  touch_div2.classList.add('flip-card-back');
+  touch_div2.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div2.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb2.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div2.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div2.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb2.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+
+  touch_div3.classList.add('flip-card-back');
+  touch_div3.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div3.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb3.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div3.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div3.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb3.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+
+  touch_div4.classList.add('flip-card-back');
+  touch_div4.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div4.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb4.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div4.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div4.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb4.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+
+  touch_div5.classList.add('flip-card-back');
+  touch_div5.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div5.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb5.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div5.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div5.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb5.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+
+  touch_div6.classList.add('flip-card-back');
+  touch_div6.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div6.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb6.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div6.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div6.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb6.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+
+  touch_div7.classList.add('flip-card-back');
+  touch_div7.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div7.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb7.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div7.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div7.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb7.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+
+  touch_div8.classList.add('flip-card-back');
+  touch_div8.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div8.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb8.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div8.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div8.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb8.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+
+  touch_div9.classList.add('flip-card-back');
+  touch_div9.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div9.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb9.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div9.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div9.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb9.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+
+  touch_div10.classList.add('flip-card-back');
+  touch_div10.addEventListener('touchstart', touchstart_event_listener = () => {
+    touch_div10.classList.replace('flip-card-back', 'flip-card-front');
+    touch_divb10.classList.replace('flip-card-front', 'flip-card-back');
+  });
+  touch_div10.addEventListener('touchend', touchstart_event_listener = () => {
+    setTimeout(function() {
+   touch_div10.classList.replace('flip-card-front', 'flip-card-back');
+   touch_divb10.classList.replace('flip-card-back', 'flip-card-front');
+   },1000);  
+   });
+}
 

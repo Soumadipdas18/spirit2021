@@ -66,11 +66,20 @@
 				<div class="data_text event">
 					IPL Auction 
 				</div>
-				<%}else if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
-				<div class="data_text event">
-					<%=user.events_registered[i].replace("Ipl", "IPL") %>		
-				</div>
-				<%}}else{%>
+				<%}else if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){
+					var event_name = user.events_registered[i];
+					stuff_event.event.findOne({ event_name: event_name }).then((event1)=>{
+					console.log(event1);
+					if(event1._id){
+				%>
+					<div class="data_text event">
+						<%=event1.event_name.replace("Ipl", "IPL") %>		
+					</div>
+				<%}else{ %>
+					<div class="data_text event">
+						Photo for event not found
+					</div>
+				<%}});}}else{%>
 				<div class="data_text event">
 					You have not registered for any event
 				</div>

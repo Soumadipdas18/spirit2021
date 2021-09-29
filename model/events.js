@@ -11,6 +11,7 @@ const EventSchema = new mongoose.Schema(
     email_address: [{ type: String, required: false, unique:false}],
     college: [{ type: String, required: false, unique:false}],
 	contact_number: [{ type: String, required: false, unique:false}],
+  	poster: {type: String, required:false, unique:false },
 
   });
 const Event = mongoose.model("Event", EventSchema);
