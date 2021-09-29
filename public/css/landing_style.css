@@ -226,10 +226,10 @@
 }
 @media (max-width: 37.5em) {
   .card__text {
-    top: 7%;
+    top: 5%;
     width: 90%;
-    line-height: 1.5;
-    font-size: 2rem;
+    line-height: 1.55;
+    font-size: 1.8rem;
     font-weight: 300;
   }
 }
@@ -368,8 +368,8 @@
 }
 @media (max-width: 75em) {
   .updates-box {
-    width: 42%;
-    height: 60%;
+    width: 44%;
+    height: 63%;
   }
 }
 @media (max-width: 56.25em) {
@@ -381,7 +381,7 @@
 }
 @media (max-width: 37.5em) {
   .updates-box {
-    width: 50%;
+    width: 54%;
     height: 50%;
   }
 }
@@ -409,7 +409,7 @@
 @media (max-width: 75em) {
   .updates-box-title {
     font-size: 3.8rem;
-    margin: 3rem 0 0 5rem;
+    margin: 1.8rem 0 0 3rem;
   }
 }
 @media (max-width: 56.25em) {
@@ -421,7 +421,7 @@
 @media (max-width: 37.5em) {
   .updates-box-title {
     font-size: 1.7rem;
-    margin: 1.2rem 0rem 0 0.8rem;
+    margin: 1.5rem 1.2rem 0 1.2rem;
   }
 }
 .updates-box-desc {
@@ -432,7 +432,7 @@
 @media (max-width: 75em) {
   .updates-box-desc {
     font-size: 2.2rem;
-    margin: 1rem 6rem 2rem 5rem;
+    margin: 1rem 3rem 2rem 3rem;
   }
 }
 @media (max-width: 56.25em) {
@@ -444,7 +444,7 @@
 @media (max-width: 37.5em) {
   .updates-box-desc {
     font-size: 1.3rem;
-    margin: 0.15rem 1.2rem 1rem 1.2rem;
+    margin: 0.5rem 1.2rem 1rem 1.2rem;
   }
 }
 
