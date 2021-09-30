@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const authapi = require("./routes/authapi");
 const profileroute = require("./routes/profileroute");
 const event_regRoute = require("./routes/event_regRoute");
+const shutterbug = require("./routes/shutterbug");
 const iplauction=require("./routes/iplauction");
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
@@ -106,6 +107,17 @@ app.get("/events/register/:name", async (req, res) => {
     res.redirect("/login");
   }
 });
+
+app.get("/shutterbug_submission", async (req, res) => {
+  if (req.session.userid) {
+    email = session.userid;
+    const user = await stuff_user.model.findOne({ email }).lean();
+    res.render("events/shutterbug_submission",{user: user});
+  }
+  else{
+    res.redirect("/login");
+  }
+});
 //SPONSORS
 app.get("/sponsors", (req, res) => {
   session = req.session;
@@ -131,6 +143,7 @@ app.get('/admin', (req, res) => {
 app.use("/authapi", authapi);
 app.use("/iplauction", iplauction);
 app.use("/profile", profileroute);
+app.use("/shutterbug_submission", shutterbug);
 app.use("/events/event_registration", event_regRoute);
 
 app.get('*', function(req, res){

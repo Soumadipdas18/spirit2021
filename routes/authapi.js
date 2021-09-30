@@ -99,9 +99,9 @@ Thanks for registering for Spirit!
 <br>
 Please verify your account on the below link:
 <br>
-<a href="http://${req.hostname}/authapi/verifyaccount/${response._id}">
+<a href="http://${req.hostname}/authapi/verifyaccount/${response._id}">Click here</a>
 <br><br>
-If you have problems, please paste the above URL into your web browser.
+If the link is not showing mark the mail as not spam.
 <br><br>
 Regards
 <br>
@@ -222,7 +222,7 @@ We need a little more information, before we complete your registration. Please 
 <br>
 <a href="http://${req.hostname}/profile/update/${response._id}">Click here to update your account</a>
 <br><br>
-If you have problems, please paste the above URL into your web browser.
+If the link is not showing mark the mail as not spam.
 <br><br>
 Regards
 <br>

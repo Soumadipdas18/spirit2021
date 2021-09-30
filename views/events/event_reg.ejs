@@ -37,7 +37,7 @@
 .img1 {
   width: 100%;
   height: 34vh;
-  background-image: url('/images/Iplcard.png');
+  background-image: url('/images/IplCard.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -318,6 +318,7 @@ color: rgba(255, 255, 255, 0.8);
 				};
 
 				async function registerUser(i) {
+          const name = document.getElementById(`full_name${i}`).value;
 					const email = document.getElementById(`email_address${i}`).value;
 					const discord = document.getElementById(`discord${i}`).value;
 					const result = await fetch(`/events/event_registration/post_ipl`, {
@@ -326,6 +327,7 @@ color: rgba(255, 255, 255, 0.8);
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
+            name,
 						email,
 						discord,
 					})
