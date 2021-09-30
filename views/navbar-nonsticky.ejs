@@ -1,0 +1,266 @@
+<head>
+    <style>
+  @media (max-width: 56.25em) {
+    .navigation {
+      display: none; } }
+  .navigation-link, .navigation-link:link, .navigation-link:visited {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: white;
+    font-size: 1.9rem;
+    font-weight: 400;
+	}
+  .navigation-link:hover {
+    text-decoration: underline; }
+  .navigation-link-img {
+    left: 1.5%; }
+  .navigation-link-events {
+    left: 11%; }
+  .navigation-link-sponsors {
+    left: 21.5%; }
+  .navigation-link-gallery {
+    left: 34%; }
+  .navigation-link-aboutus {
+    left: 45.4%; }
+
+.logo-img {
+  margin-top: 1rem;
+  display: inline-block;
+  height: 3rem; }
+
+
+
+.login-button {
+  display: inline-block;
+  position: absolute;
+  right: 1.5%;
+  top: 50%;
+  transform: translateY(-50%); }
+  .login-button-btn-1, .login-button-btn-1:link, .login-button-btn-1:visited {
+    background-color: #c567ff;
+    text-decoration: none;
+    padding: 0.6rem 2.2rem;
+    display: inline-block;
+    border-radius: 0.3rem;
+    transition: all 0.2s;
+    font-size: 2rem;
+    color: #0a0a0a;
+    border: none;
+    cursor: pointer; }
+  .login-button-btn-1:hover, .login-button-btn-1:focus {
+    transform: translateY(-3px);
+    color: white; }
+  .login-button-btn-1:active, .login-button-btn-1:focus {
+    color: #0a0a0a;
+    background-color: #c567ff;
+    outline: none;
+    transform: translateY(-1px); }
+
+.navigationM {
+  height: 5.4rem;
+  background-color: #272727;
+  position: relative;
+  display: none; }
+  .navigationM_container {
+    width: 100%;
+    /* position: fixed; */
+    z-index: 5000; }
+  @media (max-width: 56.25em) {
+    .navigationM {
+      display: block; } }
+  .navigationM__home {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+  .navigationM__login {
+    display: inline-block;
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center; }
+  .navigationM__checkbox {
+	margin-left: 1.85rem;
+    display: none; }
+  .navigationM__button {
+    background-color: #272727;
+    height: 5rem;
+    width: 2.5rem;
+    z-index: 2000;
+    text-align: center; }
+  .navigationM__icon {
+    position: relative;
+    margin-top: 2.2rem;
+    margin-left: 1.85rem;
+    color: #c567ff;
+    transition: all 0.3s; }
+    .navigationM__icon, .navigationM__icon::after {
+      width: 2.5rem;
+      height: 1px;
+      background-color: #c567ff;
+      display: inline-block; }
+    .navigationM__icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.3s; }
+    .navigationM__icon::after {
+      top: 1rem; }
+  .navigationM__checkbox:checked + .navigationM__button .navigationM__icon {
+    margin-top: 2.5rem;
+    transform: rotate(135deg); }
+  .navigationM__checkbox:checked + .navigationM__button .navigationM__icon::after {
+    top: 0;
+    transform: rotate(-90deg); }
+  .navigationM__nav {
+    height: 10vh;
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    z-index: 1500;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.6s ease-in-out;
+    background-color: #272727;
+    position: relative; }
+  .navigationM__list {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 100%; }
+  .navigationM__checkbox:checked ~ .navigationM__nav {
+    top: 0;
+    height: 100vh;
+    visibility: visible;
+    opacity: 0.95; }
+  .navigationM-link, .navigationM-link:link, .navigationM-link:visited {
+    color: white;
+    text-decoration: none;
+    font-size: 2.5rem;
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+    border-bottom: solid 1px white;
+    margin-bottom: 2rem; }
+
+
+    .login-img {
+  height: 3.25rem;
+  display: inline-block;
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.home-img {
+  display: inline-block;
+  height: 2.5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+		.topnav {
+overflow: hidden;
+background-color: #272727;
+width:100%;
+height:70px;
+margin:auto; 
+box-shadow:0px 6px 16px -6px rgba(1,1,1,0.5);
+transition:0.5s;
+background-size:cover;
+background-position:center;
+}
+
+.nav-links {
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 20px 20px;
+text-decoration: none;
+font-size: 17px;
+position:relative;
+transition:0.5s;
+}
+.nav-img{
+	float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 20px;
+text-decoration: none;
+font-size: 17px;
+position:relative;
+transition:0.5s;	
+		}
+.nav-links:hover{
+	color:white;
+  background-color:#c567ff;
+}
+
+    </style>
+</head>
+<div class="topnav navigation" id="myTopnav">
+<a class="nav-img"href="/"><img src="images/spirit logo 1 (Traced).png" class="logo-img"alt="Spirit"></a>
+<a class="nav-links" href="events">Events</a>
+<a class="nav-links" href="sponsors">Sponsors</a>
+<a class="nav-links" href="aboutus">About Us</a>
+<!-- <a class="nav-links" href="gallery">Gallery</a> -->
+<div style="float:right; padding:14px 20px;"> 
+<%if (logged_in){%>
+        <a href="profile"><button class="login-button-btn-1">Profile</button></a>
+<%}else{%>
+	<a href="login"><button class="login-button-btn-1">Login</button></a>
+<%}%>
+</div>
+</div>
+    <div class="navigationM_container">
+        <div class="navigationM">
+    
+            <input type="checkbox" class="navigationM__checkbox" id="navi-toggle">
+            <label for="navi-toggle" class="navigationM__button"><span class="navigationM__icon">&nbsp;</span></label>
+    
+            <a href="/" class="navigationM__home"> <img src="images/spirit logo 1 (Traced).png" class="home-img"
+                    alt="Home"></a>
+            <%if (logged_in){%>
+            <a href="profile" class="navigationM__login"><img src="images/icon-100.png" class="login-img" alt="profile"></a>
+    		<%}else{%>
+			<a href="login" class="navigationM__login"><img src="images/icon-100.png" class="login-img" alt="Login"></a>
+			<%}%>
+            <nav class="navigationM__nav">
+                <ul class="navigationM__list">
+                    <li class="navigationM__item"></li>
+					
+					<%if (logged_in){%>
+        			<li class="navigationM__item"><a href="profile" class="navigationM-link navigationM-link-login">Profile</a></li>
+        			<%}else{%>
+					<li class="navigationM__item"><a href="login" class="navigationM-link navigationM-link-login">Login</a></li>
+            		<%}%>
+                    <li class="navigationM__item"><a href="events" class="navigationM-link navigationM-link-events">Events</a>
+                    </li>
+                    <li class="navigationM__item"><a href="sponsors"
+                            class="navigationM-link navigationM-link-sponsors">Sponsors</a></li>
+                    <li class="navigationM__item"><a href="aboutus" class="navigationM-link navigationM-link-gallery">About Us</a>
+                    </li>
+                    <!-- <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-aboutus">AboutUs</a>
+                    </li> -->
+                </ul>
+            </nav>
+        </div>
+    </div>
