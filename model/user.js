@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema(
     collegename: { type: String, default: null ,unique:false},
     email: { type: String, required: true, unique: true },
     phno: { type: String, default: null,unique:false },
+    img: { type: String, required: false, unique: false},
     password: { type: String, default: null,unique:false },
 	//Since our website is not ready we will host a static form for the ipl auction event in the old website
 	//and connect it with this database. So when our new website will be put up, we will send mail to the registered users with a random password to         //login into the new website. So I made the storerandompassword field to store a random password for them which can be used later

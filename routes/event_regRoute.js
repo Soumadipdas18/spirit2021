@@ -10,17 +10,18 @@ var urlencodedParser = bodyParser.urlencoded({ extended : false });
 app.post("/post_ipl",async (req,res)=>{
 
 	var counter1 = 0;
+	const name = req.body.name;
 	const ipl_email = req.body.email;
 	const ipl_discord = req.body.discord;
 	const ipl_data =  await stuff_user.model.findOne({ email: ipl_email }).then(
 		(ipl_data)=> {
-			ipl_data.discord = ipl_discord;
 			for(let i=0; i<ipl_data.events_registered.length; i++){
 				if(ipl_data.events_registered[i] === "Ipl Auction"){
 					counter1++;
 				}
 			}
 			if(counter1 === 0){
+				ipl_data.discord = ipl_discord;
 				ipl_data.events_registered.push("Ipl Auction");
 			}
 			ipl_data.save(function(error, data){
@@ -28,7 +29,7 @@ app.post("/post_ipl",async (req,res)=>{
 					if(error.code === 11000){
 						return res.json({
 							status: "error",
-							error: "One of the team members have already registered for this event",
+							error: `${name} has already registered for this event`,
 						});
 					}
 					else{
@@ -49,7 +50,7 @@ app.post("/post_ipl",async (req,res)=>{
 		(error)=>{
 			return res.json({
 				status: "error",
-				error: "One of the member has not registered in this website. Try again after registering",
+				error: `${name} has not registered in this website. Please try again after registering`,
 			});
 		}
 	)
