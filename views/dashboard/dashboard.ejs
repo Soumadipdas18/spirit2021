@@ -74,19 +74,14 @@
 				<div class="data_text event">
 					IPL Auction
 				</div>
-				<% }else if(typeof user.events_registered === 'undefined'){ %>
-				<div class="data_text event">
-					You have not registered for any event
-				</div>
-				<%}else if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
+				<% } %>
+				
+				<%if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
 					<div class="data_text event">
 						<%=user.events_registered[i].replace("Ipl", "IPL") %>		
 					</div>
-				<%}}else{%>
-				<div class="data_text event">
-					You have not registered for any event
-				</div>
-				<%}%>
+				<%}}%>
+				
 				
 			</div>
             
