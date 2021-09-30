@@ -40,32 +40,16 @@ app.post("/post_ipl",async (req,res)=>{
 						});
 					}	
 				}
-				if(error){
-					if (error.code === 11000) {
-						// duplicate key
-						console.log('item not saved');
-						return res.json({
-							status: "error",
-							error: "You've already registered for this event",		
-						});
-						}
-					else{
-						console.log('item not saved');
-						return res.json({
-							status: "error",
-							error: "Something went wrong. Please contact Spirit team",		
-						});	
-					}   
-				}
 				const amb1 = await stuff_user.model.findOne({ campusAmbId }).then(
 					(amb1)=>{
-						let referrals_no = parseInt(amb1.referrals);
-						referrals_no++;
-						amb1.referrals = referrals_no.toString();
-						amb1.save()});
+                        if(amb1){
+							let referrals_no = parseInt(amb1.referrals);
+							referrals_no++;
+							amb1.referrals = referrals_no.toString();
+							amb1.save()
+						}
+					});
 				console.log('item saved');
-				return res.json({ status: "ok" });
-
 				return res.json({
 					status: "ok",
 					data: ipl_data,
@@ -80,8 +64,7 @@ app.post("/post_ipl",async (req,res)=>{
 				error: `${name} has not registered in this website. Please try again after registering`,
 			});
 		}
-	)
-	
+	)	
 });
 
 app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
@@ -102,9 +85,9 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 			}
 			data.save()});
 
-	if( name_of_event === "shutterbug" ){
+	if( name_of_event === "shutterbug" || name_of_event === "marathon"){
 		if(counter === 0){	
-			var newEntry = await stuff.event.findOne({ event_name: "Shutterbug" }).then(
+			var newEntry = await stuff.event.findOne({ event_name: name_of_event }).then(
 			(newEntry)=>{
 				newEntry.contact_number.push(req.body.contact_number);
 				newEntry.email_address.push(req.body.email_address);
@@ -131,10 +114,14 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 					}
 					const amb = await stuff_user.model.findOne({ campusAmbId }).then(
 						(amb)=>{
-							let referrals_no = parseInt(amb.referrals);
-							referrals_no++;
-							amb.referrals = referrals_no.toString();
-							amb.save()});
+							if(amb){
+								let referrals_no = parseInt(amb.referrals);
+								referrals_no++;
+								amb.referrals = referrals_no.toString();
+								amb.save()
+							}
+
+						});
 					console.log('item saved');
 					return res.json({ status: "ok" });
 				})
