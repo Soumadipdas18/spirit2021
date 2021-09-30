@@ -139,6 +139,15 @@ app.get('/admin', (req, res) => {
  
 });
 
+app.get('/campus_amb_register',(req,res)=>{
+	if (!req.session.userid) {
+		res.render('authentication/ca-register');
+	}
+	else{
+		res.redirect('/')
+	}
+});
+
 //APIS
 app.use("/authapi", authapi);
 app.use("/iplauction", iplauction);

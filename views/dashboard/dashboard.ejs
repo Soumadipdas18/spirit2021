@@ -39,6 +39,18 @@
 					</p>
                 </div>
 			    <%}%>
+				
+				<%if ((user.isCampusAmb != undefined)&&(user.isCampusAmb==true)){%>
+                    <div class="data_field" style="width: 100%">
+                        <p class="data_title" style="min-width: 14vw">Campus Ambassador Id</p>
+                        <p class="data_text" id="amb_id" ><%=user.campusAmbId%> </p>
+                    </div>
+
+                    <div class="data_field" style="width: 100%">
+                        <p class="data_title" style="min-width: 14vw">Students Registered</p>
+                        <p class="data_text" id="referrals" ><%=user.referrals%> </p>
+                    </div>
+                    <%}%>
             
                 <div class="data_field">
                     <p class="data_title"></p>

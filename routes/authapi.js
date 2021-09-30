@@ -377,4 +377,79 @@ app.post("/reset_pass", async (req, res) => {
     })
     .catch((err) => res.status(400).send({ message: err.message }));
 });
+	
+	app.post("/ca_register", async (req, res) => {
+  const {
+    username,
+    collegename,
+    email,
+    phno,
+    password: plainTextPassword,
+  } = req.body;
+  if (!username || typeof username !== "string") {
+    return res.json({
+      status: "error",
+      error: "your username is badly formatted",
+    });
+  }
+  if (!email || typeof email !== "string") {
+    return res.json({
+      status: "error",
+      error: "your email address is badly formatted",
+    });
+  }
+  if (!plainTextPassword || typeof plainTextPassword !== "string") {
+    return res.json({ status: "error", error: "Invalid password" });
+  }
+  if (plainTextPassword.length < 5) {
+    return res.json({
+      status: "error",
+      error: "Password too small. Should be atleast 6 characters",
+    });
+  }
+  var isCampusAmb = true;
+  var campusAmbId = Math.floor((Math.random() * 100000000) + 1);
+  var referrals = "0";
+  //encrypting password end to end
+  const password = await bcrypt.hash(plainTextPassword, 10);
+  try {
+    //Main authentication part is the else part below. It will register users in the new website
+    const response = await stuff.model.create({
+      username,
+      collegename,
+      email,
+      phno,
+      password,
+      isCampusAmb,
+      campusAmbId,
+    });
+    var mailOptions = {
+      from: "Spirit 2021 <schedulerevent9@gmail.com>",
+      to: email,
+      subject: "Welcome to Spirit 2021. Verify your account",
+      html: `<b>Verify your account</b><br><a href="https://${req.hostname}/authapi/verifyaccount/${response._id}">Click here to verify your account</a>`,
+    };
+    //sending verification mail
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        return console.log(error);
+      }
+      console.log("Message sent");
+    });
+    return res.json({ status: "ok", data: response });
+
+  } catch (error) {
+    if (error.code === 11000) {
+      // duplicate key passed
+      return res.json({
+        status: "error",
+        error: "vmro this email is already in use",
+      });
+    } else if (error) {
+      return res.json({ status: "error", error: "Something went wrong" });
+    }
+  }
+
+  res.json({ status: "ok" });
+});
 module.exports = app;
