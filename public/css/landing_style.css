@@ -424,12 +424,12 @@
   font-size: 3.5rem;
   color: white;
   font-weight: 600;
-  margin: 5rem 0 0 7rem;
+  margin: 5rem 4rem 0 7rem;
 }
 @media (max-width: 75em) {
   .updates-box-title {
     font-size: 3.8rem;
-    margin: 1.8rem 0 0 3rem;
+    margin: 1.8rem 2rem 0 3rem;
   }
 }
 @media (max-width: 56.25em) {

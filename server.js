@@ -134,11 +134,8 @@ app.get("/aboutus", (req, res) => {
   } else res.render("aboutus/aboutus", { logged_in: false });
 	
 });
-//ADMIN PORTAL FOR CREATING EVENTS
-app.get('/admin', (req, res) => {
- 
-});
 
+//CAMPUS AMBASSADOR RESGISTER
 app.get('/campus_amb_register',async (req,res)=>{
   session = req.session;
 	if (session.userid) {
@@ -147,7 +144,7 @@ app.get('/campus_amb_register',async (req,res)=>{
 		res.render('authentication/ca-register', { user: user, logged_in: true });
 	}
 	else{
-		res.redirect('/')
+		res.render("authentication/login",{ logged_in: false,loginmsg:true });
 	}
 });
 

@@ -37,7 +37,11 @@
                 <p class="login-rf-f"  id="forgot" style="text-decoration:none; cursor:pointer;">Forgot Password?</p>
             </div>
 			<div style="color:red;" class="login-partition" id="errors">
-            
+             <% if(typeof loginmsg== 'undefined') { %>
+                  
+             <% }else{ %>
+				Your must login first
+			<%}%>
             </div>
             <div class="loginpg-button">
                 <a class="loginpg-button-link"><button class="loginpg-button-btn" id="LOGINBUTTON" type="submit">Login</button></a>

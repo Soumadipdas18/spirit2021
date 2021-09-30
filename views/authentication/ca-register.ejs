@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+	 <link rel="shortcut icon" type="image/png" href="images/logo.jpg" />
     <style>
         body{
             margin: 0px;
@@ -158,11 +159,13 @@
                 </div>
                 <div class="Login">
                     <p class="email" style="font-size:20px;">Your unique id will be displayed on your user dashboard. Ask people to enter that Id when they register for any event</p>
+					<p class="email" id="success"style="font-size:20px; color:green;"></p>
                 </div>
             </div>  
 
       
         </div> 
+		
         <script>
             let user_email = '<%-user.email%>'
            const form = document.getElementById('LOGINBUTTON')
@@ -187,141 +190,15 @@
                     // everythign went fine
                     //console.log('Got the token: ')
                     //localStorage.setItem('token', result.data)//storing data in localstorage
-                    window.location.replace(`/`);
-                    alert('You are successfully registered as a campus ambassador')
+                    
+                    document.getElementById('success').innerHTML='You are successfully registered as a campus ambassador'
                 } else {
                     alert(result.error)
                 }
             }
 
-           /*  //calling register apis to register using google
-			async function registergoogle(googleUser) {
-            	var profile = googleUser.getBasicProfile();
-            	//console.log('ID: ' + profile.getId());
-            	const username=profile.getName();
-            	//console.log('Image URL: ' + profile.getImageUrl());
-            	const email = profile.getEmail();
-            	const provider="google";
-            	console.log('Email: ' + profile.getEmail());
-           		const result = await fetch('/authapi/registerwithgofb', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email,
-                    username,
-                    provider
-                })
-            	}).then((res) => res.json())
-             
-            	if (result.status === 'ok') {
-					var auth2 = gapi.auth2.getAuthInstance();
-					auth2.signOut()
-					//window.location.replace(`/profile/get/${result.data._id}`);
-					window.location.replace(`/`);
-                	alert('Success. Check your mail and activate your account')
-            	} else {
-					var auth2 = gapi.auth2.getAuthInstance();
-					auth2.signOut()
-                	alert(result.error)
-            	}
-        	}
-        	
-            //login loginwithgofb
-            function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-                console.log('statusChangeCallback');
-                console.log(response);                   // The current login status of the person.
-                if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-                    testAPI();  
-                } else {                                 // Not logged into your webpage or we are unable to tell.
-                document.getElementById('status').innerHTML = 'Please log into this webpage.';
-                }
-            }
-
-            function checkLoginState() {               // Called when a person is finished with the Login Button.
-                FB.getLoginStatus(function(response) {   // See the onlogin handler
-                statusChangeCallback(response);
-                });
-            }
-
-            window.fbAsyncInit = function() {
-                FB.init({
-                appId: '354191059764159',
-                cookie: true,
-                xfbml: true,
-                version: 'v2.8'         
-                });
-                
-
-                FB.getLoginStatus(function(response) {  
-                    statusChangeCallback(response);        
-                });
-            };
-
-            //REGISTER WITH FACEBOOK
-			function testAPI() {            
-    			console.log('Welcome!  Fetching your information.... ');
-    			FB.api('/me?fields=name,email', async function(response) {
-      				console.log('Successful login for: ' + response.name);
-					const provider="facebook"
-					const email=response.email
-					const username=response.name
-					console.log(email)
-					console.log(username)
-					const result = await fetch('/authapi/registerwithgofb', {
-                		method: 'POST',
-                		headers: {
-                    		'Content-Type': 'application/json'
-                		},
-                		body: JSON.stringify({
-                    		email,
-                    		username,
-                    		provider
-                		})
-            		}).then((res) => res.json())
-             
-            	if (result.status === 'ok') {
-						
-						//window.location.replace(`/profile/get/${result.data._id}`);
-					window.location.replace(`/`);
-                		alert('Success. Check your mail and activate your account')
-				
-					
-            	} else {
-                	alert(result.error);
-            	}
-					
-    			});
-  			}
-              
-
-            //google-signup  
-            var googleUser = {};
-            var startApp = function() {
-                gapi.load('auth2', function(){
-                auth2 = gapi.auth2.init({
-                    client_id: '581624333892-ft1e5cqrd4ku0c9avg8hjtlikc518tuh.apps.googleusercontent.com',
-                    cookiepolicy: 'single_host_origin',
-                    //scope: 'additional_scope'
-                });
-                attachSignin(document.getElementById('google-signin'));
-                });
-            }
-
-            function attachSignin(element) {
-                console.log(element.id);
-                auth2.attachClickHandler(element, {},
-                    function(googleUser) {
-                        registergoogle(googleUser);
-                    }, function(error) {
-                    alert(JSON.stringify(error, undefined, 2));
-                });
-            }
-
-            startApp() */
+           
         </script>
-    </section>
-   
+			</section>
 </body>
 </html>
