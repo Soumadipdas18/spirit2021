@@ -1,28 +1,38 @@
 <head>
     <style>
+  .navigation {
+  height: 7rem;
+  background-color: #272727;
+  position: relative;
+  display: block;
+  z-index: 10000; }
   @media (max-width: 56.25em) {
     .navigation {
       display: none; } }
   .navigation-link, .navigation-link:link, .navigation-link:visited {
     display: inline-block;
     position: absolute;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     top: 50%;
     transform: translateY(-50%);
     text-decoration: none;
     color: white;
     font-size: 1.9rem;
     font-weight: 400;
-	}
+    margin: auto 0; }
   .navigation-link:hover {
-    text-decoration: underline; }
+    color: #c567ff; }
   .navigation-link-img {
-    left: 1.5%; }
+    left: 1.5%;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important; }
   .navigation-link-events {
     left: 11%; }
   .navigation-link-sponsors {
     left: 21.5%; }
   .navigation-link-gallery {
-    left: 34%; }
+    left: 33.5%; }
   .navigation-link-aboutus {
     left: 45.4%; }
 
@@ -31,15 +41,13 @@
   display: inline-block;
   height: 3rem; }
 
-
-
 .login-button {
   display: inline-block;
   position: absolute;
   right: 1.5%;
   top: 50%;
   transform: translateY(-50%); }
-  .login-button-btn-1, .login-button-btn-1:link, .login-button-btn-1:visited {
+  .login-button-btn, .login-button-btn:link, .login-button-btn:visited {
     background-color: #c567ff;
     text-decoration: none;
     padding: 0.6rem 2.2rem;
@@ -50,17 +58,17 @@
     color: #0a0a0a;
     border: none;
     cursor: pointer; }
-  .login-button-btn-1:hover, .login-button-btn-1:focus {
-    transform: translateY(-3px);
+  .login-button-btn:hover, .login-button-btn:focus {
+    transform: translateY(-2px);
     color: white; }
-  .login-button-btn-1:active, .login-button-btn-1:focus {
+  .login-button-btn:active, .login-button-btn:focus {
     color: #0a0a0a;
     background-color: #c567ff;
     outline: none;
     transform: translateY(-1px); }
 
 .navigationM {
-  height: 5.4rem;
+  height: 6rem;
   background-color: #272727;
   position: relative;
   display: none; }
@@ -86,8 +94,8 @@
     transform: translateY(-50%);
     text-align: center; }
   .navigationM__checkbox {
-	margin-left: 1.85rem;
-    display: none; }
+    display: none;
+	margin-left: 1.85rem;}
   .navigationM__button {
     background-color: #272727;
     height: 5rem;
@@ -96,24 +104,25 @@
     text-align: center; }
   .navigationM__icon {
     position: relative;
-    margin-top: 2.2rem;
+    margin-top: 2.4rem;
     margin-left: 1.85rem;
-    color: #c567ff;
+    color: white;
     transition: all 0.3s; }
     .navigationM__icon, .navigationM__icon::after {
-      width: 2.5rem;
-      height: 1px;
-      background-color: #c567ff;
-      display: inline-block; }
+      content: "";
+      display: inline-block;
+      width: 2.8rem;
+      height: 1.8px;
+      background-color: white; }
     .navigationM__icon::after {
       content: "";
       position: absolute;
       left: 0;
       transition: all 0.3s; }
     .navigationM__icon::after {
-      top: 1rem; }
+      top: 1.2rem; }
   .navigationM__checkbox:checked + .navigationM__button .navigationM__icon {
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     transform: rotate(135deg); }
   .navigationM__checkbox:checked + .navigationM__button .navigationM__icon::after {
     top: 0;
@@ -152,8 +161,7 @@
     border-bottom: solid 1px white;
     margin-bottom: 2rem; }
 
-
-    .login-img {
+.login-img {
   height: 3.25rem;
   display: inline-block;
   position: absolute;
@@ -163,104 +171,56 @@
 
 .home-img {
   display: inline-block;
-  height: 2.5rem;
+  height: 4.8rem;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%); }
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-		.topnav {
-overflow: hidden;
-background-color: #272727;
-width:100%;
-height:70px;
-margin:auto; 
-box-shadow:0px 6px 16px -6px rgba(1,1,1,0.5);
-transition:0.5s;
-background-size:cover;
-background-position:center;
-}
-
-.nav-links {
-float: left;
-display: block;
-color: #f2f2f2;
-text-align: center;
-padding: 20px 20px;
-text-decoration: none;
-font-size: 17px;
-position:relative;
-transition:0.5s;
-}
-.nav-img{
-	float: left;
-display: block;
-color: #f2f2f2;
-text-align: center;
-padding: 14px 20px;
-text-decoration: none;
-font-size: 17px;
-position:relative;
-transition:0.5s;	
-		}
-.nav-links:hover{
-	color:white;
-  background-color:#c567ff;
-}
+  transform: translate(-56.6%, -50%); }
 
     </style>
 </head>
-<div class="topnav navigation" id="myTopnav">
-<a class="nav-img"href="/"><img src="images/spirit logo 1 (Traced).png" class="logo-img"alt="Spirit"></a>
-<a class="nav-links" href="events">Events</a>
-<a class="nav-links" href="sponsors">Sponsors</a>
-<a class="nav-links" href="aboutus">About Us</a>
-<!-- <a class="nav-links" href="gallery">Gallery</a> -->
-<div style="float:right; padding:14px 20px;"> 
-<%if (logged_in){%>
-        <a href="profile"><button class="login-button-btn-1">Profile</button></a>
-<%}else{%>
-	<a href="login"><button class="login-button-btn-1">Login</button></a>
-<%}%>
-</div>
-</div>
+<nav class="navigation">
+        <a href="/" class="navigation-link navigation-link-img"> <img src="images/spirit logo 1 (Traced).png" class="logo-img" alt="Home"></a>
+        <a href="events" class="navigation-link navigation-link-events">Events</a>
+        <a href="sponsors" class="navigation-link navigation-link-sponsors">Sponsors</a>
+        <a href="aboutus" class="navigation-link navigation-link-gallery">About Us</a>
+        <!-- <a href="#" class="navigation-link navigation-link-aboutus">Gallery</a> -->
+
+    <div class="login-button">
+		<%if (logged_in){%>
+			<a href="profile"><button class="login-button-btn">Profile</button></a>
+		<%}else{%>
+			<a href="login"><button class="login-button-btn">Login</button></a>
+		<%}%>
+	</div>
+</nav>
+
     <div class="navigationM_container">
+		
         <div class="navigationM">
-    
             <input type="checkbox" class="navigationM__checkbox" id="navi-toggle">
             <label for="navi-toggle" class="navigationM__button"><span class="navigationM__icon">&nbsp;</span></label>
-    
-            <a href="/" class="navigationM__home"> <img src="images/spirit logo 1 (Traced).png" class="home-img"
-                    alt="Home"></a>
+ 
+            <a href="/" class="navigationM__home" > <img src="images/g4.png" class="home-img" alt="Home"></a>
+			
             <%if (logged_in){%>
-            <a href="profile" class="navigationM__login"><img src="images/icon-100.png" class="login-img" alt="profile"></a>
-    		<%}else{%>
-			<a href="login" class="navigationM__login"><img src="images/icon-100.png" class="login-img" alt="Login"></a>
+            <a href="profile" class="navigationM__login"><img src="images/login_iconabc.png" class="login-img" alt="Login"></a>
+            <%}else{%>
+			<a href="login" class="navigationM__login"><img src="images/login_iconabc.png" class="login-img" alt="Login"></a>
 			<%}%>
             <nav class="navigationM__nav">
                 <ul class="navigationM__list">
-                    <li class="navigationM__item"></li>
-					
 					<%if (logged_in){%>
-        			<li class="navigationM__item"><a href="profile" class="navigationM-link navigationM-link-login">Profile</a></li>
-        			<%}else{%>
-					<li class="navigationM__item"><a href="login" class="navigationM-link navigationM-link-login">Login</a></li>
-            		<%}%>
-                    <li class="navigationM__item"><a href="events" class="navigationM-link navigationM-link-events">Events</a>
-                    </li>
-                    <li class="navigationM__item"><a href="sponsors"
-                            class="navigationM-link navigationM-link-sponsors">Sponsors</a></li>
-                    <li class="navigationM__item"><a href="aboutus" class="navigationM-link navigationM-link-gallery">About Us</a>
-                    </li>
-                    <!-- <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-aboutus">AboutUs</a>
-                    </li> -->
+                    <li class="navigationM__item"><a href="profile" class="navigationM-link navigationM-link-login">Profile</a></li>
+					<%}else{%>
+                    <li class="navigationM__item"><a href="login" class="navigationM-link navigationM-link-login">Login</a></li>
+					<%}%>
+                    <li class="navigationM__item"><a href="events" class="navigationM-link navigationM-link-events" >Events</a></li>
+                    <li class="navigationM__item"><a href="sponsors" class="navigationM-link navigationM-link-sponsors">Sponsors</a></li>
+					<li class="navigationM__item"><a href="aboutus" class="navigationM-link navigationM-link-aboutus">AboutUs</a></li>
+                    <!-- <li class="navigationM__item"><a href="#" class="navigationM-link navigationM-link-gallery">Gallery</a></li> -->
+                    
                 </ul>
-            </nav>
+            </nav>   
         </div>
     </div>
