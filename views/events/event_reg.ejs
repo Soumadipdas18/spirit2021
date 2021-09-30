@@ -37,7 +37,7 @@
 .img1 {
   width: 100%;
   height: 34vh;
-  background-image: url('/images/IplCard.png');
+  background-image: url('/images/Iplcard.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -287,13 +287,14 @@ color: rgba(255, 255, 255, 0.8);
 				var email_address = document.getElementById('email_address').value
 				var college = document.getElementById('college').value
 				var contact_number = document.getElementById('contact_number').value
+        var amb_id = document.getElementById('amb_id').value
 				var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
-						full_name,event_name,email_address,college,contact_number
+						full_name,event_name,email_address,college,contact_number,amb_id
 					})
 				}).then((res) => res.json())
 
@@ -314,10 +315,12 @@ color: rgba(255, 255, 255, 0.8);
 					const memb1 =await registerUser(1);
 					const memb2 =await registerUser(2);
 					const memb3 =await registerUser(3);
+          const amb_id = document.getElementById('amb_id').value;
 					const result=await registerForEvent(memb1,memb2,memb3);
 				};
 
 				async function registerUser(i) {
+          const amb_id = document.getElementById('amb_id').value;
           const name = document.getElementById(`full_name${i}`).value;
 					const email = document.getElementById(`email_address${i}`).value;
 					const discord = document.getElementById(`discord${i}`).value;
@@ -330,6 +333,7 @@ color: rgba(255, 255, 255, 0.8);
             name,
 						email,
 						discord,
+            amb_id
 					})
 					}).then((res) => res.json())
 					if (result.status === 'ok') {

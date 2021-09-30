@@ -150,3 +150,30 @@ body {
     width:220px;
   }
 }
+
+@media(max-width:455px){
+	
+  .topic-data {
+    width: 88%;
+    margin: auto;
+    overflow: auto;
+	font-size:2rem;
+  }
+  .teamimages{
+    height:160px;
+    width:160px;
+  }
+}
+
+@media(max-width:467px){
+	.img-med{
+		padding-bottom:41px;
+	}
+}
+
+@media(max-width:405px){
+	.img-small{
+		padding-bottom:41px;
+	}
+}
+

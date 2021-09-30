@@ -13,6 +13,7 @@ app.post("/post_ipl",async (req,res)=>{
 	const name = req.body.name;
 	const ipl_email = req.body.email;
 	const ipl_discord = req.body.discord;
+	const campusAmbId = req.body.amb_id;
 	const ipl_data =  await stuff_user.model.findOne({ email: ipl_email }).then(
 		(ipl_data)=> {
 			for(let i=0; i<ipl_data.events_registered.length; i++){
@@ -24,7 +25,7 @@ app.post("/post_ipl",async (req,res)=>{
 				ipl_data.discord = ipl_discord;
 				ipl_data.events_registered.push("Ipl Auction");
 			}
-			ipl_data.save(function(error, data){
+			ipl_data.save(async function(error, data){
 				if(error){
 					if(error.code === 11000){
 						return res.json({
@@ -39,6 +40,32 @@ app.post("/post_ipl",async (req,res)=>{
 						});
 					}	
 				}
+				if(error){
+					if (error.code === 11000) {
+						// duplicate key
+						console.log('item not saved');
+						return res.json({
+							status: "error",
+							error: "You've already registered for this event",		
+						});
+						}
+					else{
+						console.log('item not saved');
+						return res.json({
+							status: "error",
+							error: "Something went wrong. Please contact Spirit team",		
+						});	
+					}   
+				}
+				const amb1 = await stuff_user.model.findOne({ campusAmbId }).then(
+					(amb1)=>{
+						let referrals_no = parseInt(amb1.referrals);
+						referrals_no++;
+						amb1.referrals = referrals_no.toString();
+						amb1.save()});
+				console.log('item saved');
+				return res.json({ status: "ok" });
+
 				return res.json({
 					status: "ok",
 					data: ipl_data,
@@ -60,6 +87,7 @@ app.post("/post_ipl",async (req,res)=>{
 app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 
 	let email = req.body.email_address;
+	let campusAmbId = req.body.amb_id;
 	let name_of_event = req.body.event_name;
 	var counter = 0;
 	const data = await stuff_user.model.findOne({ email }).then(
@@ -83,7 +111,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 				newEntry.full_name.push(req.body.full_name);
 				newEntry.college.push(req.body.college);
 				newEntry.user_object_id.push(req.params.id);
-				newEntry.save(function(error, data){			
+				newEntry.save(async function(error, data){			
 					if(error){
 						if (error.code === 11000) {
 							// duplicate key
@@ -101,6 +129,12 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 							});	
 						}   
 					}
+					const amb = await stuff_user.model.findOne({ campusAmbId }).then(
+						(amb)=>{
+							let referrals_no = parseInt(amb.referrals);
+							referrals_no++;
+							amb.referrals = referrals_no.toString();
+							amb.save()});
 					console.log('item saved');
 					return res.json({ status: "ok" });
 				})
