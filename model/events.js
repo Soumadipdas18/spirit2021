@@ -10,7 +10,7 @@ const EventSchema = new mongoose.Schema(
     full_name: [{ type: String, required: false, unique:false}],
     email_address: [{ type: String, required: false, unique:false}],
     college: [{ type: String, required: false, unique:false}],
-	contact_number: [{ type: String, required: false, unique:false}],
+	contact_number: [{ type: String, required: false, unique:false}], 
   	poster: {type: String, required:false, unique:false },
 
   });
