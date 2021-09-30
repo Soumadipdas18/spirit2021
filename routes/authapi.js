@@ -99,9 +99,9 @@ Thanks for registering for Spirit!
 <br>
 Please verify your account on the below link:
 <br>
-<a href="http://${req.hostname}/authapi/verifyaccount/${response._id}">Click here</a>
+<a href="http://${req.hostname}/authapi/verifyaccount/${response._id}">
 <br><br>
-If the link is not showing mark the mail as not spam.
+If you have problems, please paste the above URL into your web browser.
 <br><br>
 Regards
 <br>
@@ -222,7 +222,7 @@ We need a little more information, before we complete your registration. Please 
 <br>
 <a href="http://${req.hostname}/profile/update/${response._id}">Click here to update your account</a>
 <br><br>
-If the link is not showing mark the mail as not spam.
+If you have problems, please paste the above URL into your web browser.
 <br><br>
 Regards
 <br>
@@ -377,79 +377,56 @@ app.post("/reset_pass", async (req, res) => {
     })
     .catch((err) => res.status(400).send({ message: err.message }));
 });
-	
-	app.post("/ca_register", async (req, res) => {
+
+app.post("/ca_register", async (req, res) => {
   const {
-    username,
-    collegename,
-    email,
-    phno,
-    password: plainTextPassword,
+    email, user_email
   } = req.body;
-  if (!username || typeof username !== "string") {
-    return res.json({
-      status: "error",
-      error: "your username is badly formatted",
-    });
-  }
   if (!email || typeof email !== "string") {
     return res.json({
       status: "error",
       error: "your email address is badly formatted",
     });
   }
-  if (!plainTextPassword || typeof plainTextPassword !== "string") {
-    return res.json({ status: "error", error: "Invalid password" });
-  }
-  if (plainTextPassword.length < 5) {
+  if(email != user_email){
     return res.json({
       status: "error",
-      error: "Password too small. Should be atleast 6 characters",
+      error: `You have not entered your email address correctly`,
     });
   }
   var isCampusAmb = true;
   var campusAmbId = Math.floor((Math.random() * 100000000) + 1);
   var referrals = "0";
-  //encrypting password end to end
-  const password = await bcrypt.hash(plainTextPassword, 10);
-  try {
-    //Main authentication part is the else part below. It will register users in the new website
-    const response = await stuff.model.create({
-      username,
-      collegename,
-      email,
-      phno,
-      password,
-      isCampusAmb,
-      campusAmbId,
-    });
-    var mailOptions = {
-      from: "Spirit 2021 <schedulerevent9@gmail.com>",
-      to: email,
-      subject: "Welcome to Spirit 2021. Verify your account",
-      html: `<b>Verify your account</b><br><a href="https://${req.hostname}/authapi/verifyaccount/${response._id}">Click here to verify your account</a>`,
-    };
-    //sending verification mail
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        return console.log(error);
-      }
-      console.log("Message sent");
-    });
-    return res.json({ status: "ok", data: response });
 
-  } catch (error) {
-    if (error.code === 11000) {
-      // duplicate key passed
+  const user1 = await stuff.model.findOne({ email })
+  .then((user1)=>{
+    if(user1.isCampusAmb == true){
       return res.json({
         status: "error",
-        error: "vmro this email is already in use",
+        error: `You are aleady a campus ambassador`,
       });
-    } else if (error) {
-      return res.json({ status: "error", error: "Something went wrong" });
     }
-  }
+    if(user1.isVerified == false){
+      return res.json({
+        status: "error",
+        error: `You have not verified your account`,
+      });
+    }
+    user1.referrals = referrals;
+    user1.campusAmbId = campusAmbId;
+    user1.isCampusAmb = true;
+    user1.save();
 
-  res.json({ status: "ok" });
+    return res.json({ status: "ok" });
+
+  }).catch((error)=>{
+    console.log(error);
+    return res.json({
+      status: "error",
+      error: `Account not found`,
+    });
+  });
+  //res.json({ status: "ok" });
 });
+
 module.exports = app;

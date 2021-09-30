@@ -60,7 +60,7 @@
             color:white;
             padding-top:24px;
             font-family: Inter;
-            font-size: 20px;
+            font-size: 26px;
         }
         a{
             text-decoration: none;
@@ -70,13 +70,14 @@
             color:white;            
             border-radius: 4px;
             min-width: 0; min-height: 0;
-            margin: 8px;
+            margin: auto;
             box-sizing: border-box;
+            width: 80%;
         }
         .Email{
             display: grid;
             grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 2fr 1fr;
             align-items: center;
             justify-content: center;
         }
@@ -146,49 +147,31 @@
                 <p class="email">Register as a Campus Ambassador</p>
             </div>
             <div class="Email">
+                <div></div>
                 <div class="itemof2">
-                    <input id="Nameenter" class = "enter" type="text" placeholder="Name"/> 
-                </div>
-                <div class="itemof2">
-                    <input id="Collegeenter" class = "enter" type="text" placeholder="College"/> 
-                </div>
-                <div class="itemof2">
-                    <input id="Emailenter" class = "enter" type="email" placeholder="Email"/> 
-                </div>
-                <div class="itemof2">
-                    <input id="Numberenter" class = "enter" type="number" placeholder="Phone number"/> 
-                </div>
-                <div class="itemof2">
-                    <input id="Passwordenter" class = "enter"  type="password" placeholder="Password"/> 
+                    <input id="Emailenter" class = "enter" type="email" placeholder="Enter your Email"/> 
                 </div>
                 <div class="itemof2">
                     <button id="LOGINBUTTON">
                         Register
                     </button>
                 </div>
+                <div class="Login">
+                    <p class="email" style="font-size:20px;">Your unique id will be displayed on your user dashboard. Ask people to enter that Id when they register for any event</p>
+                </div>
             </div>  
+
       
         </div> 
         <script>
-/* 			document.getElementById('fb-register').addEventListener('click', function () {
-                    FB.login(statusChangeCallback, { scope: 'email,public_profile', return_scopes: true });
-                }, false); */
-			
-            var remember=document.getElementById("Remember");
-            function rem(){remember.innerHTML="✓";}
-
-
-            const form = document.getElementById('LOGINBUTTON')
+            let user_email = '<%-user.email%>'
+           const form = document.getElementById('LOGINBUTTON')
             form.addEventListener('click', signupemail)
             
             async function signupemail(event) {
                 console.log("clicked!")
                 event.preventDefault()
                 const email = document.getElementById('Emailenter').value
-                const password = document.getElementById('Passwordenter').value
-                const phno = document.getElementById('Numberenter').value
-                const collegename = document.getElementById('Collegeenter').value
-                const username = document.getElementById('Nameenter').value
                 const provider = "email";
                 const result = await fetch('/authapi/ca_register', {
                     method: 'POST',
@@ -196,11 +179,7 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-						username,
-						password,
-						email,
-						collegename,
-						phno
+						email, user_email
 					})
                 }).then((res) => res.json())
 
@@ -209,7 +188,7 @@
                     //console.log('Got the token: ')
                     //localStorage.setItem('token', result.data)//storing data in localstorage
                     window.location.replace(`/`);
-                    alert('Success. Check your mail and activate your account')
+                    alert('You are successfully registered as a campus ambassador')
                 } else {
                     alert(result.error)
                 }
