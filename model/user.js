@@ -15,6 +15,11 @@ const UserSchema = new mongoose.Schema(
     isVerified: { type: Boolean, default: false },
     provider: { type: String, default: "email" },
     events_registered: [{ type: String, default: null }],
+	  
+	  //for campus ambassadors:
+    isCampusAmb: { type: Boolean, default: false },
+    campusAmbId:  { type: String, required:false, unique:true },
+    referrals : { type: String, default: "0",unique:false },
   },
   {
     timestamps: true,

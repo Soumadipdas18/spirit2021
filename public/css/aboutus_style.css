@@ -19,7 +19,7 @@ body {
 }
 
 .topic-data {
-    width: 50%;
+    width: 70%;
     margin: auto;
     overflow: auto;
 	font-size:2rem;
@@ -113,7 +113,7 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
 	font-size:large;
-	  font-weight:400;
+	font-weight:400;
   }
 
  .member-info{
@@ -136,3 +136,17 @@ body {
   .space{
       padding-top: 60px;
   }
+
+@media(max-width:1000px){
+	
+  .topic-data {
+    width: 80%;
+    margin: auto;
+    overflow: auto;
+	font-size:2rem;
+  }
+  .teamimages{
+    height:220px;
+    width:220px;
+  }
+}
