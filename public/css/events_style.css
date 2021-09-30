@@ -250,6 +250,12 @@ body {
 	font-size: 16px;
 }
 
+.sachin-sign{
+	position:absolute;
+	width:20%;
+	opacity:0.1;
+}
+
 @media (max-width:1450px) {
 	    #card-img {
       width: 335px; /*335*/
@@ -316,6 +322,7 @@ body {
 	border-radius: 3px;
 	font-size: 16px;
     }
+		
 	.coming-soon{
 	position: absolute;
     left:34%;
@@ -407,6 +414,7 @@ body {
 	border-radius: 3px;
 	font-size: 16px;
     }
+	
 	.coming-soon{
 	position: absolute;
     left:34%;
