@@ -75,7 +75,7 @@
 					IPL Auction
 				</div>
 				<% } %>
-				
+				<!-- Dont include else if part here else only iplauction event will show -->
 				<%if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
 					<div class="data_text event">
 						<%=user.events_registered[i].replace("Ipl", "IPL") %>		
