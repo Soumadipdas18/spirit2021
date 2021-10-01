@@ -159,7 +159,7 @@ app.get('*', function(req, res){
   res.send('<h1>Not Found</h1>',404);
 });
 
-app.listen(process.env.PORT || 5000,function(req,res){
+app.listen(process.env.PORT || 3000,function(req,res){
 	console.log("Hello Spirit");
 });
 

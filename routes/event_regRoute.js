@@ -85,7 +85,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 			}
 			data.save()});
 
-	if( name_of_event === "shutterbug" || name_of_event === "marathon"){
+	if( name_of_event === "shutterbug" || name_of_event === "marathon" || name_of_event === "fitness"){
 		if(counter === 0){	
 			var newEntry = await stuff.event.findOne({ event_name: name_of_event }).then(
 			(newEntry)=>{

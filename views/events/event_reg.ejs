@@ -55,6 +55,13 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.img4 {
+  width: 100%;
+  height: 34vh;
+  background-image: url('/images/Fitnesscard.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 .titleRow {
   width: 100%;
   padding-top: 3.6%;
@@ -281,32 +288,47 @@ color: rgba(255, 255, 255, 0.8);
 					<div class="prize"><b>Prize Pool of 5k</b></div>
 				</div>
 				<%}else if (name==="marathon"){%>
-          <div id="marathon1">
-            <div class="img3"></div>
-            <div class="titleRow">
-              <div class="title">Marathon</div>
-              <div class="date"> 16-17 Oct</div>
-            </div>
-            <div class="description">
-              Running is the greatest metaphor for life because you get out of it is what you put into it. Ergo, overcoming the obstacles due to pandemic, Spirit 2021, IIT Guwahati, is conducting a one of its kind virtual Marathon to improve the well-being of people, because as we run, we become.
-            </div>
-            <div class="prize"><b>Prize Pool of 10k</b></div>
-          </div>
-          <%}%>
+				<div id="marathon1">
+					<div class="img3"></div>
+					<div class="titleRow">
+						<div class="title">Marathon</div>
+						<div class="date"> 16-17 Oct</div>
+					</div>
+					<div class="description">
+					 	Running is the greatest metaphor for life because you get out of it is what you put into it. Ergo, overcoming the obstacles due to pandemic, Spirit 2021, IIT Guwahati, is conducting a one of its kind virtual Marathon to improve the well-being of people, because as we run, we become.
+					</div>
+					<div class="prize"><b>Prize Pool of 10k</b></div>
+				</div>
+				<%}else if(name==="fitness"){%>
+				<div id="fitness1">
+					<div class="img4"></div>
+					<div class="titleRow">
+						<div class="title">Fitness Challenge</div>
+						<div class="date">  2-20 Oct</div>
+					</div>
+					<div class="description">
+						With every passing day the craze of fitness is increasing, to boost that we bring a perfect platform for fitness freaks to represent their physical aptitude in front of the world through different fitness challenges and win handy prizes and also an experience of insight into the fitness world.
+					</div>
+					<!-- <div class="prize"><b>Prize Pool of 10k</b></div> -->
+				</div>
+				<%}%>
+	
 			</div>
-			<div class="rightDiv">
-				<div class="registerTitle">Register</div>
-				<form id="event-form" method="POST" >
-					<%if (name==="iplauction"){%>
-					<%- include('event_reg_forms/iplauctionform') -%>
-        			<%}else if (name==="shutterbug"){%>
-					<%- include('event_reg_forms/shutterbugform') -%>
-            		<%}else if (name==="marathon"){%>
-          <%- include('event_reg_forms/marathonform') -%> 
-                <%}%>       
-				</form>
-			</div>
-		</div>
+				<div class="rightDiv">
+						<div class="registerTitle">Register</div>
+						<form id="event-form" method="POST" >
+							<%if (name==="iplauction"){%>
+							<%- include('event_reg_forms/iplauctionform') -%>
+							<%}else if (name==="shutterbug"){%>
+							<%- include('event_reg_forms/shutterbugform') -%>
+							<%}else if (name==="marathon"){%>
+				  			<%- include('event_reg_forms/marathonform') -%> 
+							<%}else if (name==="fitness"){%>
+							<%- include('event_reg_forms/fitnessform') -%> 
+							<%}%>
+						</form>
+					</div>
+				</div>
 		
 	<script>
 		var event_name = '<%=name%>'
@@ -320,7 +342,7 @@ color: rgba(255, 255, 255, 0.8);
 				var email_address = document.getElementById('email_address').value
 				var college = document.getElementById('college').value
 				var contact_number = document.getElementById('contact_number').value
-        var amb_id = document.getElementById('amb_id').value
+        		var amb_id = document.getElementById('amb_id').value
 				var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
 					method: 'POST',
 					headers: {
@@ -339,7 +361,7 @@ color: rgba(255, 255, 255, 0.8);
 					alert(result.error)
 				}
 		}}
-    else if(event_name === "marathon"){
+    	else if(event_name === "marathon"){
 			var form = document.getElementById('event-form')
 			form.addEventListener('submit', registerForm)
 			async function registerForm(event) {
@@ -349,7 +371,36 @@ color: rgba(255, 255, 255, 0.8);
 				var email_address = document.getElementById('email_address2').value
 				var college = document.getElementById('college2').value
 				var contact_number = document.getElementById('contact_number2').value
-        var amb_id = document.getElementById('amb_id2').value
+        		var amb_id = document.getElementById('amb_id2').value
+				var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						full_name,event_name,email_address,college,contact_number,amb_id
+					})
+				}).then((res) => res.json())
+
+				if (result.status === 'ok') {
+					window.location.replace(`/events/event_registration/success`);
+					alert('Success')
+				} else {
+					window.location.replace(`/`);
+					alert(result.error)
+				}
+		}}
+		else if(event_name === "fitness"){
+			var form = document.getElementById('event-form')
+			form.addEventListener('submit', registerForm)
+			async function registerForm(event) {
+				event.preventDefault()
+				let id = '<%=user._id%>'					
+				var full_name = document.getElementById('full_name3').value
+				var email_address = document.getElementById('email_address3').value
+				var college = document.getElementById('college3').value
+				var contact_number = document.getElementById('contact_number3').value
+        		var amb_id = document.getElementById('amb_id3').value
 				var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
 					method: 'POST',
 					headers: {
@@ -377,13 +428,13 @@ color: rgba(255, 255, 255, 0.8);
 					const memb1 =await registerUser(1);
 					const memb2 =await registerUser(2);
 					const memb3 =await registerUser(3);
-          const amb_id = document.getElementById('amb_id').value;
+          			const amb_id = document.getElementById('amb_id').value;
 					const result=await registerForEvent(memb1,memb2,memb3);
 				};
 
 				async function registerUser(i) {
-          const amb_id = document.getElementById('amb_id').value;
-          const name = document.getElementById(`full_name${i}`).value;
+          			const amb_id = document.getElementById('amb_id').value;
+          			const name = document.getElementById(`full_name${i}`).value;
 					const email = document.getElementById(`email_address${i}`).value;
 					const discord = document.getElementById(`discord${i}`).value;
 					const result = await fetch(`/events/event_registration/post_ipl`, {
