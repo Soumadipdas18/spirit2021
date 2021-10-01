@@ -145,35 +145,35 @@
   overflow: hidden;
 }
 .card__side--front-1 {
-  background-image: url(../images/AthlosArena.jpg);
+  background-image: url(../images/Marathon.jpg);
   background-size: cover;
 }
 .card__side--front-2 {
-  background-image: url(../images/Ipl.png);
+  background-image: url(../images/Fitness.png);
   background-size: cover;
 }
 .card__side--front-3 {
-  background-image: url(../images/WeeklyTrivia.jpg);
-  background-size: cover;
-}
-.card__side--front-4 {
-  background-image: url(../images/ShutterBug.png);
-  background-size: cover;
-}
-.card__side--front-5 {
   background-image: url(../images/AthlosArena.jpg);
   background-size: cover;
 }
-.card__side--front-6 {
+.card__side--front-4 {
   background-image: url(../images/Ipl.png);
   background-size: cover;
 }
-.card__side--front-7 {
+.card__side--front-5 {
   background-image: url(../images/WeeklyTrivia.jpg);
   background-size: cover;
 }
-.card__side--front-8 {
+.card__side--front-6 {
   background-image: url(../images/ShutterBug.png);
+  background-size: cover;
+}
+.card__side--front-7 {
+  background-image: url(../images/Marathon.jpg);
+  background-size: cover;
+}
+.card__side--front-8 {
+  background-image: url(../images/Fitness.png);
   background-size: cover;
 }
 .card__side--front-9 {
@@ -184,6 +184,7 @@
   background-image: url(../images/Ipl.png);
   background-size: cover;
 }
+
 .card__side--back {
   background-color: #c567ff;
   transform: rotateY(180deg);
