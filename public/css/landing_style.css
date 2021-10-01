@@ -397,13 +397,13 @@
 @media (max-width: 37.5em) {
   .updates-box {
     width: 54%;
-    height: 50%;
+    height: 59%;
   }
 }
   @media (max-width: 23.43em) {
     .updates-box {
       width: 56%;
-      height: 57%;
+      height: 62.5%;
     }
   }
 .updates-box--1 {
