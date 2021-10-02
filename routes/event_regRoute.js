@@ -73,27 +73,30 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 	let campusAmbId = req.body.amb_id;
 	let name_of_event = req.body.event_name;
 	var counter = 0;
-	const data = await stuff_user.model.findOne({ email }).then(
-		(data)=>{
-			for(let i=0; i<data.events_registered.length; i++){
-				if(data.events_registered[i] === req.body.event_name){
-					counter++;
-				}
-			}
-			if(counter === 0){
-				data.events_registered.push(req.body.event_name);
-			}
-			data.save()});
 
 	if( name_of_event === "shutterbug" || name_of_event === "marathon" || name_of_event === "fitness"){
+
+		const data = await stuff_user.model.findOne({ email }).then(
+			(data)=>{
+				for(let i=0; i<data.events_registered.length; i++){
+					if(data.events_registered[i] === req.body.event_name){
+						counter++;
+					}
+				}
+				if(counter === 0){
+					data.events_registered.push(req.body.event_name);
+				}
+				data.save()});
+
 		if(counter === 0){	
 			var newEntry = await stuff.event.findOne({ event_name: name_of_event }).then(
 			(newEntry)=>{
-				newEntry.contact_number.push(req.body.contact_number);
-				newEntry.email_address.push(req.body.email_address);
-				newEntry.full_name.push(req.body.full_name);
-				newEntry.college.push(req.body.college);
-				newEntry.user_object_id.push(req.params.id);
+				let j = newEntry.email_address.length;
+				newEntry.contact_number[j] =  req.body.contact_number;
+				newEntry.email_address[j] = req.body.email_address;
+				newEntry.full_name[j] = req.body.full_name;
+				newEntry.college[j] = req.body.college;
+				newEntry.user_object_id[j] = req.params.id;
 				newEntry.save(async function(error, data){			
 					if(error){
 						if (error.code === 11000) {
@@ -135,6 +138,98 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 				return res.json({
 				status: "error",
 				error: "You've already registered for this event",		
+			});	
+		}
+	}
+	else if( name_of_event === "athlos" ){
+
+		const athlos_events = [req.body.cricket, req.body.football, req.body.volleyball, req.body.badminton, req.body.lawn_tennis, req.body.table_tennis, req.body.carrom];
+
+		const data = await stuff_user.model.findOne({ email }).then(
+			(data)=>{
+				for(let i=0; i<data.events_registered.length; i++){
+					if(data.events_registered[i] === 'athlos - cricket' ||
+					data.events_registered[i] === 'athlos - football' ||
+					data.events_registered[i] === 'athlos - volleyball' ||
+					data.events_registered[i] === 'athlos - badminton' ||
+					data.events_registered[i] === 'athlos - lawn_tennis' ||
+					data.events_registered[i] === 'athlos - table_tennis' ||
+					data.events_registered[i] === 'athlos - carrom' ){
+						counter++;
+					}
+				}
+				if(counter === 0){
+					for(let i=0; i<athlos_events.length; i++){
+						if(athlos_events[i] !== 'null'){
+							data.events_registered.push('athlos - '+ athlos_events[i]);
+						}
+					}
+				}
+				data.save()});
+        
+		if(counter === 0){	
+			var newEntry = await stuff.event.findOne({ event_name: 'athlos' }).then(
+			(newEntry)=>{
+				let j = newEntry.email_address.length;
+				newEntry.contact_number[j] =  req.body.contact_number;
+				newEntry.email_address[j] = req.body.email_address;
+				newEntry.full_name[j] = req.body.full_name;
+				newEntry.college[j] = req.body.college;
+				newEntry.user_object_id[j] = req.params.id;
+				if(req.body.designation){
+					newEntry.designation[j] = req.body.designation;
+				}
+				else{
+					newEntry.designation[j] = 'null';
+				}
+				let temp_str = '';
+				for(let i=0; i<athlos_events.length; i++){
+					if(athlos_events[i] !== 'null'){
+						temp_str+=athlos_events[i]+' ';
+					}                  
+				}
+				newEntry.athlos_events_registered[j] = temp_str;
+				newEntry.save(async function(error, data){			
+					if(error){
+						if (error.code === 11000) {
+							// duplicate key
+							console.log('item not saved');
+							return res.json({
+								status: "error",
+								error: "You've already filled this form once",		
+							});
+							}
+						else{
+							console.log('item not saved');
+							return res.json({
+								status: "error",
+								error: "Something went wrong. Please contact Spirit team",		
+							});	
+						}   
+					}
+					const amb = await stuff_user.model.findOne({ campusAmbId }).then(
+						(amb)=>{
+							if(amb){
+								let referrals_no = parseInt(amb.referrals);
+								referrals_no++;
+								amb.referrals = referrals_no.toString();
+								amb.save()
+							}
+
+						});
+					console.log('item saved');
+					return res.json({ status: "ok" });
+				})
+			})		
+			.catch((err)=>{
+					console.log(err);
+			})
+		}	
+		else{
+				console.log(counter);
+				return res.json({
+				status: "error",
+				error: "You've already filled this form once",		
 			});	
 		}
 	}

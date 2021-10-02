@@ -27,10 +27,30 @@
 							</p>
 							
 							<p class="text-center contact">
-								To register please contact our Public Relations Team
+								For any queries contact our Public Relations Team
 								<br><b>Email ID:</b> publicrelation.spirit@gmail.com
 								<br><b>Contact No.:</b> Saurabh Kamble +91 93593 11460
 							</p>
+                            
+                            <p class="text-center"> 
+                                <%if (logged_in){%>
+                                    
+                                    <%if((user.events_registered.includes("athlos - cricket") || user.events_registered.includes("athlos - football") || user.events_registered.includes("athlos - volleyball") || user.events_registered.includes("athlos - badminton") || user.events_registered.includes("athlos - lawn_tennis") || user.events_registered.includes("athlos - table_tennis") || user.events_registered.includes("athlos - carrom"))){%>
+                                    <button type="button" class="btn btn-primary btn-lg register-button center-block">
+                                    ALREADY REGISTERED
+                                    </button>
+                                    <%}else{%>
+                                    <a href="events/register/athlos" style="text-decoration:none"><button type="button" style="left:43%"class="btn btn-primary btn-lg register-button center-block">
+                                    REGISTER
+                                    </button></a>
+                                    <%}%>
+                                
+                                <%}else{%>
+                                <a href="login" style="text-decoration:none"><button type="button"  class="btn btn-primary btn-lg register-button center-block">
+                                    LOGIN TO REGISTER
+                                    </button></a>
+                                <%}%>
+                                </p><br>
 							
 							<a target="_blank" href="https://drive.google.com/drive/folders/18j2YTonCnIv3SxcH2za3UFbVPIAj6GVA?usp=sharing" style="text-decoration:none"><button type="button"  class="btn btn-primary btn-lg register-button-athlosarena center-block">
 								View Rulebook

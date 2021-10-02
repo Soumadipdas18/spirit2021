@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<%- include('../basicwlb') -%>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +24,7 @@
             background-color: black;
             font-family: 'Inter', sans-serif;
         }
-        .container{
+        .cont{
             display:grid;
             grid-template-columns: 1fr 1fr;
             height: 100vh;          
@@ -133,11 +134,28 @@
                 padding-right: 10px;
                 padding-left: 18px;
         }
+		#imgtext{
+            font-size: 17px;
+        }
+		#Emailenter{
+			font-size: 12px;
+		}
+		@media (max-width: 600px){
+			.img{
+				display: none;
+			}
+			#Grid_2{
+				display: block;
+			}.cont{
+				grid-template-columns: 1fr;
+			}
+		}
     </style>
 </head>
 <body>
+	<%- include('../navbar-nonsticky') -%>
     <section>
-        <div class="container">
+        <div class="cont">
          <div class="img">
             <p id="imgtext">Spirit is the biggest collegiate sporting festival of North Eastern India with 3K+ participants from 65+ colleges held at IIT Guwahati.</p>
         </div>
@@ -199,6 +217,7 @@
 
            
         </script>
-			</section>
-</body>
+		</section>
+		<%- include('../footer') -%>
+	</body>
 </html>
