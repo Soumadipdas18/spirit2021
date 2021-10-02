@@ -34,6 +34,15 @@
   overflow-y: auto;
   background: #0a0a0a;
 }
+.athlos_styles{
+	display: flex;
+	color: white;
+	font-family: Inter;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+
+}
 .img1 {
   width: 100%;
   height: 34vh;
@@ -59,6 +68,13 @@
   width: 100%;
   height: 34vh;
   background-image: url('/images/Fitnesscard.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.img5 {
+  width: 100%;
+  height: 34vh;
+  background-image: url('/images/Athlosarenacard.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -311,7 +327,19 @@ color: rgba(255, 255, 255, 0.8);
 					</div>
 					<!-- <div class="prize"><b>Prize Pool of 10k</b></div> -->
 				</div>
-				<%}%>
+				<%}else if(name==="athlos"){%>
+				<div id="athlos1">
+					<div class="img5"></div>
+					<div class="titleRow">
+						<div class="title">Athlos Arena</div>
+						<div class="date"> 1-20 Oct</div>
+					</div>
+					<div class="description">
+						"Athlos Arena" a flagship intercollegiate virtual sports event of Spirit'21, organized to address the need for a virtual experience that is as competitive as the real thing. The event is to showcase and judge skills rather than the game itselfs, without having to leave the comfort of your home. This flagship event provides opportunities for students to explore new skills and interests alongside making them a part of this competitive world. Making virtual sports as popular as their real-life counterparts, you witness a new way to judge, engage and enjoy sports. So come and participate to test your skills and not your luck!!
+					</div>
+					<div class="prize"><b>Prize Pool of 50k</b></div>
+				</div>
+				<%}%>	
 	
 			</div>
 				<div class="rightDiv">
@@ -325,7 +353,9 @@ color: rgba(255, 255, 255, 0.8);
 				  			<%- include('event_reg_forms/marathonform') -%> 
 							<%}else if (name==="fitness"){%>
 							<%- include('event_reg_forms/fitnessform') -%> 
-							<%}%>
+							<%}else if (name==="athlos"){%>
+							<%- include('event_reg_forms/athlosform') -%>
+							<%}%>	
 						</form>
 					</div>
 				</div>
@@ -419,6 +449,45 @@ color: rgba(255, 255, 255, 0.8);
 					alert(result.error)
 				}
 		}}
+		else if(event_name === "athlos"){
+			var form = document.getElementById('event-form')
+			form.addEventListener('submit', registerForm)
+			async function registerForm(event) {
+				event.preventDefault()
+				let id = '<%=user._id%>'					
+				var full_name = document.getElementById('full_name4').value
+				var email_address = document.getElementById('email_address4').value
+				var college = document.getElementById('college4').value
+				var contact_number = document.getElementById('contact_number4').value
+        		var amb_id = document.getElementById('amb_id4').value
+				var designation = document.getElementById('desig4').value
+				if(document.getElementById('cricket').checked){var cricket = "cricket";}else{ var cricket = 'null'; }
+				if(document.getElementById('football').checked){var football = "football";}else{ var football = 'null'; }
+				if(document.getElementById('volleyball').checked){var volleyball = "volleyball";}else{ var volleyball = 'null'; }
+				if(document.getElementById('badminton').checked){var badminton = "badminton";}else{ var badminton = 'null'; }
+				if(document.getElementById('lawn_tennis').checked){var lawn_tennis = "lawn_tennis";}else{ var lawn_tennis = 'null'; }
+				if(document.getElementById('table_tennis').checked){var table_tennis = "table_tennis";}else{ var table_tennis = 'null'; }
+				if(document.getElementById('carrom').checked){var carrom = "carrom";}else{ var carrom = 'null'; }
+				var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						full_name,event_name,email_address,college,contact_number,amb_id,
+						cricket,football,volleyball,badminton,lawn_tennis,table_tennis,carrom,
+						designation
+					})
+				}).then((res) => res.json())
+
+				if (result.status === 'ok') {
+					window.location.replace(`/events/event_registration/success`);
+					alert('Success')
+				} else {
+					window.location.replace(`/`);
+					alert(result.error)
+				}
+		}}
 		else if(event_name === "iplauction"){
 				var form = document.getElementById('event-form')
 				form.addEventListener('submit', registerForm2)
@@ -443,10 +512,10 @@ color: rgba(255, 255, 255, 0.8);
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
-            name,
+            			name,
 						email,
 						discord,
-            amb_id
+            			amb_id
 					})
 					}).then((res) => res.json())
 					if (result.status === 'ok') {
