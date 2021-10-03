@@ -891,7 +891,7 @@
   position: absolute;
   left: 65%;
   top: 13%;
-	z-index: 20000;
+	z-index: 2000;
 }
 @media (max-width: 75em) {
   .landing-text {
