@@ -80,6 +80,9 @@ body {
 	text-align: center;
 }
 
+.date{
+	font-weight:600;
+}
 .flip-RM {
     text-decoration: none;
     color: #0a0a0a;
