@@ -171,6 +171,12 @@ body {
 	}
 }
 
+@media(max-width:412px){
+	.img-412{
+		padding-bottom:41px;
+	}
+}
+
 @media(max-width:405px){
 	.img-small{
 		padding-bottom:41px;
