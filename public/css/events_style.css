@@ -546,7 +546,7 @@ body {
   
     .register-button {
       position: absolute;
-      left:29%;
+      left:36% !important;
       right:auto;
       background-color: black;
       padding: 7px 15px;

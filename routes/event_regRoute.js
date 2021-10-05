@@ -239,4 +239,8 @@ app.get("/success",(req,res)=>{
 	res.render("events/event_reg_success");
 });
 
+app.get("/athsuccess",(req,res)=>{
+	res.render("events/event_reg_success_athlos");
+});
+
 module.exports = app;
