@@ -70,18 +70,39 @@
             <h3 class="heading">Registered Events</h3>
            <!-- <%- include('registered_events') -%> -->
 			<div class="reg_events">
-				<%if(user.storerandompassword){ %>
-				<div class="data_text event">
-					IPL Auction
-				</div>
+				<% var isIpladded = false;
+                if(user.storerandompassword){ 
+                    isIpladded = true;%>
+                    <img class="event_img" src="images/Ipl.png">
 				<% } %>
 				<!-- Dont include else if part here else only iplauction event will show -->
-				<%if(user.events_registered.length > 0){for (var i=0; i<user.events_registered.length; i++){%>
-					<div class="data_text event">
-						<%=user.events_registered[i].replace("Ipl", "IPL") %>		
-					</div>
-				<%}}%>
-				
+				<%if(user.events_registered.length > 0){
+                    var img_src = '';
+                    for (var i=0; i<user.events_registered.length; i++){
+                        switch(user.events_registered[i]){
+                            case 'shutterbug': img_src = 'images/ShutterBug.jpg'; break;
+                            case 'Shutterbug': img_src = 'images/ShutterBug.jpg'; break;
+                            case 'marathon': img_src = 'images/Marathon.jpg'; break;
+                            case 'fitness': img_src = 'images/Fitness.png'; break;
+                            case 'Ipl Auction': if(isIpladded == false){img_src = 'images/Ipl.png';} break;
+                        }
+                        if(img_src != ''){ %>
+                            <a href="/events" class="event_img">
+                                <img width="100%" src=<%= img_src %> alt="event_poster">
+                            </a>
+                            
+                        <%}else{%>
+                            <div class="data_text event">
+                                <%=user.events_registered[i].replace("Ipl", "IPL") %> 
+                            </div>
+                        <%}%>
+                    
+                <!-- <div class="data_text event">
+                    <%=user.events_registered[i].replace("Ipl", "IPL") %> 	
+                </div> -->	
+				<%}}else if(isIpladded == false){%>
+                    <div class="data_text event">You have not registered for any events.</div>
+                <%}%>
 				
 			</div>
             
