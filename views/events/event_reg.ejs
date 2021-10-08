@@ -279,19 +279,7 @@ color: rgba(255, 255, 255, 0.8);
     <body>
         <div class="root">
 			<div class="leftDiv">
-				<%if (name==="iplauction"){%>
-				<div id="IplAuction1">
-					<div class="img1"></div>
-					<div class="titleRow">
-						<div class="title">IPL Auction</div>
-						<div class="date"> 9-10 Oct</div>
-					</div>
-					<div class="description">
-						Auctions make noteworthy value disclosure and liquidity, bringing about an extremely significant 													last sale cost. In case you were building a protection trade today, an auction would be a 															central component. Spirit, IIT Guwahati will lead a fun IPL auction. This occasion requires no 														essential information, just sharp and insightful sales abilities to outmaneuver your rivals.
-					</div>
-					<div class="prize"><b>Prize Pool of 20k</b></div>
-				</div>
-				<%}else if (name==="shutterbug"){%>
+				<%if (name==="shutterbug"){%>
 				<div id="Shutterbug1">
 					<div class="img2"></div>
 					<div class="titleRow">
@@ -345,9 +333,8 @@ color: rgba(255, 255, 255, 0.8);
 				<div class="rightDiv">
 						<div class="registerTitle">Register</div>
 						<form id="event-form" method="POST" >
-							<%if (name==="iplauction"){%>
-							<%- include('event_reg_forms/iplauctionform') -%>
-							<%}else if (name==="shutterbug"){%>
+						
+							<%if (name==="shutterbug"){%>
 							<%- include('event_reg_forms/shutterbugform') -%>
 							<%}else if (name==="marathon"){%>
 				  			<%- include('event_reg_forms/marathonform') -%> 
