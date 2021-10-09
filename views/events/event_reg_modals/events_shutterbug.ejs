@@ -33,9 +33,9 @@
 							<%if (logged_in){%>
 								
 							    <%if(user.events_registered.includes("shutterbug")){%>
-								<button type="button" class="btn btn-primary btn-lg register-button center-block">
-								ALREADY REGISTERED
-								</button>
+								<a href="shutterbug_submission"><button type="button" class="btn btn-primary btn-lg register-button center-block">
+								Submit your Entry
+								</button></a>
 								<%}else{%>
 								<a href="events/register/shutterbug" style="text-decoration:none"><button type="button" style="left:43%"class="btn btn-primary btn-lg register-button center-block">
 								REGISTER
