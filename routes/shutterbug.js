@@ -2,6 +2,7 @@ const express = require("express");
 const app = express.Router();
 const bodyParser=require('body-parser');
 const stuff_user = require("../model/user");
+const stuff = require("../model/events");
 const multer = require('multer');
 
 var urlencodedParser = bodyParser.urlencoded({ extended : false });
@@ -20,59 +21,119 @@ const storage = multer.diskStorage({
     },
   });
   
-  //upload parameters for multer
-  const upload = multer({
-    storage: storage,
-    fileFilter: function(req, file, callback){
-        if( file.mimetype == "image/png" || file.mimetype == "image/jpeg"){
-            if(file.size <= 1024 * 1024 * 3){
-                callback(null, true)
-            }
-            else{
-                callback(null, false)
-            }
-        }else{
-            console.log("Only png, jpg and jpeg files are supported!");
-            callback(null, false)
-        }
-    },
-    limits: {
-      fieldSize: 1024 * 1024 * 3,
-    },
-  });
+//upload parameters for multer
+const upload = multer({
+storage: storage,
+fileFilter: function(req, file, callback){
+    if( file.mimetype == "image/png" || file.mimetype == "image/jpeg"){
+        console.log(file.mimetype);
+        console.log(file.size);
+        callback(null, true)
+        // if(file.size <= 1024 * 1024 * 3){
+        //     callback(null, true)
+        //     console.log('less than 3mb');
+        // }
+        // else{
+        //     callback(null, false)
+        // }
+    }else{
+        console.log(file.mimetype);
+        console.log("Only png, jpg and jpeg files are supported!");
+        callback(null, false)
+    }
+},
+limits: {
+    fieldSize: 1024 * 1024 * 3,
+},
+});
 
 app.post('/', upload.single('image'), async (req, res) => {
 
-    if(req.file){
-        console.log(req.file.size)
-        var email = req.body.email;
-        const data = stuff_user.model.findOne({ email: email }).then(
-            (data)=> {
-                data.img = req.file.filename, 
-                data.save()
-                res
-                    .status(200)
-                    .contentType("text/plain")
-                    .end("Image Uploaded!")   
+    console.log(req.file);
+    var count1 = 0; var count2 = 0;
+    const data2 = await stuff_user.model.findOne({ email: req.body.email }).then(
+        (data2)=> {
+            for(let i=0; i<data2.events_registered.length; i++){
+                if(data2.events_registered[i] === 'shutterbug'){
+                    count1++;
+                }
             }
-        )
-        .catch(
-            (error)=>{
+        }
+    )
+    .catch(
+        (error)=> {
                 console.log(error);
                 res
                 .status(200)
                 .contentType("text/plain")
                 .end(error.message)
+        }
+    )
+
+    const data3 = await stuff.event.findOne({ event_name: 'shutterbug_submission' }).then(
+        (data3)=>{
+            for(let i=0; i<data3.email_address.length; i++){
+                if(data3.email_address[i] === req.body.email){
+                    count2++;
+                }
             }
-        )
-    }
-    else{
+        }
+    )
+    .catch(
+        (error)=>{
+            console.log(error);
+            res
+            .status(200)
+            .contentType("text/plain")
+            .end(error.message)
+        }
+    )
+
+    if(count1 === 1 && count2 === 0){
+        if(req.file){
+            console.log(req.file.size)
+            var email = req.body.email;
+            const data = await stuff.event.findOne({ event_name: 'shutterbug_submission' }).then(
+                (data)=> {
+                    let j = data.email_address.length;
+                    data.email_address[j] = req.body.email;
+                    data.full_name[j] = req.body.username;
+                    data.drive[j] = req.body.drive;
+                    data.img[j] = req.file.filename;
+                    data.save()
+                    res
+                        .status(200)
+                        .contentType("text/plain")
+                        .end("Success. Image Uploaded!")   
+                }
+            )
+            .catch(
+                (error)=>{
+                    console.log(error);
+                    res
+                    .status(200)
+                    .contentType("text/plain")
+                    .end(error.message)
+                }
+            )
+        }
+        else{
+            res
+            .status(200)
+            .contentType("text/plain")
+            .end("Please check if the image uploaded is of format png, jpg or jpeg. Please try again")
+        }
+    }else if(count1 === 0){
         res
         .status(200)
         .contentType("text/plain")
-        .end("Please check if the image uploaded is of format png, jpg or jpeg and is of size less than 3MB. Please try again")
+        .end("Sorry you have not registered for this event")
+    }else if(count2 >= 1 ){
+        res
+        .status(200)
+        .contentType("text/plain")
+        .end("You have already submitted your entry")
     }
-
 });
 
 module.exports = app; 

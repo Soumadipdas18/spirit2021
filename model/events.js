@@ -13,6 +13,8 @@ const EventSchema = new mongoose.Schema(
     contact_number: [{ type: String, required: false, unique:false}], 
     athlos_events_registered: [{ type: String, required: false, unique:false}], 
     designation: [{ type: String, required: false, unique:false}], 
+    img: [{ type: String, required: false, unique: false}],
+    drive: [{ type: String, required: false, unique: false}],
   	poster: {type: String, required:false, unique:false },
 
   });
