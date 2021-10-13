@@ -315,7 +315,8 @@ color: rgba(255, 255, 255, 0.8);
 					</div>
 					<!-- <div class="prize"><b>Prize Pool of 10k</b></div> -->
 				</div>
-				<%}else if(name==="athlos"){%>
+				<%}%>
+				<!-- <%else if(name==="athlos"){%>
 				<div id="athlos1">
 					<div class="img5"></div>
 					<div class="titleRow">
@@ -327,7 +328,7 @@ color: rgba(255, 255, 255, 0.8);
 					</div>
 					<div class="prize"><b>Prize Pool of 50k</b></div>
 				</div>
-				<%}%>	
+				<%}%>	 -->
 	
 			</div>
 				<div class="rightDiv">
@@ -340,9 +341,10 @@ color: rgba(255, 255, 255, 0.8);
 				  			<%- include('event_reg_forms/marathonform') -%> 
 							<%}else if (name==="fitness"){%>
 							<%- include('event_reg_forms/fitnessform') -%> 
-							<%}else if (name==="athlos"){%>
+							<%}%>
+							<!-- <%else if (name==="athlos"){%>
 							<%- include('event_reg_forms/athlosform') -%>
-							<%}%>	
+							<%}%>	 -->
 						</form>
 					</div>
 				</div>
@@ -436,45 +438,45 @@ color: rgba(255, 255, 255, 0.8);
 					alert(result.error)
 				}
 		}}
-		else if(event_name === "athlos"){
-			var form = document.getElementById('event-form')
-			form.addEventListener('submit', registerForm)
-			async function registerForm(event) {
-				event.preventDefault()
-				let id = '<%=user._id%>'					
-				var full_name = document.getElementById('full_name4').value
-				var email_address = document.getElementById('email_address4').value
-				var college = document.getElementById('college4').value
-				var contact_number = document.getElementById('contact_number4').value
-        		var amb_id = document.getElementById('amb_id4').value
-				var designation = document.getElementById('desig4').value
-				if(document.getElementById('cricket').checked){var cricket = "cricket";}else{ var cricket = 'null'; }
-				if(document.getElementById('football').checked){var football = "football";}else{ var football = 'null'; }
-				if(document.getElementById('volleyball').checked){var volleyball = "volleyball";}else{ var volleyball = 'null'; }
-				if(document.getElementById('badminton').checked){var badminton = "badminton";}else{ var badminton = 'null'; }
-				if(document.getElementById('lawn_tennis').checked){var lawn_tennis = "lawn_tennis";}else{ var lawn_tennis = 'null'; }
-				if(document.getElementById('table_tennis').checked){var table_tennis = "table_tennis";}else{ var table_tennis = 'null'; }
-				if(document.getElementById('carrom').checked){var carrom = "carrom";}else{ var carrom = 'null'; }
-				var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						full_name,event_name,email_address,college,contact_number,amb_id,
-						cricket,football,volleyball,badminton,lawn_tennis,table_tennis,carrom,
-						designation
-					})
-				}).then((res) => res.json())
+		// else if(event_name === "athlos"){
+		// 	var form = document.getElementById('event-form')
+		// 	form.addEventListener('submit', registerForm)
+		// 	async function registerForm(event) {
+		// 		event.preventDefault()
+		// 		let id = '<%=user._id%>'					
+		// 		var full_name = document.getElementById('full_name4').value
+		// 		var email_address = document.getElementById('email_address4').value
+		// 		var college = document.getElementById('college4').value
+		// 		var contact_number = document.getElementById('contact_number4').value
+        // 		var amb_id = document.getElementById('amb_id4').value
+		// 		var designation = document.getElementById('desig4').value
+		// 		if(document.getElementById('cricket').checked){var cricket = "cricket";}else{ var cricket = 'null'; }
+		// 		if(document.getElementById('football').checked){var football = "football";}else{ var football = 'null'; }
+		// 		if(document.getElementById('volleyball').checked){var volleyball = "volleyball";}else{ var volleyball = 'null'; }
+		// 		if(document.getElementById('badminton').checked){var badminton = "badminton";}else{ var badminton = 'null'; }
+		// 		if(document.getElementById('lawn_tennis').checked){var lawn_tennis = "lawn_tennis";}else{ var lawn_tennis = 'null'; }
+		// 		if(document.getElementById('table_tennis').checked){var table_tennis = "table_tennis";}else{ var table_tennis = 'null'; }
+		// 		if(document.getElementById('carrom').checked){var carrom = "carrom";}else{ var carrom = 'null'; }
+		// 		var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
+		// 			method: 'POST',
+		// 			headers: {
+		// 				'Content-Type': 'application/json'
+		// 			},
+		// 			body: JSON.stringify({
+		// 				full_name,event_name,email_address,college,contact_number,amb_id,
+		// 				cricket,football,volleyball,badminton,lawn_tennis,table_tennis,carrom,
+		// 				designation
+		// 			})
+		// 		}).then((res) => res.json())
 
-				if (result.status === 'ok') {
-					window.location.replace(`/events/event_registration/athsuccess`);
-					alert('Success')
-				} else {
-					window.location.replace(`/`);
-					alert(result.error)
-				}
-		}}
+		// 		if (result.status === 'ok') {
+		// 			window.location.replace(`/events/event_registration/athsuccess`);
+		// 			alert('Success')
+		// 		} else {
+		// 			window.location.replace(`/`);
+		// 			alert(result.error)
+		// 		}
+		// }}
 		else if(event_name === "iplauction"){
 				var form = document.getElementById('event-form')
 				form.addEventListener('submit', registerForm2)

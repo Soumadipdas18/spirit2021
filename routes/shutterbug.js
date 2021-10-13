@@ -101,10 +101,8 @@ app.post('/', upload.single('image'), async (req, res) => {
                     data.drive[j] = req.body.drive;
                     data.img[j] = req.file.filename;
                     data.save()
-                    res
-                        .status(200)
-                        .contentType("text/plain")
-                        .end("Success. Image Uploaded!")   
+                    let mssg = "Success. Image Uploaded!"  
+                    res.render("events/shutterbug_success.ejs", {mssg: mssg})
                 }
             )
             .catch(
@@ -118,21 +116,15 @@ app.post('/', upload.single('image'), async (req, res) => {
             )
         }
         else{
-            res
-            .status(200)
-            .contentType("text/plain")
-            .end("Please check if the image uploaded is of format png, jpg or jpeg. Please try again")
+            let mssg = "Please check if the image uploaded is of format png, jpg or jpeg. Please try again"  
+            res.render("events/shutterbug_success.ejs", {mssg: mssg})
         }
     }else if(count1 === 0){
-        res
-        .status(200)
-        .contentType("text/plain")
-        .end("Sorry you have not registered for this event")
+        let mssg = "Sorry you have not registered for this event"  
+        res.render("events/shutterbug_success.ejs", {mssg: mssg})
     }else if(count2 >= 1 ){
-        res
-        .status(200)
-        .contentType("text/plain")
-        .end("You have already submitted your entry")
+        let mssg = "You have already submitted your entry"  
+        res.render("events/shutterbug_success.ejs", {mssg: mssg})
     }
 });
 

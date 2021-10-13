@@ -118,6 +118,17 @@ app.get("/shutterbug_submission", async (req, res) => {
     res.redirect("/login");
   }
 });
+
+app.get("/shutterbug_entries", async (req, res) => {
+  session = req.session;
+  const entries = await stuff_event.event.findOne({ event_name: "shutterbug_submission" }).lean();
+  if (session.userid) {
+	const email=req.session.userid
+	const user = await stuff_user.model.findOne({ email }).lean();
+    res.render("events/shutterbug_entries", { user:user,logged_in: true, entries: entries });
+  } else res.render("events/shutterbug_entries", { logged_in: false, entries: entries });
+});
+
 //SPONSORS
 app.get("/sponsors", (req, res) => {
   session = req.session;
