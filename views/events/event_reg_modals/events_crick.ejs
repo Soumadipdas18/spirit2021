@@ -36,23 +36,20 @@
                                 <%if (logged_in){%>
                                     
                                     <%if((user.events_registered.includes("athlos - cricket") || user.events_registered.includes("athlos - football") || user.events_registered.includes("athlos - volleyball") || user.events_registered.includes("athlos - badminton") || user.events_registered.includes("athlos - lawn_tennis") || user.events_registered.includes("athlos - table_tennis") || user.events_registered.includes("athlos - carrom"))){%>
-									<p class="text-center center-block contact">
+                                    <p class="text-center center-block contact">
 										<b>Thank you for showing interest!
 										<br> Our team will contact your college soon.</b>
 									</p>
-                                    <!-- <button type="button" class="btn btn-primary btn-lg register-button center-block">
-                                    ALREADY REGISTERED
-                                    </button> -->
                                     <%}else{%>
-                                    <a href="events/register/athlos" style="text-decoration:none"><button type="button" style="left:43%"class="btn btn-primary btn-lg register-button center-block">
-                                    REGISTER
-                                    </button></a>
+                                        <p class="text-center center-block contact">
+                                            <b>Registrations closed</b>
+                                        </p>
                                     <%}%>
                                 
                                 <%}else{%>
-                                <a href="login" style="text-decoration:none"><button type="button"  class="btn btn-primary btn-lg register-button center-block">
-                                    LOGIN TO REGISTER
-                                    </button></a>
+                                    <p class="text-center center-block contact">
+                                        <b>Registrations closed</b>
+                                    </p>
                                 <%}%>
                                 </p><br>
 							
