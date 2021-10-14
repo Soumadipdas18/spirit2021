@@ -145,19 +145,19 @@
   overflow: hidden;
 }
 .card__side--front-1 {
-  background-image: url(../images/Marathon.jpg);
+  background-image: url(../images/Chess.png);
   background-size: cover;
 }
 .card__side--front-2 {
-  background-image: url(../images/Fitness.png);
+  background-image: url(../images/Marathon.jpg));
   background-size: cover;
 }
 .card__side--front-3 {
-  background-image: url(../images/AthlosArena.jpg);
+  background-image: url(../images/Fitness.png);
   background-size: cover;
 }
 .card__side--front-4 {
-  background-image: url(../images/Ipl.png);
+  background-image: url(../images/AthlosArena.png);
   background-size: cover;
 }
 .card__side--front-5 {

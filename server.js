@@ -99,7 +99,7 @@ app.get("/events", async (req, res) => {
 
 app.get("/events/register/:name", async (req, res) => {
   if (req.session.userid) {
-    email = session.userid;
+    const email = req.session.userid;
     const user = await stuff_user.model.findOne({ email }).lean();
     res.render("events/event_reg",{user: user,name:req.params.name});
   }
