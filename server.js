@@ -109,8 +109,9 @@ app.get("/events/register/:name", async (req, res) => {
 });
 
 app.get("/shutterbug_submission", async (req, res) => {
+  
   if (req.session.userid) {
-    email = session.userid;
+    const email = req.session.userid;
     const user = await stuff_user.model.findOne({ email }).lean();
     res.render("events/shutterbug_submission",{user: user});
   }
@@ -150,7 +151,7 @@ app.get("/aboutus", (req, res) => {
 app.get('/campus_amb_register',async (req,res)=>{
   session = req.session;
 	if (session.userid) {
-    email = session.userid;
+    const email = session.userid;
     const user = await stuff_user.model.findOne({ email }).lean();
 		res.render('authentication/ca-register', { user: user, logged_in: true });
 	}
