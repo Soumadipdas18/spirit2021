@@ -202,6 +202,20 @@ body {
 	font-size: 16px;
 }
 
+.register-button-closed{
+	position: absolute;
+    left:35.5%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;	
+}
+
+.register-button-closed:hover{
+	background-color: rgb(44, 44, 44);
+}
 .coming-soon:hover{
     background-color: rgb(44, 44, 44);	
 }
@@ -360,6 +374,17 @@ body {
 	  font-size: 14px;
     }
 	
+	.register-button-closed{
+	position: absolute;
+    left:40%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;	
+	}
+	
 	.register-button-rulebook {
     position: absolute;
 	bottom:50px;
@@ -440,6 +465,17 @@ body {
 	  border-radius: 3px;
 	  font-size: small;
     }
+	
+	.register-button-closed{
+	position: absolute;
+    left:38%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;	
+}
 	
 	.register-button-rulebook {
     position: absolute;
@@ -555,10 +591,21 @@ body {
 	  font-size: small;
     }
 	
+	.register-button-closed{
+	position: absolute;
+    left:27%;
+    right:auto;
+    background-color: black;
+    padding: 7px 15px;
+    color: #c567ff;
+	border-radius: 3px;
+	font-size: 16px;	
+	}
+	
 	.register-button-rulebook {
     position: absolute;
 	bottom:50px;
-    left:32.6%;
+    left:38%;
     right:auto;
     background-color: black;
     padding: 7px 15px;

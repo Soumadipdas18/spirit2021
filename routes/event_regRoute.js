@@ -74,7 +74,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 	let name_of_event = req.body.event_name;
 	var counter = 0;
 
-	if( name_of_event === "shutterbug" || name_of_event === "marathon" || name_of_event === "fitness"){
+	if( name_of_event === "shutterbug" || name_of_event === "marathon" || name_of_event === "fitness" || name_of_event === "chess"){
 
 		const data = await stuff_user.model.findOne({ email }).then(
 			(data)=>{
@@ -97,6 +97,9 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 				newEntry.full_name[j] = req.body.full_name;
 				newEntry.college[j] = req.body.college;
 				newEntry.user_object_id[j] = req.params.id;
+				if(req.body.chess_username){
+					newEntry.chess_username[j] = req.body.chess_username;
+				}
 				newEntry.save(async function(error, data){			
 					if(error){
 						if (error.code === 11000) {
