@@ -1,9 +1,9 @@
 <!-- Upcoming events -->
 	<h2 class="events-subheading pt-3 pb-2 ">Upcoming</h2>
-	<div class="d-flex one-card">
-		
+	<!--<div class="d-flex one-card">-->
+	<div class = "d-flex flex-wrap">	
 		<!--MARATHON-->
-		<div class=" pb-3">
+		<div class="col pb-3">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -21,6 +21,27 @@
         </div>
 		<div>
 			<%- include('event_reg_modals/events_marathon') -%>
+		</div>
+		
+		<!--CHESS-->
+		<div class="col pb-3">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/Chess.png" alt="Avatar" id="card-img">
+                    </div>
+                	<div class="flip-card-back">
+                        <p class="flip-para">Event Dates: 22 - 24 Oct<!--<br>Registration ends : 15 Oct--><br>Prize Pool: 30k
+                         </p>
+                    	<a class="flip-RM" data-bs-toggle="modal" data-bs-target="#expand-modal-chess">
+                 		 	READ MORE
+                    	</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div>
+			<%- include('event_reg_modals/events_chess') -%>
 		</div>
 		
 		
