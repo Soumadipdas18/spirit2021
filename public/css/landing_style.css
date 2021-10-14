@@ -145,7 +145,7 @@
   overflow: hidden;
 }
 .card__side--front-1 {
-  background-image: url(../images/Chess.png);
+  background-image: url(../images/Chess.jpeg);
   background-size: cover;
 }
 .card__side--front-2 {
