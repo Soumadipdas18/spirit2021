@@ -28,9 +28,23 @@
 							
 							<p class="text-center"> 
 							
-							<a target="_blank" href="events/register/chess" style="text-decoration:none"><button type="button" style="left:43%"  class="btn btn-primary btn-lg register-button center-block">
+							<%if (logged_in){%>
+								
+							    <%if(user.events_registered.includes("chess")){%>
+								<button type="button" class="btn btn-primary btn-lg register-button center-block">
+								ALREADY REGISTERED
+								</button>
+								<%}else{%>
+								<a href="events/register/chess" style="text-decoration:none"><button type="button" style="left:43%"class="btn btn-primary btn-lg register-button center-block">
 								REGISTER
 								</button></a>
+								<%}%>
+							
+							<%}else{%>
+							<a href="login" style="text-decoration:none"><button type="button"  class="btn btn-primary btn-lg register-button center-block">
+								LOGIN TO REGISTER
+								</button></a>
+							<%}%>
 							
 							</p>
 							
