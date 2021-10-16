@@ -151,6 +151,13 @@ body {
 	font-weight:700;
 }
 
+.date-line{
+	display: block;
+    position: relative;
+    margin: 0px 2px 2px 10px;
+    font-size:x-large;
+	font-weight:500;
+}
 .left-text {
     display: inline-block;
     position: relative;
