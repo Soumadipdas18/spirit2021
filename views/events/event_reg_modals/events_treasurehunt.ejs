@@ -30,12 +30,24 @@
 							<!-- Add the ejs code from ipl modal here  -->
 							
 							<p class="text-center"> 
-								<!-- <a style="text-decoration:none"><button type="button"  class="btn btn-primary btn-lg coming-soon center-block">
-								COMING SOON
-								</button></a> -->
-							<a target="_blank" href="https://dare2compete.com/creative-cultural-event/treasure-hunt-spirit-2021-indian-institute-of-technology-iit-guwahati-225684" style="text-decoration:none"><button type="button" style="left:43%"  class="btn btn-primary btn-lg register-button center-block">
+							<%if (logged_in){%>
+								
+							    <%if(user.events_registered.includes("treasure_hunt")){%>
+								<button type="button" class="btn btn-primary btn-lg register-button center-block">
+								ALREADY REGISTERED
+								</button>
+								<%}else{%>
+								<a href="events/register/treasure_hunt" style="text-decoration:none"><button type="button" style="left:43%"class="btn btn-primary btn-lg register-button center-block">
 								REGISTER
 								</button></a>
+								<%}%>
+							
+							<%}else{%>
+							<a href="login" style="text-decoration:none"><button type="button"  class="btn btn-primary btn-lg register-button center-block">
+								LOGIN TO REGISTER
+								</button></a>
+							<%}%>
+							</p>
 							
                     	</div>
                 	</div>

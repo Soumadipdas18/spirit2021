@@ -74,7 +74,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 	let name_of_event = req.body.event_name;
 	var counter = 0;
 
-	if( name_of_event === "shutterbug" || name_of_event === "marathon" || name_of_event === "fitness" || name_of_event === "chess" || name_of_event === "fantasy" || name_of_event === "cricket_workshop"){
+	if( name_of_event === "shutterbug" || name_of_event === "marathon" || name_of_event === "fitness" || name_of_event === "chess" || name_of_event === "fantasy" || name_of_event === "cricket_workshop" || name_of_event === "treasure_hunt"){
 
 		const data = await stuff_user.model.findOne({ email }).then(
 			(data)=>{
