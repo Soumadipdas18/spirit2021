@@ -74,7 +74,7 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 	let name_of_event = req.body.event_name;
 	var counter = 0;
 
-	if( name_of_event === "shutterbug" || name_of_event === "marathon" || name_of_event === "fitness" || name_of_event === "chess"){
+	if( name_of_event === "shutterbug" || name_of_event === "marathon" || name_of_event === "fitness" || name_of_event === "chess" || name_of_event === "fantasy" || name_of_event === "cricket_workshop"){
 
 		const data = await stuff_user.model.findOne({ email }).then(
 			(data)=>{
@@ -92,7 +92,12 @@ app.post("/post/:event_name/:id", urlencodedParser ,async(req, res) => {
 			var newEntry = await stuff.event.findOne({ event_name: name_of_event }).then(
 			(newEntry)=>{
 				let j = newEntry.email_address.length;
-				newEntry.contact_number[j] =  req.body.contact_number;
+				if(req.body.contact_number){
+					newEntry.contact_number[j] =  req.body.contact_number;
+				}
+				if(req.body.whatsapp_number){
+					newEntry.whatsapp_number[j] =  req.body.whatsapp_number;
+				}
 				newEntry.email_address[j] = req.body.email_address;
 				newEntry.full_name[j] = req.body.full_name;
 				newEntry.college[j] = req.body.college;

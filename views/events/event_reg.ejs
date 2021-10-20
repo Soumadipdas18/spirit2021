@@ -85,6 +85,20 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.img7 {
+  width: 100%;
+  height: 34vh;
+  background-image: url('/images/CricketfantasyCard.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.img8 {
+  width: 100%;
+  height: 34vh;
+  background-image: url('/images/CricketworkshopCard.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 .titleRow {
   width: 100%;
   padding-top: 3.6%;
@@ -347,8 +361,31 @@ Chess is a game of imagination and knowledge. It is an epic game of old insight.
 					</div>
 					<div class="prize"><b>Prize Pool of 30k</b></div>
 				</div>
+				<%}else if (name==="fantasy"){%>
+					<div id="fantasy1">
+					<div class="img7"></div>
+					<div class="titleRow">
+						<div class="title">Cricket Fantasy</div>
+						<div class="date"> 24 Oct</div>
+					</div>
+					<div class="description">
+NeoFanTasy is a new twist on Fantasy Cricket! Gear up for the most exciting and awaited match between India and Pakistan! Think you know who will be smacking sixes today? Make your own team, Play, and find out! Win thrilling prizes in form of NFTs!
+					</div>
+					<!-- <div class="prize"><b>Prize Pool of 30k</b></div> -->
+				</div>
+				<%}else if (name==="cricket_workshop"){%>
+					<div id="cricket_workshop1">
+					<div class="img8"></div>
+					<div class="titleRow">
+						<div class="title">Cricket Workshop</div>
+						<div class="date"> 23 Oct</div>
+					</div>
+					<div class="description">
+Online sports workshop has been one of the most popular workshops in the virtual College. Sports have always been a part of our lives. However, in today’s world, it is hard to find the time and space for this. Spirit’21, IIT Guwahati brings "Virtual Cricket Workshop" letting you experience the joy of cricket without even stepping out of your room.
+					</div>
+					<!-- <div class="prize"><b>Prize Pool of 30k</b></div> -->
+				</div>
 				<%}%>
-
 	
 			</div>
 			<div class="rightDiv">
@@ -363,7 +400,11 @@ Chess is a game of imagination and knowledge. It is an epic game of old insight.
 						<%- include('event_reg_forms/fitnessform') -%> 
 						<%}else if (name==="chess"){%>
 						<%- include('event_reg_forms/chessform') -%>
-						<%}%>	
+						<%}else if (name==="fantasy"){%>
+						<%- include('event_reg_forms/fantasyform') -%> 
+						<%}else if (name==="cricket_workshop"){%>
+						<%- include('event_reg_forms/cricket_workshopform') -%>
+						<%}%>
 					</form>
 				</div>
 			</div>
@@ -525,7 +566,65 @@ Chess is a game of imagination and knowledge. It is an epic game of old insight.
 					window.location.replace(`/`);
 					alert(result.error)
 				}
-			}}
+		}}
+		else if(event_name === "fantasy"){
+		var form = document.getElementById('event-form')
+		form.addEventListener('submit', registerForm)
+		async function registerForm(event) {
+			event.preventDefault()
+			let id = '<%=user._id%>'					
+			var full_name = document.getElementById('full_name6').value
+			var email_address = document.getElementById('email_address6').value
+			var college = document.getElementById('college6').value
+			var whatsapp_number = document.getElementById('whatsapp_number').value
+			var amb_id = document.getElementById('amb_id6').value
+			var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					full_name,event_name,email_address,college,whatsapp_number,amb_id
+				})
+			}).then((res) => res.json())
+
+			if (result.status === 'ok') {
+				window.location.replace(`/events/event_registration/success`);
+				alert('Success')
+			} else {
+				window.location.replace(`/`);
+				alert(result.error)
+			}
+		}}
+		else if(event_name === "cricket_workshop"){
+		var form = document.getElementById('event-form')
+		form.addEventListener('submit', registerForm)
+		async function registerForm(event) {
+			event.preventDefault()
+			let id = '<%=user._id%>'					
+			var full_name = document.getElementById('full_name7').value
+			var email_address = document.getElementById('email_address7').value
+			var college = document.getElementById('college7').value
+			var contact_number = document.getElementById('contact_number7').value
+			var amb_id = document.getElementById('amb_id7').value
+			var result = await fetch(`/events/event_registration/post/${event_name}/${id}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					full_name,event_name,email_address,college,contact_number,amb_id
+				})
+			}).then((res) => res.json())
+
+			if (result.status === 'ok') {
+				window.location.replace(`/events/event_registration/success`);
+				alert('Success')
+			} else {
+				window.location.replace(`/`);
+				alert(result.error)
+			}
+		}}
 		else if(event_name === "iplauction"){
 				var form = document.getElementById('event-form')
 				form.addEventListener('submit', registerForm2)

@@ -11,6 +11,7 @@ const EventSchema = new mongoose.Schema(
     email_address: [{ type: String, required: false, unique:false}],
     college: [{ type: String, required: false, unique:false}],
     contact_number: [{ type: String, required: false, unique:false}], 
+  	whatsapp_number: [{ type: String, required: false, unique:false}],
     chess_username: [{ type: String, required: false, unique:false}],
     athlos_events_registered: [{ type: String, required: false, unique:false}], 
     designation: [{ type: String, required: false, unique:false}], 
