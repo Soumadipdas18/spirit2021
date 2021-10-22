@@ -145,31 +145,31 @@
   overflow: hidden;
 }
 .card__side--front-1 {
-  background-image: url(../images/Chess.jpeg);
+  background-image: url(../images/Cricketworkshop.jpg);
   background-size: cover;
 }
 .card__side--front-2 {
-  background-image: url(../images/Sportsquiz.jpeg);
+  background-image: url(../images/CricketFantasy.jpg);
   background-size: cover;
 }
 .card__side--front-3 {
-  background-image: url(../images/Fitness.png);
+  background-image: url(../images/BGMI.png);
   background-size: cover;
 }
 .card__side--front-4 {
-  background-image: url(../images/Marathon.jpg);
+  background-image: url(../images/Treasure.jpg);
   background-size: cover;
 }
 .card__side--front-5 {
-  background-image: url(../images/WeeklyTrivia.jpg);
+  background-image: url(../images/Chess.jpeg);
   background-size: cover;
 }
 .card__side--front-6 {
-  background-image: url(../images/Ipl.png);
+  background-image: url(../images/Sportsquiz.jpeg);
   background-size: cover;
 }
 .card__side--front-7 {
-  background-image: url(../images/Sportsquiz.jpeg);
+  background-image: url(../images/Fitness.png);
   background-size: cover;
 }
 .card__side--front-8 {
