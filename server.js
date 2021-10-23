@@ -7,11 +7,13 @@ const profileroute = require("./routes/profileroute");
 const event_regRoute = require("./routes/event_regRoute");
 const shutterbug = require("./routes/shutterbug");
 const iplauction=require("./routes/iplauction");
+const treasurehunt=require("./routes/treasurehunt");
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 const stuff_user = require("./model/user");
 const stuff_event = require("./model/events");
 const stuff_ipl_auction = require("./model/ipl_auction");
+const stuff_treasure_hunt_winners = require("./model/treasure_hunt_winners");
 const cors=require("cors");
 var session;
 
@@ -130,6 +132,17 @@ app.get("/shutterbug_entries", async (req, res) => {
   } else res.render("events/shutterbug_entries", { logged_in: false, entries: entries });
 });
 
+
+//TREASURE HUNT
+app.get("/final_treasure_hunt", (req,res)=>{
+	res.render("treasurehunt/iabcmh");
+});
+
+app.get("/hunt_submit_details", (req,res)=>{
+	res.render("treasurehunt/submit_details");
+});
+
+
 //SPONSORS
 app.get("/sponsors", (req, res) => {
   session = req.session;
@@ -163,6 +176,7 @@ app.get('/campus_amb_register',async (req,res)=>{
 //APIS
 app.use("/authapi", authapi);
 app.use("/iplauction", iplauction);
+app.use("/treasurehunt", treasurehunt);
 app.use("/profile", profileroute);
 app.use("/shutterbug_submission", shutterbug);
 app.use("/events/event_registration", event_regRoute);

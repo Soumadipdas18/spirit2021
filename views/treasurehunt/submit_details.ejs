@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Spirit 2021 | Treasure Hunt</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+	
+	<body>
+		<form id="submit_details">
+		  <label for="answer">Name:</label>
+		  <input type="text" id="name" name="name" required><br>
+		  <label for="email">Email:</label>
+		  <input type="email" id="email" name="email" required><br>
+		  <label for="college">College:</label>
+		  <input type="text" id="college" name="college" required><br>
+		  <label for="phno">Phone Number:</label>
+		  <input type="tel" id="phno" name="phno" pattern="[1-9]{1}[0-9]{9}" required><br>
+		  <input type="submit" value="Submit">
+		</form>
+		
+		<p id="text">
+		</p>
+		
+		<script>
+			const form = document.getElementById('submit_details')
+			form.addEventListener('submit', submitDetails)
+			async function submitDetails(event) {
+				event.preventDefault()
+				const name = document.getElementById('name').value
+				const email = document.getElementById('email').value
+				const college = document.getElementById('college').value
+				const phno = document.getElementById('phno').value
+				const result = await fetch('/treasurehunt/add/', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						name,
+						email,
+						college,
+						phno
+					})
+				}).then((res) => res.json())
+				if (result.status === 'ok') {
+					document.getElementById("text").innerHTML='Success!'
+				} else {
+					document.getElementById("text").innerHTML=result.error
+				}
+			}
+			
+		</script>
+	</body>
+</html>
