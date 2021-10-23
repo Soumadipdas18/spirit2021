@@ -134,8 +134,8 @@ app.get("/shutterbug_entries", async (req, res) => {
 
 
 //TREASURE HUNT
-app.get("/final_treasure_hunt", (req,res)=>{
-	res.render("treasurehunt/iabcmh");
+app.get("/iabcmh", (req,res)=>{
+	res.render("treasurehunt/question_page");
 });
 
 app.get("/hunt_submit_details", (req,res)=>{
