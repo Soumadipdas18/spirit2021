@@ -1,5 +1,5 @@
 <h1 align="center">
-🌐 MERN Stack
+   <a href="https://iitg.ac.in/gymkhana/spirit/">Spirit 2021</a>
 </h1>
 <p align="center">
 MongoDB, Expressjs, React, Nodejs
@@ -17,9 +17,9 @@ MongoDB, Expressjs, React, Nodejs
    </a>
 </p>
  -->
-> MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
+<!-- > MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs. -->
 
-MERN stack is the idea of using Javascript/Node for fullstack web development.
+Website developed in MERN stack for Spirit, the biggest collegiate sporting festival of North Eastern India with 3K+ participants from 65+ colleges hosted by IIT Guwahati
 
 ## clone or download
 ```terminal
