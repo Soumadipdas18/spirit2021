@@ -136,6 +136,26 @@ body {
     position: relative;
 }
 
+.modal-head-text{
+	font-size:x-large;
+	margin: 20px 2px 20px 2px;
+}
+
+.modal-winner-head{
+	font-size: large;
+	margin: 40px 2px 2px 2px;
+	text-decoration: underline;
+}
+
+.winner-names{
+	font-size: large;
+}
+
+
+.modal-para{
+	 margin: 20px 30px 20px 30px;
+}
+
 .text-line {
     display: block;
     position: relative;
@@ -169,6 +189,7 @@ body {
     display: inline-block;
     right: 5%;
 }
+
 
 .give-margin {
     margin: 20px 30px 20px 30px;
@@ -208,6 +229,8 @@ body {
 	border-radius: 3px;
 	font-size: 16px;
 }
+
+
 
 .register-button-closed{
 	position: absolute;
@@ -530,6 +553,10 @@ body {
     margin: 20px 2px 20px 2px;
 	font-size:large;
 }
+	.modal-head-text{
+	font-size:large;
+	margin: 20px 2px 20px 2px;
+}
 	.expand-container {
     width: 100%;
     height: auto;
@@ -654,6 +681,12 @@ body {
     margin: 20px 2px 20px 2px;
 	font-size:large;
 }
+	
+		.modal-head-text{
+	font-size:large;
+	margin: 20px 2px 20px 2px;
+}
+	
 	.expand-container {
     width: 100%;
     height: auto;
