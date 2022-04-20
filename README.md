@@ -1,5 +1,5 @@
 <h1 align="center">
-   <a href="https://iitg.ac.in/gymkhana/spirit/">Spirit 2021</a>
+   <a href="http://spirit2021.herokuapp.com/">Spirit 2021</a>
 </h1>
 <p align="center">
 MongoDB, Expressjs, React, Nodejs
